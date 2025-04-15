@@ -15,7 +15,6 @@ public class Booking {
     private String status;
     @ManyToOne
     private User user;
-
     @ManyToOne
     private Flight flight;
 
