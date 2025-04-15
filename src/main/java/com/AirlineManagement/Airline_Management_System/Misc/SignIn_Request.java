@@ -1,8 +1,13 @@
 package com.AirlineManagement.Airline_Management_System.Misc;
 
+import java.sql.Date;
+
 public class SignIn_Request {
-    String username;
-    String password;
-    String email;
-    String name;
+    public String username;
+    public String firstName;
+    public String lastName;
+    public String contact;
+    public String email;
+    public String password;
+    public Date dob;
 }
