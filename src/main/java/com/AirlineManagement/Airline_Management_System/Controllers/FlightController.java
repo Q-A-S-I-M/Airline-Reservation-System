@@ -23,6 +23,10 @@ public class FlightController {
     public Flight getFlight(@PathVariable Long id) {
         return flightService.get(id);
     }
+    @GetMapping("/filter")
+    public Flight getFlight(@RequestBody Flight flight) {
+        return flightService.get(id);
+    }
 
     @PostMapping
     public Flight createFlight(@RequestBody Flight flight) {
