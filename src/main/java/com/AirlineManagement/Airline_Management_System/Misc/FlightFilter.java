@@ -1,6 +1,7 @@
+package com.AirlineManagement.Airline_Management_System.Misc;
 import java.util.*;
 
-public class FlightFilter{
+public class FlightFilter {
     private String fromLocation;
     private String toLocation;
     private Date departure;
@@ -8,5 +9,4 @@ public class FlightFilter{
     private int maxRange;
     private int minRange;
     private int seats;
-
 }

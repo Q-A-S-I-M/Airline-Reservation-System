@@ -39,7 +39,14 @@ public class UserServiceImpl implements UserService{
         return updatedUser;
     }
     public void register(SignIn_Request request){
-        String sql = "INSERT INTO Users (username, first_name, last_name, contact, email, password, dob) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "SELECT COUNT(*) FROM Users WHERE username = ?";
+        int count = template.queryForObject(sql, Integer.class, request.username);
+        if(count == 0){
+            
+        sql = "INSERT INTO Users (username, first_name, last_name, contact, email, password, dob) VALUES (?, ?, ?, ?, ?, ?, ?)";
         template.update(sql, request.username, request.firstName, request.lastName, request.contact, request.email, request.password, request.dob);
+        }else{
+            throw new RuntimeException("Username already exists!");
+        }
     }
 }

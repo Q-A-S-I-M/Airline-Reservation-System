@@ -3,6 +3,7 @@ package com.AirlineManagement.Airline_Management_System.Controllers;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 import com.AirlineManagement.Airline_Management_System.Repositories.FlightRepository;
 import com.AirlineManagement.Airline_Management_System.Services.FlightService;
+import com.AirlineManagement.Airline_Management_System.Misc.FlightFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,13 +25,13 @@ public class FlightController {
         return flightService.get(id);
     }
     @GetMapping("/filter")
-    public Flight getFlight(@RequestBody Flight flight) {
-        return flightService.get(id);
+    public List<Flight> getFlights(@RequestBody FlightFilter filter) {
+        return flightService.search(filter);
     }
 
     @PostMapping
-    public Flight createFlight(@RequestBody Flight flight) {
-        return flightService.create(flight);
+    public void createFlight(@RequestBody Flight flight) {
+        flightService.create(flight);
     }
 
     @PutMapping("/{id}")

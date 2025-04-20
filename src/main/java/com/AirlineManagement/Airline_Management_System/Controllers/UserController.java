@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/users")
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
+    @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Login_Request request) {
         try{
             User user = userService.login(request);
@@ -33,8 +33,13 @@ public class UserController {
         return userService.update(username, updatedUser);
     }
     @PostMapping("/register")
-    public void postMethodName(@RequestBody SignIn_Request request) {
-        userService.register(request);
+    public ResponseEntity<?> register(@RequestBody SignIn_Request request) {
+        try{
+            userService.register(request);
+            return ResponseEntity.ok("User registered successfully");
+        }catch(RuntimeException e){
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
     
 }

@@ -1,6 +1,7 @@
 package com.AirlineManagement.Airline_Management_System.Controllers;
 
 import com.AirlineManagement.Airline_Management_System.Entities.AirCraft;
+import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 import com.AirlineManagement.Airline_Management_System.Entities.Notification;
 import com.AirlineManagement.Airline_Management_System.Misc.Login_Request;
 import com.AirlineManagement.Airline_Management_System.Misc.Update_Request;
@@ -12,7 +13,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import javax.management.RuntimeErrorException;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
@@ -31,6 +35,11 @@ public class AdminController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @GetMapping("/flights")
+    public List<Flight> getflights() {
+        return service.getAllFlights();
+    }
+    
     @GetMapping("/update")
     void update_info(@RequestBody Update_Request req){}
     @GetMapping("/requests")
