@@ -1,5 +1,4 @@
-package CustomMappers;
-
+package com.AirlineManagement.Airline_Management_System.CustomMappers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

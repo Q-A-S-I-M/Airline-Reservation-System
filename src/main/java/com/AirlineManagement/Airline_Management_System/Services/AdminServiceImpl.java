@@ -8,8 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
-
-import CustomMappers.FlightRowMapper;
+import com.AirlineManagement.Airline_Management_System.CustomMappers.FlightRowMapper;
 
 @Service
 public class AdminServiceImpl implements AdminService{
