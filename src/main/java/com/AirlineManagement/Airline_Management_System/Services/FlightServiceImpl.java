@@ -1,5 +1,6 @@
 package com.AirlineManagement.Airline_Management_System.Services;
 
+import com.AirlineManagement.Airline_Management_System.CustomMappers.FlightRowMapper;
 import com.AirlineManagement.Airline_Management_System.Entities.AirCraft;
 import com.AirlineManagement.Airline_Management_System.Entities.Airline;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
@@ -17,9 +18,9 @@ public class FlightServiceImpl implements FlightService{
     @Autowired
     JdbcTemplate template;
     @Override
-    public List<Flight> getAll() {
-        String sql = "Select * From Flights";
-        List<Flight> flights = template.query(sql, new BeanPropertyRowMapper<>(Flight.class));
+    public List<Flight> getAllFlights() {
+        String sql = "SELECT f.id, f.arrival, f.departure, f.to_location, f.from_location, f.price, f.booked_seats, f.total_seats, f.duration, f.status, a.id, a.name, ac.id, ac.model, ac.status, ac.seats FROM flights f JOIN airlines a ON f.airline_id = a.id JOIN aircrafts ac ON f.aircraft_id = ac.id WHERE f.status NOT IN ('Cancelled', 'Landed')   OR (f.status IN ('Cancelled', 'Landed') AND f.departure >= NOW() - INTERVAL 1 MONTH) ORDER BY f.id ASC;";
+        List<Flight> flights = template.query(sql, new FlightRowMapper());
         return flights;
     }
 
@@ -54,5 +55,10 @@ public class FlightServiceImpl implements FlightService{
     @Override
     public List<Flight> search(FlightFilter filter) {
         return null;
+    }
+    @Override
+    public void updateStatus(Long id, String status) {
+        String sql = "UPDATE flights SET status = ? WHERE id = ?";
+        template.update(sql, status, id);
     }
 }

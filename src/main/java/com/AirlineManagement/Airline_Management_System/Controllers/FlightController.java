@@ -10,15 +10,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/flights")
+@RequestMapping("/flight")
 public class FlightController {
     @Autowired
     private FlightService flightService;
-
-    @GetMapping
-    public List<Flight> getAllFlights() {
-        return flightService.getAll();
-    }
 
     @GetMapping("/{id}")
     public Flight getFlight(@PathVariable Long id) {

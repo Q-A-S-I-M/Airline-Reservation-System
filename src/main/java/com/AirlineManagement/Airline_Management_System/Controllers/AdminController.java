@@ -6,22 +6,27 @@ import com.AirlineManagement.Airline_Management_System.Entities.Notification;
 import com.AirlineManagement.Airline_Management_System.Misc.Login_Request;
 import com.AirlineManagement.Airline_Management_System.Misc.Update_Request;
 import com.AirlineManagement.Airline_Management_System.Services.AdminService;
+import com.AirlineManagement.Airline_Management_System.Services.FlightService;
+import com.AirlineManagement.Airline_Management_System.Services.FlightServiceImpl;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import javax.management.RuntimeErrorException;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
     @Autowired
-    AdminService service;
+    private AdminService service;
+    @Autowired
+    private FlightService flightService;
     @GetMapping("/login")
     ResponseEntity<?> login(@RequestBody Login_Request request){
         try{
@@ -37,11 +42,17 @@ public class AdminController {
     }
     @GetMapping("/flights")
     public List<Flight> getflights() {
-        return service.getAllFlights();
+        return flightService.getAllFlights();
     }
-    
-    @GetMapping("/update")
-    void update_info(@RequestBody Update_Request req){}
+    @PutMapping("update-flight/{id}")
+    public ResponseEntity<String> updateFlights(@PathVariable Long id, @RequestBody String status) {
+        try {
+        flightService.updateStatus(id, status);
+        return ResponseEntity.ok("Flight status updated successfully.");
+    } catch (Exception e) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update flight status.");
+    }
+    }
     @GetMapping("/requests")
     List<Notification> get_noti(){return null;}
     @GetMapping("/get-airCrafts")
