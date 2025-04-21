@@ -1,5 +1,6 @@
 package com.AirlineManagement.Airline_Management_System.Services;
 
+import com.AirlineManagement.Airline_Management_System.DTOs.FlightCreation;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 import com.AirlineManagement.Airline_Management_System.Misc.FlightFilter;
 import org.springframework.web.bind.annotation.*;
@@ -13,4 +14,5 @@ public interface FlightService {
     public List<Flight> search(FlightFilter filter);
     public List<Flight> getAllFlights();
     public void updateStatus(Long id, String status);
+    public FlightCreation getData();
 }

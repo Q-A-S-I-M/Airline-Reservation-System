@@ -1,6 +1,7 @@
 package com.AirlineManagement.Airline_Management_System.Services;
 
 import com.AirlineManagement.Airline_Management_System.CustomMappers.FlightRowMapper;
+import com.AirlineManagement.Airline_Management_System.DTOs.FlightCreation;
 import com.AirlineManagement.Airline_Management_System.Entities.AirCraft;
 import com.AirlineManagement.Airline_Management_System.Entities.Airline;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
@@ -11,7 +12,10 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.List;
+import java.util.Date;
 
 @Service
 public class FlightServiceImpl implements FlightService{
@@ -33,18 +37,24 @@ public class FlightServiceImpl implements FlightService{
 
     @Override
     public void create(Flight flight) {
-        String sql = "SELECT * FROM Aircrafts WHERE id = ?";
-        AirCraft aircraft = template.queryForObject(sql,new Object[]{flight.getAircraft().getId()},new BeanPropertyRowMapper<>(AirCraft.class));
-
-        sql = "SELECT * FROM Airlines WHERE id = ?";
-        Airline airline = template.queryForObject(sql, new Object[]{flight.getAirline().getId()}, new BeanPropertyRowMapper<>(Airline.class));
-        flight.setAircraft(aircraft);
-        flight.setAirline(airline);
-
-        sql = "INSERT INTO Flights (from_location, to_location, departure, arrival, booked_seats, total_seats, status, price, duration, airline_id, aircraft_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Flights (from_location, to_location, departure, arrival, booked_seats, total_seats, status, price, duration, airline_id, aircraft_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        flight.setDuration(getDurationBetween(flight.getDeparture(), flight.getArrival()));
         
-        template.update( sql, flight.getFromLocation(), flight.getToLocation(), flight.getDeparture(), flight.getArrival(), 0, flight.getAircraft().getSeats(), "Scheduled", flight.getPrice(), flight.getAirline().getId(), flight.getAircraft().getId());
+        template.update( sql, flight.getFromLocation(), flight.getToLocation(), flight.getDeparture(), flight.getArrival(), 0, flight.getAircraft().getSeats(), "Scheduled", flight.getPrice(), flight.getDuration(), flight.getAirline().getId(), flight.getAircraft().getId());
+        sql = "UPDATE aircrafts SET status = 'Assigned' WHERE id = ?";
+        template.update(sql, flight.getAircraft().getId());
         return;
+    }
+    private String getDurationBetween(Date departure, Date arrival){
+        Instant dep = departure.toInstant();
+        Instant arr = arrival.toInstant();
+
+        Duration duration = Duration.between(dep, arr);
+
+        long hours = duration.toHours();
+        long minutes = duration.toMinutes() % 60;
+
+        return String.format("%02d:%02d", hours, minutes);
     }
 
     @Override
@@ -60,5 +70,18 @@ public class FlightServiceImpl implements FlightService{
     public void updateStatus(Long id, String status) {
         String sql = "UPDATE flights SET status = ? WHERE id = ?";
         template.update(sql, status, id);
+        if(status.equals("Landed")||status.equals("Cancelled")){
+            sql = "UPDATE aircrafts SET status = 'Unassigned' WHERE id = (SELECT aircraft_id FROM flights WHERE id = ?)";
+            template.update(sql, id);
+        }
+    }
+
+    @Override
+    public FlightCreation getData() {
+        String sql = "SELECT * FROM Airlines";
+        List<Airline> airlines = template.query(sql, new BeanPropertyRowMapper<>(Airline.class));
+        sql = "SELECT * FROM Aircrafts WHERE status = 'Unassigned'";
+        List<AirCraft> aircrafts = template.query(sql, new BeanPropertyRowMapper<>(AirCraft.class));
+        return new FlightCreation(airlines, aircrafts);
     }
 }

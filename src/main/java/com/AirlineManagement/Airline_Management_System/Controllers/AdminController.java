@@ -1,5 +1,6 @@
 package com.AirlineManagement.Airline_Management_System.Controllers;
 
+import com.AirlineManagement.Airline_Management_System.DTOs.FlightCreation;
 import com.AirlineManagement.Airline_Management_System.Entities.AirCraft;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 import com.AirlineManagement.Airline_Management_System.Entities.Notification;
@@ -49,9 +50,23 @@ public class AdminController {
         try {
         flightService.updateStatus(id, status);
         return ResponseEntity.ok("Flight status updated successfully.");
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update flight status.");
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body("Failed to update flight status.");
+        }
     }
+    @GetMapping("/load-flightCreation")
+    public ResponseEntity<?> load() {
+        FlightCreation page = flightService.getData();
+        if(page.aircrafts.isEmpty()){
+            return ResponseEntity.badRequest().body("No aircrafts available at the moment");
+        }else{
+            return ResponseEntity.ok(page);
+        }
+    }
+    @PostMapping("/create-flight")
+    public ResponseEntity<String> createFlight(@RequestBody Flight flight) {
+        flightService.create(flight);
+        return ResponseEntity.ok("Flight created successfully.");
     }
     @GetMapping("/requests")
     List<Notification> get_noti(){return null;}
