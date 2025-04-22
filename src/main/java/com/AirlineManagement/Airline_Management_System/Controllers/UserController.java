@@ -1,17 +1,21 @@
 package com.AirlineManagement.Airline_Management_System.Controllers;
 
 import com.AirlineManagement.Airline_Management_System.Entities.Feedback;
+import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 import com.AirlineManagement.Airline_Management_System.Entities.User;
+import com.AirlineManagement.Airline_Management_System.Misc.FlightFilter;
 import com.AirlineManagement.Airline_Management_System.Misc.Login_Request;
 import com.AirlineManagement.Airline_Management_System.Misc.SignIn_Request;
 import com.AirlineManagement.Airline_Management_System.Repositories.UserRepository;
 import com.AirlineManagement.Airline_Management_System.Services.FeedbackService;
+import com.AirlineManagement.Airline_Management_System.Services.FlightService;
 import com.AirlineManagement.Airline_Management_System.Services.UserService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @CrossOrigin("*")
 @RestController
@@ -21,6 +25,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private FeedbackService feedbackService;
+    @Autowired
+    private FlightService flightService;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Login_Request request) {
@@ -50,6 +56,15 @@ public class UserController {
         feedbackService.submit(feedback);
         return ResponseEntity.ok(feedback);
     }
-    
+    @GetMapping("/search-flight")
+    public ResponseEntity<?> getFlights(@RequestBody FlightFilter filter) {
+        try{
+            List<Flight> flights = flightService.search(filter);
+            return ResponseEntity.ok(flights);
+        }catch(RuntimeException e) {
+            return ResponseEntity.badRequest().body("No flights available");
+        }
+
+    }
     
 }

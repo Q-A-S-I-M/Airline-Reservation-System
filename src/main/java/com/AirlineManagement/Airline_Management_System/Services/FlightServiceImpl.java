@@ -64,7 +64,9 @@ public class FlightServiceImpl implements FlightService{
 
     @Override
     public List<Flight> search(FlightFilter filter) {
-        return null;
+        String sql = "SELECT f.id, f.arrival, f.departure, f.to_location, f.from_location, f.price, f.booked_seats, f.total_seats, f.duration, f.status, a.id, a.name, ac.id, ac.model, ac.status, ac.seats FROM flights f JOIN airlines a ON f.airline_id = a.id JOIN aircrafts ac ON f.aircraft_id = ac.id WHERE f.status = 'Scheduled' AND f.from_location = ? AND f.to_location = ? AND f.departure BETWEEN DATE_SUB(?, INTERVAL 2 DAY) AND DATE_ADD(?, INTERVAL 2 DAY) AND f.price BETWEEN ? AND ? AND (f.total_seats-f.booked_seats) > ?;";
+        List<Flight> flights = template.query(sql,new Object[]{filter.fromLocation, filter.toLocation, filter.departure, filter.departure, filter.minRange, filter.maxRange, filter.seats} , new FlightRowMapper());
+        return flights;
     }
     @Override
     public void updateStatus(Long id, String status) {
