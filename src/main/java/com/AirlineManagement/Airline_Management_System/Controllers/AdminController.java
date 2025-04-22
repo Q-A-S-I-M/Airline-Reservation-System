@@ -7,6 +7,7 @@ import com.AirlineManagement.Airline_Management_System.Entities.Notification;
 import com.AirlineManagement.Airline_Management_System.Misc.Login_Request;
 import com.AirlineManagement.Airline_Management_System.Misc.Update_Request;
 import com.AirlineManagement.Airline_Management_System.Services.AdminService;
+import com.AirlineManagement.Airline_Management_System.Services.FeedbackService;
 import com.AirlineManagement.Airline_Management_System.Services.FlightService;
 import com.AirlineManagement.Airline_Management_System.Services.FlightServiceImpl;
 
@@ -28,6 +29,9 @@ public class AdminController {
     private AdminService service;
     @Autowired
     private FlightService flightService;
+    
+    @Autowired
+    private FeedbackService feedbackService;
     @GetMapping("/login")
     ResponseEntity<?> login(@RequestBody Login_Request request){
         try{
@@ -67,6 +71,14 @@ public class AdminController {
     public ResponseEntity<String> createFlight(@RequestBody Flight flight) {
         flightService.create(flight);
         return ResponseEntity.ok("Flight created successfully.");
+    }
+    @GetMapping("/feedbacks")
+    public ResponseEntity<?> getFeedbacks() {
+        return ResponseEntity.ok(feedbackService.get());
+    }
+    @GetMapping("/feedbacks/{id}")
+    public ResponseEntity<?> get(@PathVariable Long id) {
+        return ResponseEntity.ok(feedbackService.getFeedbacks(id));
     }
     @GetMapping("/requests")
     List<Notification> get_noti(){return null;}

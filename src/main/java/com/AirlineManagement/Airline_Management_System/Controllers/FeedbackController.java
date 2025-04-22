@@ -18,9 +18,4 @@ public class FeedbackController {
     public Feedback submitFeedback(@RequestBody Feedback feedback) {
         return feedbackService.submit(feedback);
     }
-
-    @GetMapping("/flight/{flightId}")
-    public List<Feedback> getFeedbackByFlight(@PathVariable Long flightId) {
-        return feedbackService.get(flightId);
-    }
 }

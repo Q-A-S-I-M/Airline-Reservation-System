@@ -1,9 +1,11 @@
 package com.AirlineManagement.Airline_Management_System.Controllers;
 
+import com.AirlineManagement.Airline_Management_System.Entities.Feedback;
 import com.AirlineManagement.Airline_Management_System.Entities.User;
 import com.AirlineManagement.Airline_Management_System.Misc.Login_Request;
 import com.AirlineManagement.Airline_Management_System.Misc.SignIn_Request;
 import com.AirlineManagement.Airline_Management_System.Repositories.UserRepository;
+import com.AirlineManagement.Airline_Management_System.Services.FeedbackService;
 import com.AirlineManagement.Airline_Management_System.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private FeedbackService feedbackService;
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody Login_Request request) {
@@ -41,5 +45,11 @@ public class UserController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @PostMapping("/review")
+    public ResponseEntity<?> submitReview(@RequestBody Feedback feedback) {
+        feedbackService.submit(feedback);
+        return ResponseEntity.ok(feedback);
+    }
+    
     
 }
