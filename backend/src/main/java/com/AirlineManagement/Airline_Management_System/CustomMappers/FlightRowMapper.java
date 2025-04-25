@@ -12,7 +12,7 @@ public class FlightRowMapper implements RowMapper<Flight> {
 
     @Override
     public Flight mapRow(ResultSet rs, int arg1) throws SQLException {
-         Flight flight = new Flight();
+        Flight flight = new Flight();
 
         flight.setId(rs.getLong("f.id"));
         flight.setFromLocation(rs.getString("from_location"));

@@ -1,6 +1,7 @@
 package com.AirlineManagement.Airline_Management_System.Services;
 
 import com.AirlineManagement.Airline_Management_System.CustomMappers.FlightRowMapper;
+import com.AirlineManagement.Airline_Management_System.CustomMappers.FeedbackRowMapper;
 import com.AirlineManagement.Airline_Management_System.Entities.Feedback;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 
@@ -14,6 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.beans.BeanProperty;
 import java.sql.JDBCType;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -62,7 +64,7 @@ public class FeedbackServiceImpl implements FeedbackService{
     }
     @Override
     public List<Feedback> getFeedbacks(Long id) {
-        String sql = "SELECT * FROM Feedbacks WHERE flight_id = ? ORDER BY timestamp DESC";
+        String sql = "SELECT f.id, f.comments, f.rating, f.timestamp, f.flight_id, f.username FROM Feedbacks f WHERE flight_id = ? ORDER BY timestamp DESC";
         return template.query(sql, new Object[]{id}, new BeanPropertyRowMapper<>(Feedback.class));
     }
 }
