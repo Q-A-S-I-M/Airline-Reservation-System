@@ -9,6 +9,8 @@ import AdminFlights from './pages/AdminFlights'
 import AdminAddFlights from './pages/AdminAddFlights'
 import FlightSearchForm from './pages/FlightSearchForm'
 import SearchResultsPage from './components/SearchResultsPage'
+import AdminRequests from './pages/AdminRequests'
+import AdminReviews from './pages/AdminReviews'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +26,8 @@ function App() {
         <Route path='/admin/Flights' element={<AdminFlights/>}/>
         <Route path='/admin/Add-Flights' element={<AdminAddFlights/>}/>
         <Route path='/search-results' element={<SearchResultsPage/>}/>
+        <Route path='/admin/Requests' element={<AdminRequests/>}/>
+        <Route path='/admin/Reviews' element={<AdminReviews/>}/>
       
       </Routes>
     </>
