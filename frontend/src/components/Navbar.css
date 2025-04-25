@@ -1,0 +1,108 @@
+/* body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f8fa;
+  } */
+  
+  .maaz-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 2rem;
+    background-color: #ffffff;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-radius: 0 0 12px 12px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .maaz-navbar-logo {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #0077cc;
+  }
+  
+  .maaz-navbar-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .maaz-navbar-links a {
+    font-size: 1.25rem;
+    text-decoration: none;
+    color: #444;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  
+  .maaz-navbar-links a:hover {
+    color: #0077cc;
+  }
+  
+  .maaz-navbar-profile {
+    position: relative;
+  }
+  
+  .maaz-user-btn {
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1.15rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: background-color 0.2s, transform 0.2s;
+  }
+  
+  .maaz-user-btn:hover {
+    background-color: #005fa3;
+    transform: translateY(-1px);
+  }
+  
+  .maaz-dropdown {
+    position: absolute;
+    right: 0;
+    top: 110%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+    overflow: hidden;
+    flex-direction: column;
+    z-index: 999;
+  
+    /* Animation */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .maaz-dropdown a {
+    padding: 0.7rem 1rem;
+    text-decoration: none;
+    color: #333;
+    display: block;
+    font-size: 0.95rem;
+    transition: background 0.2s;
+  }
+  
+  .maaz-dropdown a:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .maaz-navbar-profile:hover .dropdown {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  

@@ -1,0 +1,192 @@
+.loginForm-container .heading{
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: xx-large;
+}
+
+.option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.inputs{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+    /* border: 2px solid black; */
+}
+
+input{ 
+    padding: 15px;
+    height: 40px;
+    width: 400px;
+    /* margin-bottom: 20px; */
+    border: 1px solid black;
+    border-radius: 40px;
+    font-size: 20px;
+    background-color: lightgray;
+    color: black;
+}
+
+.option button{
+    font-size: 20px;
+    padding: 10px;
+    width: 200px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.other{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* border: 2px solid red; */
+    gap: 15px;
+}
+
+.other a{
+    color: black;
+    text-decoration: underline;
+    font-size: 22px;
+    cursor: pointer;
+    color: red;
+}
+
+::placeholder{
+    color: black;
+}
+
+
+
+
+.loginForm-container {
+    max-width: 450px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    /* border: 2px solid black; */
+}
+
+.heading h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 28px;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputs {
+    position: relative;
+}
+
+.inputs input {
+    width: 100%;
+    /* padding: 12px 15px 12px 45px; */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.inputs input:focus {
+    border-color: #007bff;
+}
+
+.icons {
+    position: absolute;
+    top: 50%;
+    left: 15px;
+    transform: translateY(-50%);
+    color: #555;
+}
+
+.submit button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit button:hover {
+    background-color: #0056b3;
+}
+
+.option {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.option button {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    background-color: white;
+    color: #007bff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.option button.active,
+.option button:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.other {
+    text-align: center;
+}
+
+.other h2 {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.other a {
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.other a:hover {
+    color: #0056b3;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

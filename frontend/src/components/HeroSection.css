@@ -1,0 +1,44 @@
+.maaz-hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    background-color: #f5f8fa;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  .maaz-hero-image {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  
+  .maaz-hero-text {
+    max-width: 400px;
+  }
+  
+  .maaz-hero-text h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #0077cc;
+    margin-bottom: 1rem;
+  }
+  
+  .maaz-book-now-btn {
+    background-color: #0077cc;
+    color: white;
+    padding: 0.7rem 1.4rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+  
+  .maaz-book-now-btn:hover {
+    background-color: #005fa3;
+    transform: translateY(-2px);
+  }
+  

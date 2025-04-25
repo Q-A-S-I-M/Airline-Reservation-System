@@ -1,0 +1,83 @@
+.maaz-flight-form-wrapper {
+  background: white;
+  padding: 3rem 2rem;
+  margin: 3rem auto;
+  border-radius: 16px;
+  max-width: 800px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: fit-content;
+}
+
+.maaz-flight-form-wrapper h2 {
+  text-align: center;
+  color: #0077cc;
+  margin-bottom: 2rem;
+}
+
+.maaz-flight-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.maaz-flight-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  color: #333;
+}
+
+.maaz-flight-form input,
+.maaz-flight-form select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.maaz-search-btn {
+  grid-column: span 2;
+  margin-top: 1.5rem;
+  background-color: #0077cc;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.maaz-search-btn:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+.maaz-error-message {
+  color: red;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* input#min-price::-webkit-outer-spin-button,
+input#min-price::-webkit-inner-spin-button,
+input#max-price::-webkit-outer-spin-button,
+input#max-price::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+} */
+
+.maaz-price-input::-webkit-outer-spin-button,
+.maaz-price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* FOR FIREFOX
+input#min-price, input#max-price {
+  -moz-appearance: none;
+}
+*/

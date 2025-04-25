@@ -1,0 +1,139 @@
+
+  
+  /* TABLE STYLES */
+  .flight-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-family: Arial, sans-serif;
+  }
+  
+  .flight-table th,
+  .flight-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .flight-table th {
+    background-color: #333;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+  }
+  
+  .flight-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  /* STATUS BADGES */
+  .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: background-color 0.2s ease;
+  }
+  
+  .status-badge.green {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .status-badge.yellow {
+    background-color: #FFEB3B;
+    color: #333;
+  }
+  
+  .status-badge.red {
+    background-color: #F44336;
+    color: white;
+  }
+  
+  .status-badge.blue {
+    background-color: #2196F3;
+    color: white;
+  }
+  
+  .status-badge.gray {
+    background-color: #9E9E9E;
+    color: white;
+  }
+  
+  .status-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* DROPDOWN */
+  .dropdown-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .status-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    width: 130px;
+    text-align: left;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 2.5rem;
+    left: 0;
+    min-width: 160px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    z-index: 100;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+  }
+  
+  .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.875rem;
+    color: #333;
+    transition: background 0.2s ease;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f5f5f5;
+  }
+  
+  .dropdown-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .dropdown-icon.scheduled {
+    color: gray;
+  }
+  .dropdown-icon.departed {
+    color: green;
+  }
+  .dropdown-icon.delayed {
+    color: goldenrod;
+  }
+  .dropdown-icon.cancelled {
+    color: crimson;
+  }
+  .dropdown-icon.landed {
+    color: steelblue;
+  }
+  
+  
+  

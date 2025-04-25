@@ -1,0 +1,73 @@
+.card {
+    width: 100%;
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 32px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 8px;
+  }
+  
+  .form-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 32px;
+    color: #333;
+  }
+  
+  .form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .label {
+    width: 100px;
+    color: #555;
+    font-weight: 500;
+  }
+  
+  .input {
+    padding: 8px 10px;
+    font-size: 16px;
+    flex: 1;
+  }
+  
+  .dropdown {
+    padding: 8px 10px;
+    font-size: 16px;
+    flex: 1;
+  }
+  
+  .time-picker {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .submit-button {
+    padding: 10px 24px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
