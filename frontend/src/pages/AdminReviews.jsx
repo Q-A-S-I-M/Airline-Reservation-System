@@ -6,7 +6,7 @@ import './AdminReviews.css'; // Keep your CSS file
 const AdminReviews = () => {
   const [flights, setFlights] = useState([]);
   const [reviews, setReviews] = useState([]);
-  const [showReviews, setShowReviews] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const getData = async () => {
@@ -25,48 +25,60 @@ const AdminReviews = () => {
     try {
       const response = await axios.get(`http://localhost:8080/admin/feedbacks/${id}`);
       setReviews(response.data);
-      setShowReviews(true);
+      setShowModal(true);
     } catch (error) {
       console.error("Error fetching review data:", error);
     }
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setReviews([]);
   };
 
   return (
     <div>
       <AdminNav />
       <div className="reviews-container">
-        {!showReviews ? (
-          flights.map((flight) => (
-            <div key={flight.id} className="flight-card">
-              <div className="left-section">
-                <h2 className="airline-name">{flight.airline.name}</h2>
-                <p><strong>From:</strong> {flight.fromLocation} → <strong>To:</strong> {flight.toLocation}</p>
-                <p><strong>Departure:</strong> {new Date(flight.departure).toLocaleString()}</p>
-                <p><strong>Arrival:</strong> {new Date(flight.arrival).toLocaleString()}</p>
-              </div>
-              <div className="right-section">
-                <p><strong>Status:</strong> {flight.status}</p>
-                <p><strong>Duration:</strong> {flight.duration}</p>
-                <p><strong>Aircraft:</strong> {flight.aircraft.model}</p>
-                <p><strong>Seats Booked:</strong> {flight.bookedSeats} / {flight.totalSeats}</p>
-                <p><strong>Price:</strong> ${flight.price}</p>
-                <button onClick={() => getReviews(flight.id)} className="review-button">Show Reviews</button>
-              </div>
+        {flights.map((flight) => (
+          <div key={flight.id} className="flight-card">
+            <div className="left-section">
+              <h2 className="airline-name">{flight.airline.name}</h2>
+              <p><strong>Flight ID:</strong> {flight.id}</p>
+              <p><strong>From:</strong> {flight.fromLocation} → <strong>To:</strong> {flight.toLocation}</p>
+              <p><strong>Departure:</strong> {new Date(flight.departure).toLocaleString()}</p>
+              <p><strong>Arrival:</strong> {new Date(flight.arrival).toLocaleString()}</p>
             </div>
-          ))
-        ) : (
-          reviews.map((review) => (
-            <div key={review.id} className="review-card">
-              <p><strong>Rating:</strong> {review.rating}</p>
-              <p><strong>Comment:</strong> {review.comments}</p>
-              <p><strong>Timestamp:</strong> {new Date(review.timestamp).toLocaleString()}</p>
+            <div className="right-section">
+              <p><strong>Aircraft:</strong> {flight.aircraft.model}</p>
+              <button onClick={() => getReviews(flight.id)} className="review-button">Show Reviews</button>
             </div>
-          ))
-        )}
+          </div>
+        ))}
       </div>
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <button className="close-button" onClick={closeModal}>X</button>
+            <h2>Flight Reviews</h2>
+            {reviews.length > 0 ? (
+              reviews.map((review) => (
+                <div key={review.id} className="review-card">
+                  
+                  <p><strong>User:</strong> {review.user?.username || "Unknown User"}</p>
+                  <p>{new Date(review.timestamp).toLocaleString()}</p>
+                  <p><strong>Comment:</strong> {review.comments}</p>
+                </div>
+              ))
+            ) : (
+              <p>No reviews found for this flight.</p>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default AdminReviews;
-
