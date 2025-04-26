@@ -9,16 +9,16 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ticket;
-
+    @JoinColumn(name = "passenger_id")
     @ManyToOne
     private Passenger passenger;
-
+    @JoinColumn(name = "flight_id")
     @ManyToOne
     private Flight flight;
-
+    @JoinColumn(name = "seat_id")
     @ManyToOne
     private Seat seat;
-
+    @Column(name = "status")
     private String status;
 
     public Long getTicket() {

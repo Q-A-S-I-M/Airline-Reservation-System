@@ -8,10 +8,10 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @PrimaryKeyJoinColumn(name = "booking_id")
     @OneToOne
     private Booking booking;
-
+    @Column(name = "status")
     private String status;
 
     public Long getId() {

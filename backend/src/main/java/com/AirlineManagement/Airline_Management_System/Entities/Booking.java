@@ -9,12 +9,18 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "timestamp")
     private Date timestamp;
+    @Column(name = "amount")
     private double amount;
+    @Column(name = "payment_deadline")
     private Date paymentDeadline;
+    @Column(name = "status")
     private String status;
+    @JoinColumn(name = "username")
     @ManyToOne
     private User user;
+    @JoinColumn(name = "flight_id")
     @ManyToOne
     private Flight flight;
 

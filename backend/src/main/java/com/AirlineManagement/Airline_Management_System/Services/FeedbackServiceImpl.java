@@ -61,7 +61,7 @@ public class FeedbackServiceImpl implements FeedbackService{
     }
     @Override
     public List<Feedback> getFeedbacks(Long id) {
-        String sql = "SELECT f.id, f.comments, f.rating, f.timestamp, f.flight_id, f.user_username FROM Feedbacks f WHERE flight_id = ? ORDER BY timestamp DESC";
+        String sql = "SELECT f.id, f.comments, f.rating, f.timestamp, f.flight_id, f.username FROM Feedbacks f WHERE flight_id = ? ORDER BY timestamp DESC";
         return template.query(sql, new Object[]{id}, new FeedbackRowMapper());
     }
 }

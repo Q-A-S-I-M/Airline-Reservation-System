@@ -23,7 +23,7 @@ public class FeedbackRowMapper implements RowMapper<Feedback> {
         flight.setId(rs.getLong("f.flight_id"));
 
         User user = new User();
-        user.setUsername(rs.getString("f.user_username"));
+        user.setUsername(rs.getString("f.username"));
         
         fd.setFlight(flight);
         fd.setUser(user);
