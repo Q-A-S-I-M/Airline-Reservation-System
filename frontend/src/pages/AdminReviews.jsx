@@ -65,12 +65,15 @@ const AdminReviews = () => {
             {reviews.length > 0 ? (
               reviews.map((review) => (
                 <div key={review.id} className="review-card">
-                  
-                  <p><strong>User:</strong> {review.user?.username || "Unknown User"}</p>
-                  <p>{new Date(review.timestamp).toLocaleString()}</p>
-                  <p><strong>Comment:</strong> {review.comments}</p>
+                  <div className="review-header">
+                    <span className="review-username">{review.user?.username || "Unknown User"}</span>
+                    <span className="review-timestamp">
+                      {new Date(review.timestamp).toLocaleString()}
+                    </span>
+                  </div>
+                  <p className="review-comment">{review.comments}</p>
                 </div>
-              ))
+              ))              
             ) : (
               <p>No reviews found for this flight.</p>
             )}
