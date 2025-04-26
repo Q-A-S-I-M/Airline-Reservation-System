@@ -9,8 +9,11 @@ public class AirCraft {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "model")
     private String model;
+    @Column(name = "seats")
     private int seats;
+    @Column(name = "status")
     private String status;
 
     public Long getId() {

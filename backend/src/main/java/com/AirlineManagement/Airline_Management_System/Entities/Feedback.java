@@ -10,14 +10,17 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @JoinColumn(name = "flight_id")
     @ManyToOne
     private Flight flight;
+    @JoinColumn(name = "username")
     @ManyToOne
     private User user;
-
+    @Column(name = "rating")
     private int rating;
+    @Column(name = "comments")
     private String comments;
+    @Column(name = "timestamp")
     private Date timestamp;
 
     public Long getId() {

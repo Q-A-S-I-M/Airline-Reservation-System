@@ -9,10 +9,13 @@ public class Seat {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "seat_no")
     private String seatNo;
+    @Column(name = "type")
     private String type;
+    @Column(name = "status")
     private String status;
-
+    @JoinColumn(name = "aircraft_id")
     @ManyToOne
     private AirCraft aircraft;
 

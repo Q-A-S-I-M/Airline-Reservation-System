@@ -8,11 +8,17 @@ import java.util.*;
 public class User {
     @Id
     private String username;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "contact")
     private String contact;
+    @Column(name = "email")
     private String email;
+    @Column(name = "password")
     private String password;
+    @Column(name = "dob")
     private Date dob;
 
     public String getUsername() {
