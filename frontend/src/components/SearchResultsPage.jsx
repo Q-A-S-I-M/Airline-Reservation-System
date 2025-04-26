@@ -16,7 +16,7 @@ const SearchResultsPage = () => {
           <p>No flights found.</p>
         ) : (
           results.map((flight) => (
-            <div className="flight-card" key={flight.id}>
+            <div className="flight-cards" key={flight.id}>
               <h2>{flight.fromLocation} → {flight.toLocation}</h2>
               <p><strong>Departure:</strong> {new Date(flight.departure).toLocaleString()}</p>
               <p><strong>Arrival:</strong> {new Date(flight.arrival).toLocaleString()}</p>

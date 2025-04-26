@@ -13,7 +13,7 @@
     padding: 30px;
   }
   
-  .flight-card {
+  .flight-cards {
     background-color: #f4f6f8;
     border: 1px solid #dcdde1;
     border-radius: 10px;
@@ -22,12 +22,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .flight-card h2 {
+  .flight-cards h2 {
     color: #2980b9;
     margin-bottom: 10px;
   }
   
-  .flight-card p {
+  .flight-cards p {
     margin: 5px 0;
     font-size: 0.95rem;
   }
