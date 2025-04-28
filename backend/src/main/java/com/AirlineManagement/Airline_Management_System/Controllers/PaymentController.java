@@ -12,9 +12,9 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @PostMapping
-    public Payment processPayment(@RequestBody Payment payment) {
-        return paymentService.process(payment);
+    @PutMapping("/{id}")
+    public void processPayment(@RequestBody long id) {
+        paymentService.process(id);
     }
 
     @GetMapping("/{id}")

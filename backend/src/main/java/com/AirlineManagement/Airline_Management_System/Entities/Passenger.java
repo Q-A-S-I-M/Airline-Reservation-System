@@ -17,9 +17,13 @@ public class Passenger {
     private String contact;
     @Column(name = "dob")
     private Date dob;
-    @JoinColumn(name = "username")
-    @ManyToOne
-    private User user;
+    // @JoinColumn(name = "username")
+    // @ManyToOne
+    // private User user;
+    @OneToOne
+    @PrimaryKeyJoinColumn(name="booking_id")
+    private Booking booking;
+
 
     public Long getId() {
         return id;
@@ -61,11 +65,18 @@ public class Passenger {
         this.dob = dob;
     }
 
-    public User getUser() {
-        return user;
+    // public User getUser() {
+    //     return user;
+    // }
+
+    // public void setUser(User user) {
+    //     this.user = user;
+    // }
+    public Booking getBooking() {
+        return booking;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setBooking(Booking booking) {
+        this.booking = booking;
     }
 }

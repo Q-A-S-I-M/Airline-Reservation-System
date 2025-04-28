@@ -1,7 +1,7 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
-import java.util.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "bookings")
@@ -36,8 +36,8 @@ public class Booking {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
-        this.timestamp = timestamp;
+    public void setTimestamp(Date now) {
+        this.timestamp = now;
     }
 
     public double getAmount() {

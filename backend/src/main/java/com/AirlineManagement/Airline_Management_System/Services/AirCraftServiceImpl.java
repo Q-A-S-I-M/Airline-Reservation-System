@@ -1,7 +1,6 @@
 package com.AirlineManagement.Airline_Management_System.Services;
 
 import com.AirlineManagement.Airline_Management_System.Entities.AirCraft;
-import com.AirlineManagement.Airline_Management_System.Entities.Airline;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,51 +24,46 @@ public class AirCraftServiceImpl implements AirCraftService {
 
     @Override
     public AirCraft get(Long id) {
-        String sql = "SELECT * FROM aircrafts WHERE id = "+id;
-        return template.queryForObject(sql, new BeanPropertyRowMapper<>(AirCraft.class));
+        String sql = "SELECT * FROM aircrafts WHERE id = ?";
+        return template.queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper<>(AirCraft.class));
     }
 
     @Override
     public AirCraft create(AirCraft airCraft) {
-        String sql = "INSERT INTO aircrafts (model, seats, status) VALUES (?, ?, ?)";
-
+        String sql = "INSERT INTO aircrafts (model, seats, status) VALUES (?, ?, 'Unassigned')";
         KeyHolder keyHolder = new GeneratedKeyHolder();
 
         template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, airCraft.getModel());
             ps.setInt(2, airCraft.getSeats());
-            ps.setString(3, airCraft.getStatus());
             return ps;
         }, keyHolder);
 
-        airCraft.setId(keyHolder.getKey().longValue());
-        return airCraft;
-    }
+        Number generatedId = keyHolder.getKey();
+        if (generatedId != null) {
+            long id = generatedId.longValue();
+            String newSql = "INSERT INTO Seats (seat_no, status, aircraft_id) VALUES (?, 'Available', ?)";
+            for (int i = 1; i <= airCraft.getSeats(); i++) {
+                String seatNo = airCraft.getModel() + "-" + id + "-" + i;
+                template.update(newSql, seatNo, id);
+            }
 
-
-
-
-    @Override
-    public AirCraft update(Long id, AirCraft updated) {
-        String sql = "UPDATE aircrafts SET model = '" + updated.getModel() + "', seats = "
-                + updated.getSeats() + ", status = '" + updated.getStatus() + "' WHERE id = " + id;
-        int rows = template.update(sql);
-        if (rows > 0) {
-            updated.setId(id);
-            return updated;
+            airCraft.setId(id);
+            return airCraft;
         } else {
             return null;
         }
     }
 
+
     @Override
     public void delete(Long id) {
-        String sql = "DELETE FROM aircrafts WHERE id = "+id;
-        int rowsAffected = template.update(sql);
+        String sql = "DELETE FROM aircrafts WHERE id = ?";
+        int rowsAffected = template.update(sql, id);
 
         if (rowsAffected == 0) {
-            throw new RuntimeException("Airline not found with id: " + id);
+            throw new RuntimeException("AirCraft not found with id: " + id);
         }
     }
 }

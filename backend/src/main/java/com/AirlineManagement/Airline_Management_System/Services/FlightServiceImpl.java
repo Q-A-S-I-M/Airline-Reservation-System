@@ -5,7 +5,8 @@ import com.AirlineManagement.Airline_Management_System.DTOs.FlightCreation;
 import com.AirlineManagement.Airline_Management_System.Entities.AirCraft;
 import com.AirlineManagement.Airline_Management_System.Entities.Airline;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
-import com.AirlineManagement.Airline_Management_System.Misc.FlightFilter;
+import com.AirlineManagement.Airline_Management_System.DTOs.FlightFilter;
+import com.AirlineManagement.Airline_Management_System.DTOs.Location;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
 import java.util.Date;
 
 @Service
@@ -41,7 +43,7 @@ public class FlightServiceImpl implements FlightService{
         flight.setDuration(getDurationBetween(flight.getDeparture(), flight.getArrival()));
         
         template.update( sql, flight.getFromLocation(), flight.getToLocation(), flight.getDeparture(), flight.getArrival(), 0, flight.getAircraft().getSeats(), "Scheduled", flight.getPrice(), flight.getDuration(), flight.getAirline().getId(), flight.getAircraft().getId());
-        sql = "UPDATE aircrafts SET status = 'Assigned' WHERE id = ?";
+        sql = "UPDATE Aircrafts SET status = 'Assigned' WHERE id = ?";
         template.update(sql, flight.getAircraft().getId());
         return;
     }
@@ -58,11 +60,6 @@ public class FlightServiceImpl implements FlightService{
     }
 
     @Override
-    public Flight update(Long id, Flight flight) {
-        return null;
-    }
-
-    @Override
     public List<Flight> search(FlightFilter filter) {
         String sql = "SELECT f.id, f.arrival, f.departure, f.to_location, f.from_location, f.price, f.booked_seats, f.total_seats, f.duration, f.status, a.id, a.name, ac.id, ac.model, ac.status, ac.seats FROM flights f JOIN airlines a ON f.airline_id = a.id JOIN aircrafts ac ON f.aircraft_id = ac.id WHERE f.status = 'Scheduled' AND f.from_location = ? AND f.to_location = ? AND f.departure BETWEEN DATE_SUB(?, INTERVAL 2 DAY) AND DATE_ADD(?, INTERVAL 2 DAY) AND f.price BETWEEN ? AND ? AND (f.total_seats-f.booked_seats) > ?;";
         List<Flight> flights = template.query(sql,new Object[]{filter.fromLocation, filter.toLocation, filter.departure, filter.departure, filter.minRange, filter.maxRange, filter.seats} , new FlightRowMapper());
@@ -70,10 +67,10 @@ public class FlightServiceImpl implements FlightService{
     }
     @Override
     public void updateStatus(Long id, String status) {
-        String sql = "UPDATE flights SET status = ? WHERE id = ?";
+        String sql = "UPDATE Flights SET status = ? WHERE id = ?";
         template.update(sql, status, id);
         if(status.equals("Landed")||status.equals("Cancelled")){
-            sql = "UPDATE aircrafts SET status = 'Unassigned' WHERE id = (SELECT aircraft_id FROM flights WHERE id = ?)";
+            sql = "UPDATE Aircrafts SET status = 'Unassigned' WHERE id = (SELECT aircraft_id FROM flights WHERE id = ?)";
             template.update(sql, id);
         }
     }
@@ -85,5 +82,17 @@ public class FlightServiceImpl implements FlightService{
         sql = "SELECT * FROM Aircrafts WHERE status = 'Unassigned'";
         List<AirCraft> aircrafts = template.query(sql, new BeanPropertyRowMapper<>(AirCraft.class));
         return new FlightCreation(airlines, aircrafts);
+    }
+
+    @Override
+    public Location getlocations() {
+        Location location = new Location();
+        String sql = "Select DISTINCT(from_location) FROM Flights";
+        List<String> source = template.queryForList(sql, String.class);
+        location.setSource(source);
+        sql = "Select DISTINCT(to_location) FROM Flights";
+        List<String> destination = template.queryForList(sql, String.class);
+        location.setDestination(destination);
+        return location;
     }
 }

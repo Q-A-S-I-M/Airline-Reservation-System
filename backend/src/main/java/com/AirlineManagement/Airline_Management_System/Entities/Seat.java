@@ -7,25 +7,15 @@ import java.util.*;
 @Table(name = "seats")
 public class Seat {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @Column(name = "seat_no")
     private String seatNo;
-    @Column(name = "type")
-    private String type;
     @Column(name = "status")
     private String status;
-    @JoinColumn(name = "aircraft_id")
+    @JoinColumn(name = "aircraft_id", foreignKey = @ForeignKey(
+        name = "fk_seat_aircraft",
+        foreignKeyDefinition = "FOREIGN KEY (aircraft_id) REFERENCES aircrafts(id) ON DELETE SET NULL"))
     @ManyToOne
     private AirCraft aircraft;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getSeatNo() {
         return seatNo;
@@ -33,14 +23,6 @@ public class Seat {
 
     public void setSeatNo(String seatNo) {
         this.seatNo = seatNo;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getStatus() {

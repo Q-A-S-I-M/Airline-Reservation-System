@@ -4,8 +4,7 @@ import com.AirlineManagement.Airline_Management_System.DTOs.FlightCreation;
 import com.AirlineManagement.Airline_Management_System.Entities.AirCraft;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 import com.AirlineManagement.Airline_Management_System.Entities.Notification;
-import com.AirlineManagement.Airline_Management_System.Misc.Login_Request;
-import com.AirlineManagement.Airline_Management_System.Misc.Update_Request;
+import com.AirlineManagement.Airline_Management_System.DTOs.Login_Request;
 import com.AirlineManagement.Airline_Management_System.Services.AdminService;
 import com.AirlineManagement.Airline_Management_System.Services.FeedbackService;
 import com.AirlineManagement.Airline_Management_System.Services.FlightService;
@@ -81,7 +80,7 @@ public class AdminController {
         return ResponseEntity.ok(feedbackService.getFeedbacks(id));
     }
     @GetMapping("/requests")
-    List<Notification> get_noti(){return null;}
+    List<Notification> get_requests(){return null;}
     @GetMapping("/get-airCrafts")
     List<AirCraft> get_airCrafts(){return null;}
     @PutMapping("/assign-airCraft")

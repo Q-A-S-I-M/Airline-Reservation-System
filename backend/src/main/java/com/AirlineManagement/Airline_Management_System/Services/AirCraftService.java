@@ -9,6 +9,5 @@ public interface AirCraftService {
     public List<AirCraft> getAll();
     public AirCraft get(Long id);
     public AirCraft create(AirCraft aircraft);
-    public AirCraft update(Long id, AirCraft updated);
     public void delete(Long id);
 }

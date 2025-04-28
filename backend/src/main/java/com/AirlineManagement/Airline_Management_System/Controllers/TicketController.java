@@ -6,6 +6,7 @@ import com.AirlineManagement.Airline_Management_System.Services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,5 +24,9 @@ public class TicketController {
     @GetMapping("/flight/{flightId}/passenger/{passengerId}")
     public Ticket getTicketByFlightAndPassenger(@PathVariable Long flightId, @PathVariable Long passengerId) {
         return ticketService.getSpecific(flightId, passengerId);
+    }
+    @PutMapping
+    public void cancelTicket(Ticket ticket){
+        ticketService.cancelTicket(ticket);
     }
 }

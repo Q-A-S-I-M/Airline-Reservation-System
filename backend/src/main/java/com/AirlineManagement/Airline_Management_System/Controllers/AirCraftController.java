@@ -29,11 +29,6 @@ public class AirCraftController {
         return aircraftService.create(aircraft);
     }
 
-    @PutMapping("/{id}")
-    public AirCraft updateAircraft(@PathVariable Long id, @RequestBody AirCraft updated) {
-        return aircraftService.update(id, updated);
-    }
-
     @DeleteMapping("/{id}")
     public void deleteAircraft(@PathVariable Long id) {
         aircraftService.delete(id);
