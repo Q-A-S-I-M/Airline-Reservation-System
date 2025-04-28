@@ -8,6 +8,8 @@ import axios from "axios";
 const FlightSearchForm = () => {
   const navigate = useNavigate();
 
+  const destinations = ["Lahore", "Karachi", "Islamabad", "Dubai", "London", "Berlin", "Madrid", "New York", "Tokyo", "Bangkok", "Paris", "Rome", "Toronto", "Sydney", "Singapore"];
+
   const [formData, setFormData] = useState({
     fromLocation: "",
     toLocation: "",
@@ -42,7 +44,7 @@ const FlightSearchForm = () => {
 
       console.log("Response from backend:", response.data);
       navigate("/search-results", {
-        state: { results: response.data },
+        state: { results: response.data, seats: formData.seats},
       });
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -56,26 +58,32 @@ const FlightSearchForm = () => {
       <div className="maaz-flight-form-wrapper" id="maaz-flight-search-form">
         <h2>Search Flights</h2>
         <form className="maaz-flight-form" onSubmit={handleSubmit}>
-          <label>From:
-            <input
-              type="text"
-              required
-              name="fromLocation"
-              value={formData.fromLocation}
-              onChange={handleChange}
-              placeholder="Enter departure city"
-            />
-          </label>
-          <label>To:
-            <input
-              type="text"
-              required
-              name="toLocation"
-              value={formData.toLocation}
-              onChange={handleChange}
-              placeholder="Enter destination city"
-            />
-          </label>
+        <label>From:
+          <select
+            required
+            name="fromLocation"
+            value={formData.fromLocation}
+            onChange={handleChange}
+          >
+            <option value="" disabled>Select departure city</option>
+            {destinations.map((city) => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+          </select>
+        </label>
+        <label>To:
+          <select
+            required
+            name="toLocation"
+            value={formData.toLocation}
+            onChange={handleChange}
+          >
+            <option value="" disabled>Select destination city</option>
+            {destinations.map((city) => (
+              <option key={city} value={city}>{city}</option>
+            ))}
+          </select>
+        </label>
           <label>Departure Date:
             <input
               type="date"

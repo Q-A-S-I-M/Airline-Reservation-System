@@ -1,0 +1,59 @@
+.maaz-passenger-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 8px;
+    margin: 16px;
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 190px;
+    justify-content: space-between;
+    font-family: 'Poppins', 'Inter', sans-serif;
+  }
+  
+  .maaz-passenger-number {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  
+  .maaz-passenger-fields-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
+  .maaz-passenger-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .maaz-passenger-field label {
+    font-size: 13px;
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+  .maaz-passenger-field.dob label, .maaz-passenger-field.email label {
+    margin-top: 12px;
+  }
+  
+  .maaz-passenger-field input {
+    padding: 6px 8px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .maaz-passenger-error {
+    color: red;
+    font-size: 10px;
+    margin-top: 4px;
+  }
+  

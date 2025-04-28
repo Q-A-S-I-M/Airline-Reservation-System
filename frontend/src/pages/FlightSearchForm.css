@@ -30,6 +30,7 @@
 
 .maaz-flight-form input,
 .maaz-flight-form select {
+  background-color: white;
   padding: 0.5rem;
   border: 1px solid #ccc;
   border-radius: 8px;

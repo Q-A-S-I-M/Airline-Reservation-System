@@ -1,11 +1,11 @@
-.results-heading {
+.maaz-search-results-heading {
     text-align: center;
     margin-top: 20px;
     font-size: 2rem;
     color: #2c3e50;
   }
   
-  .results-container {
+  .maaz-search-results-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -13,7 +13,7 @@
     padding: 30px;
   }
   
-  .flight-cards {
+  .maaz-flight-cards {
     background-color: #f4f6f8;
     border: 1px solid #dcdde1;
     border-radius: 10px;
@@ -22,12 +22,12 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
-  .flight-cards h2 {
+  .maaz-flight-cards h2 {
     color: #2980b9;
     margin-bottom: 10px;
   }
   
-  .flight-cards p {
+  .maaz-flight-cards p {
     margin: 5px 0;
     font-size: 0.95rem;
   }

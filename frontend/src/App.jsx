@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import Home from './pages/Home'
 import { Route, Routes } from 'react-router-dom'
@@ -8,12 +7,12 @@ import AdminHome from './pages/AdminHome'
 import AdminFlights from './pages/AdminFlights'
 import AdminAddFlights from './pages/AdminAddFlights'
 import FlightSearchForm from './pages/FlightSearchForm'
-import SearchResultsPage from './components/SearchResultsPage'
+import SearchResultsPage from './pages/SearchResultsPage'
 import AdminRequests from './pages/AdminRequests'
 import AdminReviews from './pages/AdminReviews'
+import PassengerDetailsPage from './pages/PassengerDetailsPage'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -26,6 +25,7 @@ function App() {
         <Route path='/admin/Flights' element={<AdminFlights/>}/>
         <Route path='/admin/Add-Flights' element={<AdminAddFlights/>}/>
         <Route path='/search-results' element={<SearchResultsPage/>}/>
+        <Route path='/passenger-details' element={<PassengerDetailsPage/>}/>
         <Route path='/admin/Requests' element={<AdminRequests/>}/>
         <Route path='/admin/Reviews' element={<AdminReviews/>}/>
       
