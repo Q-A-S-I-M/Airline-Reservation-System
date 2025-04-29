@@ -11,6 +11,9 @@ import SearchResultsPage from './pages/SearchResultsPage'
 import AdminRequests from './pages/AdminRequests'
 import AdminReviews from './pages/AdminReviews'
 import PassengerDetailsPage from './pages/PassengerDetailsPage'
+import BookingDetailsPage from './pages/BookingDetailsPage.jsx';
+import BookingHistoryPage from './pages/BookingHistoryPage.jsx';
+import NotificationsPage from './pages/NotificationsPage.jsx';
 
 function App() {
 
@@ -26,9 +29,11 @@ function App() {
         <Route path='/admin/Add-Flights' element={<AdminAddFlights/>}/>
         <Route path='/search-results' element={<SearchResultsPage/>}/>
         <Route path='/passenger-details' element={<PassengerDetailsPage/>}/>
+        <Route path="/booking-details" element={<BookingDetailsPage />} />
+        <Route path='/booking-history' element={<BookingHistoryPage />} />
         <Route path='/admin/Requests' element={<AdminRequests/>}/>
         <Route path='/admin/Reviews' element={<AdminReviews/>}/>
-      
+        <Route path='/notifications' element={<NotificationsPage />} />
       </Routes>
     </>
   )

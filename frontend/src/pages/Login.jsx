@@ -6,8 +6,11 @@ import { CgProfile } from "react-icons/cg";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import { useUser } from "../context/UserContext";
 
 const Login = () => {
+    const { setUsername } = useUser();
+
     const [user, setUser] = useState({
         username: "",
         firstName: "",
@@ -107,6 +110,7 @@ const Login = () => {
 
                     if (response.status === 200) {
                         alert("User Login Successful!");
+                        setUsername(user.username); // Set the username in context
                         Navigate('/login/user');
                     } else {
                         alert("Invalid User credentials");

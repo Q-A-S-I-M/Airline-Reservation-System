@@ -4,7 +4,7 @@ import airplaneImage from "../assets/herosectionairplane.jpg";
 
 const HeroSection = () => {
   const scrollToForm = () => {
-    const form = document.getElementById("flight-search-form");
+    const form = document.getElementById("maaz-flight-search-form");
     if (form) {
       form.scrollIntoView({ behavior: "smooth" });
     }

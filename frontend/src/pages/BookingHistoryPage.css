@@ -1,0 +1,21 @@
+.maaz-booking-history-container {
+    font-family: Poppins, sans-serif;
+    padding: 2rem;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .maaz-filter-section {
+    font-family: Poppins, sans-serif;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  select {
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+  

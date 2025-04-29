@@ -1,0 +1,16 @@
+.maaz-notifications-container {
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+  }
+  
+  .maaz-empty-text {
+    color: gray;
+    font-size: 1.2rem;
+    text-align: center;
+    margin-top: 80px;
+  }
+  

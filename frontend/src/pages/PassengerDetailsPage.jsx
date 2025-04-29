@@ -3,10 +3,15 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar.jsx';
 import PassengerCard from '../components/PassengerCard.jsx';
 import './PassengerDetailsPage.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useUser } from '../context/UserContext';
 
 const PassengerDetailsPage = () => {
+  const { username } = useUser();
   const location = useLocation();
-  const { flightId, seats } = location.state || {};
+  const navigate = useNavigate();
+  const { flight, seats } = location.state || {};
 
   const [passengers, setPassengers] = useState(
     Array.from({ length: seats }, () => ({
@@ -50,7 +55,7 @@ const PassengerDetailsPage = () => {
     return errors;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const allErrors = passengers.map(validatePassenger);
 
     const hasErrors = allErrors.some((errorObj) => Object.keys(errorObj).length > 0);
@@ -62,13 +67,23 @@ const PassengerDetailsPage = () => {
     }
 
     const payload = {
-      flightId: flightId,
       passengers: passengers,
+      booking: {
+        user: {
+          username: username,
+        },
+        flight: flight,
+      },
     };
 
-    console.log('Payload to send:', payload);
-
-    // Later: axios.post('/your-backend-endpoint', payload)
+    try {
+      const response = await axios.post("http://localhost:8080/bookings/create", payload);
+      const booking = response.data;
+      navigate("/booking-details", { state: { booking } });
+    } catch (error) {
+      console.error("Booking creation failed", error);
+      alert("Booking failed. Please try again.");
+    }
   };
 
   return (
