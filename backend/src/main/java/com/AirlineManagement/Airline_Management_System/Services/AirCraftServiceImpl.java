@@ -55,15 +55,4 @@ public class AirCraftServiceImpl implements AirCraftService {
             return null;
         }
     }
-
-
-    @Override
-    public void delete(Long id) {
-        String sql = "DELETE FROM aircrafts WHERE id = ?";
-        int rowsAffected = template.update(sql, id);
-
-        if (rowsAffected == 0) {
-            throw new RuntimeException("AirCraft not found with id: " + id);
-        }
-    }
 }

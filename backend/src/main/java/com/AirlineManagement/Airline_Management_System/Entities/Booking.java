@@ -1,6 +1,8 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -9,18 +11,18 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "timestamp")
-    private Date timestamp;
-    @Column(name = "amount")
+    @Column(name = "timestamp", nullable = false)
+    private Timestamp timestamp;
+    @Column(name = "amount", nullable = false)
     private double amount;
-    @Column(name = "payment_deadline")
-    private Date paymentDeadline;
-    @Column(name = "status")
+    @Column(name = "payment_deadline", nullable = false)
+    private Timestamp paymentDeadline;
+    @Column(name = "status", nullable = false)
     private String status;
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username", nullable = false)
     @ManyToOne
     private User user;
-    @JoinColumn(name = "flight_id")
+    @JoinColumn(name = "flight_id", nullable = false)
     @ManyToOne
     private Flight flight;
 
@@ -32,11 +34,11 @@ public class Booking {
         this.id = id;
     }
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date now) {
+    public void setTimestamp(Timestamp now) {
         this.timestamp = now;
     }
 
@@ -48,11 +50,11 @@ public class Booking {
         this.amount = amount;
     }
 
-    public Date getPaymentDeadline() {
+    public Timestamp getPaymentDeadline() {
         return paymentDeadline;
     }
 
-    public void setPaymentDeadline(Date paymentDeadline) {
+    public void setPaymentDeadline(Timestamp paymentDeadline) {
         this.paymentDeadline = paymentDeadline;
     }
 

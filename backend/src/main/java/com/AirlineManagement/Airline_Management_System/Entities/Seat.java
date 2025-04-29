@@ -1,7 +1,6 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
-import java.util.*;
 
 @Entity
 @Table(name = "seats")
@@ -11,9 +10,7 @@ public class Seat {
     private String seatNo;
     @Column(name = "status")
     private String status;
-    @JoinColumn(name = "aircraft_id", foreignKey = @ForeignKey(
-        name = "fk_seat_aircraft",
-        foreignKeyDefinition = "FOREIGN KEY (aircraft_id) REFERENCES aircrafts(id) ON DELETE SET NULL"))
+    @JoinColumn(name = "aircraft_id", nullable = false)
     @ManyToOne
     private AirCraft aircraft;
 

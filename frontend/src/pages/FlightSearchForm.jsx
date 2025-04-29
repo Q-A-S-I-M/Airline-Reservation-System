@@ -38,7 +38,7 @@ const FlightSearchForm = () => {
     try {
       console.log("Form Data (Format1):", formData);
 
-      const response = await axios.post("http://localhost:8080/users/search-flight", formData);
+      const response = await axios.post("http://localhost:8080/flights/search-flight", formData);
 
       console.log("Response from backend:", response.data);
       navigate("/search-results", {

@@ -1,6 +1,8 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.*;
 
 
@@ -10,18 +12,18 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @JoinColumn(name = "flight_id")
+    @JoinColumn(name = "flight_id", nullable = false)
     @ManyToOne
     private Flight flight;
-    @JoinColumn(name = "username")
+    @JoinColumn(name = "username", nullable = false)
     @ManyToOne
     private User user;
-    @Column(name = "rating")
+    @Column(name = "rating", nullable = false)
     private int rating;
-    @Column(name = "comments")
+    @Column(name = "comments", nullable = false)
     private String comments;
-    @Column(name = "timestamp")
-    private Date timestamp;
+    @Column(name = "timestamp", nullable = false)
+    private Timestamp timestamp;
 
     public Long getId() {
         return id;
@@ -63,11 +65,11 @@ public class Feedback {
         this.comments = comments;
     }
 
-    public Date getTimestamp() {
+    public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
 }

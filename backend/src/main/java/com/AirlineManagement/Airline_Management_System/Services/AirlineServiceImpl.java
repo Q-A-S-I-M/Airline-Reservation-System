@@ -30,7 +30,7 @@ public class AirlineServiceImpl implements AirlineService{
 
     @Override
     public Airline create(Airline airline) {
-        String sql = "INSERT INTO airline (name) VALUES (?)";
+        String sql = "INSERT INTO airlines (name) VALUES (?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         template.update(connection -> {
@@ -41,29 +41,5 @@ public class AirlineServiceImpl implements AirlineService{
 
         airline.setId(keyHolder.getKey().longValue());
         return airline;
-    }
-
-
-
-    @Override
-    public Airline update(Long id, Airline updated) {
-        String sql = "UPDATE Airline SET name = ? WHERE id = ?";
-        int rows = template.update(sql, updated.getName(), id);
-        if (rows > 0) {
-            updated.setId(id);
-            return updated;
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public void delete(Long id) {
-        String sql = "DELETE FROM Airline WHERE id = "+id;
-        int rowsAffected = template.update(sql);
-
-        if (rowsAffected == 0) {
-            throw new RuntimeException("Airline not found with id: " + id);
-        }
     }
 }

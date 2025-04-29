@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.lang.Nullable;
 
 import com.AirlineManagement.Airline_Management_System.Entities.Booking;
-import com.AirlineManagement.Airline_Management_System.Entities.Feedback;
 import com.AirlineManagement.Airline_Management_System.Entities.Flight;
 import com.AirlineManagement.Airline_Management_System.Entities.User;
 

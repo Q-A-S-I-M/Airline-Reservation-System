@@ -9,28 +9,28 @@ public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "from_location")
+    @Column(name = "from_location", nullable = false)
     private String fromLocation;
-    @Column(name = "to_location")
+    @Column(name = "to_location", nullable = false)
     private String toLocation;
-    @Column(name = "departure")
+    @Column(name = "departure", nullable = false)
     private Date departure;
-    @Column(name = "arrival")
+    @Column(name = "arrival", nullable = false)
     private Date arrival;
-    @Column(name = "booked_seats")
+    @Column(name = "booked_seats", nullable = false)
     private int bookedSeats;
-    @Column(name = "total_seats")
+    @Column(name = "total_seats", nullable = false)
     private int totalSeats;
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private String status;
-    @Column(name = "price")
+    @Column(name = "price", nullable = false)
     private double price;
-    @Column(name = "duration")
+    @Column(name = "duration", nullable = false)
     private String duration;
-    @JoinColumn(name = "airline_id")
+    @JoinColumn(name = "airline_id", nullable = false)
     @ManyToOne
     private Airline airline;
-    @JoinColumn(name = "aircraft_id")
+    @JoinColumn(name = "aircraft_id", nullable = false)
     @ManyToOne
     private AirCraft aircraft;
 

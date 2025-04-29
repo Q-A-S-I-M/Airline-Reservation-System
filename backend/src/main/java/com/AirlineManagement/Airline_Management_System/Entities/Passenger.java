@@ -9,19 +9,19 @@ public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-    @Column(name = "contact")
-    private String contact;
-    @Column(name = "dob")
+    @Column(name = "email", nullable = true)
+    private String email;
+    @Column(name = "dob", nullable = false)
     private Date dob;
     // @JoinColumn(name = "username")
     // @ManyToOne
     // private User user;
-    @OneToOne
-    @PrimaryKeyJoinColumn(name="booking_id")
+    @ManyToOne
+    @JoinColumn(name="booking_id")
     private Booking booking;
 
 
@@ -49,12 +49,12 @@ public class Passenger {
         this.lastName = lastName;
     }
 
-    public String getContact() {
-        return contact;
+    public String getEmail() {
+        return email;
     }
 
-    public void setContact(String contact) {
-        this.contact = contact;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Date getDob() {

@@ -1,6 +1,8 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
+
+import java.sql.Timestamp;
 import java.util.*;
 
 @Entity
@@ -9,26 +11,26 @@ public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "type")
+    @Column(name = "type", nullable = false)
     private String type;
-    @Column(name = "description")
+    @Column(name = "description", nullable = false)
     private String description;
     // @JoinColumn(name = "username")
     // @ManyToOne
     // private User user;
-    @JoinColumn(name = "booking_id")
+    @JoinColumn(name = "booking_id", nullable = false)
     @ManyToOne
     private Booking booking;
-    @Column(name = "for_admin")
+    @Column(name = "for_admin", nullable = false)
     private String forAdmin;
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private String status;
-    @Column(name = "timestamp")
-    private Date timestamp;
-    public void setTimestamp(Date timestamp){
+    @Column(name = "timestamp", nullable = false)
+    private Timestamp timestamp;
+    public void setTimestamp(Timestamp timestamp){
         this.timestamp = timestamp;
     }
-    public Date getTimestamp(){
+    public Timestamp getTimestamp(){
         return timestamp;
     }
 

@@ -2,13 +2,11 @@ package com.AirlineManagement.Airline_Management_System.Services;
 
 import com.AirlineManagement.Airline_Management_System.Entities.Booking;
 import com.AirlineManagement.Airline_Management_System.Entities.Notification;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
 public interface NotificationService {
-    public List<Notification> get(Long userId);
+    public List<Notification> getUserNoti(String username);
     public List<Notification> getAdminNotifications();
     public void createBookingApproval(Booking booking);
     public void createCancellationApproval(Booking booking);
@@ -18,4 +16,5 @@ public interface NotificationService {
     public void createBookingReject(Booking booking);
     public void createDeadlineCrossed(Booking booking);
     public void updateNotificationForAdmin(long id);
+    public void flightCancelNotification(Booking booking);
 }
