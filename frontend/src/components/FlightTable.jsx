@@ -10,7 +10,7 @@ export default function FlightTable() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/admin/flights");
+      const response = await axios.get("http://localhost:8080/flights/get-flights");
       setFlights(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -75,7 +75,7 @@ export default function FlightTable() {
   const updateFlight = async (id, status) => {
     try {
       const response = await axios.put(
-        `http://localhost:8080/admin/update-flight/${id}`,
+        `http://localhost:8080/flights/update-flight/${id}`,
         status, // sending "Departed" as raw string
         {
           headers: {

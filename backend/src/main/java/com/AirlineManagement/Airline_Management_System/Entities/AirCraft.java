@@ -1,7 +1,6 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
-import java.util.*;
 
 @Entity
 @Table(name = "aircrafts")
@@ -9,11 +8,11 @@ public class AirCraft {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "model")
+    @Column(name = "model", nullable = false)
     private String model;
-    @Column(name = "seats")
+    @Column(name = "seats", nullable = false)
     private int seats;
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private String status;
 
     public Long getId() {

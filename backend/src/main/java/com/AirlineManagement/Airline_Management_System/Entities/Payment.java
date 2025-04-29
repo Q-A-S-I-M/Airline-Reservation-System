@@ -1,17 +1,16 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
-import java.util.*;
 @Entity
 @Table(name = "payments")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @PrimaryKeyJoinColumn(name = "booking_id")
+    @JoinColumn(name = "booking_id")
     @OneToOne
     private Booking booking;
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private String status;
 
     public Long getId() {

@@ -1,7 +1,6 @@
 package com.AirlineManagement.Airline_Management_System.Entities;
 
 import jakarta.persistence.*;
-import java.util.*;
 
 @Entity
 @Table(name = "tickets")
@@ -9,16 +8,16 @@ public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ticket;
-    @JoinColumn(name = "passenger_id")
+    @JoinColumn(name = "passenger_id", nullable = false)
     @ManyToOne
     private Passenger passenger;
-    @JoinColumn(name = "flight_id")
+    @JoinColumn(name = "flight_id", nullable = false)
     @ManyToOne
     private Flight flight;
-    @JoinColumn(name = "seat_id")
+    @JoinColumn(name = "seat_no", nullable = false)
     @ManyToOne
     private Seat seat;
-    @Column(name = "status")
+    @Column(name = "status", nullable = false)
     private String status;
 
     public Long getTicket() {

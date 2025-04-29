@@ -1,4 +1,4 @@
-package com.AirlineManagement.Airline_Management_System.Misc;
+package com.AirlineManagement.Airline_Management_System.DTOs;
 import java.util.*;
 
 public class FlightFilter {

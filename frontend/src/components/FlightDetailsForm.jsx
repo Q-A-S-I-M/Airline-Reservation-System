@@ -16,7 +16,7 @@ export default function FlightDetailsForm() {
 
     const fetchData = async () => {
         try {
-            const response = await axios.get("http://localhost:8080/admin/load-flightCreation");
+            const response = await axios.get("http://localhost:8080/flights/load-flightCreation");
             setAirline_Aircraft(response.data);
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -73,7 +73,7 @@ export default function FlightDetailsForm() {
         console.log("Submitted Flight Data:", updatedFlightData);
     
         try {
-            const response = await axios.post("http://localhost:8080/admin/create-flight", updatedFlightData);
+            const response = await axios.post("http://localhost:8080/flights/create-flight", updatedFlightData);
             console.log("Flight created successfully:", response.data);
             alert("Flight created successfully!");
     

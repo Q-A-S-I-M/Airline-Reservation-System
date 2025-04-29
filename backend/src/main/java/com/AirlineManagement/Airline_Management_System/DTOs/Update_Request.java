@@ -1,4 +1,4 @@
-package com.AirlineManagement.Airline_Management_System.Misc;
+package com.AirlineManagement.Airline_Management_System.DTOs;
 
 public class Update_Request {
     String username;

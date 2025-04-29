@@ -24,45 +24,22 @@ public class AirlineServiceImpl implements AirlineService{
 
     @Override
     public Airline get(Long id) {
-        String sql = "SELECT * FROM Airline WHERE id = "+id;
-        return template.queryForObject(sql, new BeanPropertyRowMapper<>(Airline.class));
+        String sql = "SELECT * FROM Airline WHERE id = ?";
+        return template.queryForObject(sql, new Object[]{id},new BeanPropertyRowMapper<>(Airline.class));
     }
 
     @Override
     public Airline create(Airline airline) {
-        String sql = "INSERT INTO airline (name) VALUES ('" + airline.getName() + "')";
+        String sql = "INSERT INTO airlines (name) VALUES (?)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
         template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, airline.getName());
             return ps;
         }, keyHolder);
 
         airline.setId(keyHolder.getKey().longValue());
         return airline;
-    }
-
-
-
-    @Override
-    public Airline update(Long id, Airline updated) {
-        String sql = "UPDATE Airline SET name = "+updated.getName()+"WHERE id = "+updated.getId();
-        int rows = template.update(sql);
-        if (rows > 0) {
-            updated.setId(id);
-            return updated;
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public void delete(Long id) {
-        String sql = "DELETE FROM Airline WHERE id = "+id;
-        int rowsAffected = template.update(sql);
-
-        if (rowsAffected == 0) {
-            throw new RuntimeException("Airline not found with id: " + id);
-        }
     }
 }

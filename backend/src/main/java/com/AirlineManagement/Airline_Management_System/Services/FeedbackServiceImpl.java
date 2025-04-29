@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -42,15 +43,10 @@ public class FeedbackServiceImpl implements FeedbackService{
 
         int aiRating =(int) response.getBody().get("sentiment");
         feedback.setRating(aiRating);
-        feedback.setTimestamp(time());
+        feedback.setTimestamp(Timestamp.valueOf(LocalDateTime.now()));
         String sql = "INSERT INTO Feedbacks (comments, rating, timestamp, flight_id, username) VALUES (?, ?, ?, ?, ?)";
-        template.update(sql, feedback.getComments(), feedback.getRating(), feedback.getTimestamp(), feedback.getFlight().getId(), feedback.getUser().getUsername());
+        template.update(sql, feedback.getComments(), feedback.getRating(),(java.sql.Timestamp) feedback.getTimestamp(), feedback.getFlight().getId(), feedback.getUser().getUsername());
         return feedback;
-    }
-    public Date time(){
-        LocalDateTime currentTime = LocalDateTime.now();
-        Date date = Date.from(currentTime.atZone(ZoneId.systemDefault()).toInstant());
-        return date;
     }
 
     @Override
