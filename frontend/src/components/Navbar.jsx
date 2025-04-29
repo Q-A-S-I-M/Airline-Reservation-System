@@ -5,7 +5,7 @@ import { FaUserCircle } from "react-icons/fa";
 const Navbar = () => {
   return (
     <nav className="maazz-navbar">
-      <div className="maazz-navbar-logo">✈️ AirlineX</div>
+      <div className="maazz-navbar-logo">SkyNest</div>
       <ul className="maazz-navbar-links">
         <li><a href="#offers">Booking</a></li>
         <li><a href="#packages">Packages</a></li>

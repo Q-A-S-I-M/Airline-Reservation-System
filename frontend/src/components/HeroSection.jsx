@@ -18,7 +18,7 @@ const HeroSection = () => {
         className="maaz-hero-image"
       />
       <div className="maaz-hero-text">
-        <h1>Fly Smarter. Fly Faster. Fly AirlineX.</h1>
+        <h1>Fly Smarter. Fly Faster. Fly SkyNest.</h1>
         <button onClick={scrollToForm} className="maaz-book-now-btn">Book Now</button>
       </div>
     </div>

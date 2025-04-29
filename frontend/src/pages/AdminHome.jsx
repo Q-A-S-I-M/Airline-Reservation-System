@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 const AdminHome = () => {
 
-const [BookingCount, setBookingCount] = useState(150);
+const [PassengersCount, setBookingCount] = useState(150);
 const [AirlinesCount, setAirlinesCount] = useState(200);
 const [RevenueCount, setRevenueCount] = useState(454656456);
 const [FlightsCount, setFlightsCount] = useState(56);
@@ -25,19 +25,19 @@ useEffect(() => {
         <div className="Data-Cards">
 
         <div className="info-cards" data-aos="fade-right">
-          <p>No Of Bookings</p>
-          <p>{BookingCount}</p>
+          <p>Passengers</p>
+          <p>{PassengersCount}</p>
         </div>
         <div className="info-cards" data-aos="flip-left">
-          <p>Available Airlines</p>
+          <p>Airlines</p>
           <p>{AirlinesCount}</p>
         </div>
         <div className="info-cards" data-aos="flip-right">
-          <p>Available Flights</p>
+          <p>Flights</p>
           <p>{FlightsCount}</p>
         </div>
         <div className="info-cards" data-aos="fade-left">
-          <p>Total Revenue</p>
+          <p>Revenue</p>
           <p>{RevenueCount} $</p>
         </div>
 

@@ -8,7 +8,7 @@ const HomeNav = () => {
     <div className="HomeNav-container">
       <div className="name_logo">
         <ImAirplane />
-        <h2>AIRLINE MANAGEMENT SYSTEM</h2>
+        <h2>SkyNest</h2>
         <ImAirplane />
       </div>
 

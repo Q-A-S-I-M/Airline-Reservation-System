@@ -27,7 +27,7 @@ const Home = () => {
           </div>
 
           <div className="section2" data-aos="fade-up">
-            <h1>Welcome to SkyEase Airline </h1> SkyEase is a modern airline management system designed to streamline
+            <h1>Welcome to SkyNest Airline </h1> SkyNest is a modern airline management system designed to streamline
             operations, enhance customer experience, and optimize flight scheduling. Whether you're a passenger, an airline administrator, or a travel agent,
             our system ensures smooth and hassle-free airline operations.
           </div>
@@ -70,7 +70,7 @@ const Home = () => {
             <div className='developer-info' data-aos='zoom-in'>
               <div className="box" id='box1'></div >
               <div className="info">
-                <h2>JAHANZAIB MIRZA</h2>
+                <h2>LUBRICANT MIRZA</h2>
                 <h2>ROLL NO: 23K-3011</h2>
               </div>
             </div>
