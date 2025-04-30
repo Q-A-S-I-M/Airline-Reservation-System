@@ -1,0 +1,15 @@
+.maaz-booking-success-container {
+    text-align: center;
+    margin: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .maaz-booking-details-card {
+    margin: 1rem auto;
+    max-width: 500px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }

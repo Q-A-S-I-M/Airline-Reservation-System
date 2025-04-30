@@ -16,6 +16,7 @@
   }
   
   .maaz-hero-text {
+    font-family: Poppings, sans-serif;
     max-width: 400px;
   }
   
@@ -27,6 +28,7 @@
   }
   
   .maaz-book-now-btn {
+    font-family: Poppings, sans-serif;
     background-color: #0077cc;
     color: white;
     padding: 0.7rem 1.4rem;

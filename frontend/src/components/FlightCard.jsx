@@ -8,7 +8,7 @@ const FlightCard = ({ flight, seats }) => {
   const handleBookClick = () => {
     navigate("/passenger-details", {
       state: {
-        flightId: flight.id,
+        flight: flight,
         seats: seats,
       },
     });
