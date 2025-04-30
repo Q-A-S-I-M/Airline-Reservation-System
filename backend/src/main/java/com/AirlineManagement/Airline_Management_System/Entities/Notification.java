@@ -3,7 +3,6 @@ package com.AirlineManagement.Airline_Management_System.Entities;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.util.*;
 
 @Entity
 @Table(name = "notifications")
@@ -15,9 +14,6 @@ public class Notification {
     private String type;
     @Column(name = "description", nullable = false)
     private String description;
-    // @JoinColumn(name = "username")
-    // @ManyToOne
-    // private User user;
     @JoinColumn(name = "booking_id", nullable = false)
     @ManyToOne
     private Booking booking;

@@ -3,7 +3,6 @@ package com.AirlineManagement.Airline_Management_System.Entities;
 import jakarta.persistence.*;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 @Entity
 @Table(name = "bookings")

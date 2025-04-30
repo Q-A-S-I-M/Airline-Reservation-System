@@ -17,9 +17,6 @@ public class Passenger {
     private String email;
     @Column(name = "dob", nullable = false)
     private Date dob;
-    // @JoinColumn(name = "username")
-    // @ManyToOne
-    // private User user;
     @ManyToOne
     @JoinColumn(name="booking_id")
     private Booking booking;
