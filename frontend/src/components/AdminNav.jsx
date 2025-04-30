@@ -8,7 +8,7 @@ const AdminNav = () => {
     <div>
       <div className="AdminNav-Container">
         <div className="Admin-Name">
-            <p>Admin Pannel</p>
+            <p>Admin Panel</p>
         </div>
 
         <div className="Admin-Tabs">

@@ -1,0 +1,174 @@
+.request-container {
+    min-height: 100vh;
+    background-color: #f9fafb;
+    font-family: sans-serif;
+  }
+  
+  .request-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  .request-heading {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+  }
+  
+  .request-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .request-card {
+    background: white;
+    border-left: 4px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .request-card:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  }
+  
+  .request-card-red {
+    border-left-color: #ef4444;
+  }
+  
+  .request-card-green {
+    border-left-color: #22c55e;
+  }
+  
+  .request-card-blue {
+    border-left-color: #3b82f6;
+  }
+  
+  .request-card-yellow {
+    border-left-color: #facc15;
+  }
+  
+  .request-card-default {
+    border-left-color: #d1d5db;
+  }
+  
+  .request-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  @media (min-width: 768px) {
+    .request-card-content {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  .request-content {
+    flex: 1;
+  }
+  
+  .request-badges {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .request-badge {
+    background: #f3f4f6;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .request-status-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
+  .request-status-untreated {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  
+  .request-status-accepted {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .request-status-rejected {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+  
+  .request-description {
+    margin: 0.5rem 0;
+    color: #1f2937;
+  }
+  
+  .request-timestamp {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .request-actions {
+    display: flex;
+    gap: 0.5rem;
+    align-self: flex-start;
+  }
+  
+  .request-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    border: 1px solid;
+    border-radius: 0.375rem;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .request-accept {
+    border-color: #22c55e;
+    color: #16a34a;
+  }
+  
+  .request-accept:hover {
+    background-color: #f0fdf4;
+  }
+  
+  .request-reject {
+    border-color: #ef4444;
+    color: #dc2626;
+  }
+  
+  .request-reject:hover {
+    background-color: #fef2f2;
+  }
+  
+  .request-status-note {
+    font-style: italic;
+    color: #6b7280;
+  }
+  
+  .request-empty {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 0.5rem;
+    border: 1px solid #e5e7eb;
+    color: #6b7280;
+  }
+  
+  
+  
