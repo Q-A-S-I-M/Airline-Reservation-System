@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./FlightDetailsForm.css";
-import { format } from "date-fns";
 import axios from "axios";
 
 export default function FlightDetailsForm() {
