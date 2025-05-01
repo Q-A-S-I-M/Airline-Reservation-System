@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api/axios'
 import './AdminDashboard.css';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend, ResponsiveContainer,
@@ -31,7 +31,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/admin/dashboard');
+        const response = await api.get('http://localhost:8080/admin/dashboard');
         setData(response.data);
       } catch (err) {
         console.error('Failed to fetch dashboard data:', err);
