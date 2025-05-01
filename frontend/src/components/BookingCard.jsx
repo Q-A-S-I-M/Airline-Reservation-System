@@ -1,6 +1,6 @@
 import React from "react";
 import "./BookingCard.css";
-import axios from "axios";
+import api from '../api/axios'
 import { useUser } from "../context/UserContext";
 import { useNavigate } from 'react-router-dom';
 
@@ -11,7 +11,7 @@ const BookingCard = ({ booking }) => {
 
   const handlePayment = async () => {
     try {
-      await axios.post("http://localhost:8080/payments", {
+      await api.post("http://localhost:8080/payments", {
         id: id,
         user: { username },
       });

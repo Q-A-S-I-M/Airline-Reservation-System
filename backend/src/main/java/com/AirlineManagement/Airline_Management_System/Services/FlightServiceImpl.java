@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.Instant;
@@ -37,11 +38,10 @@ public class FlightServiceImpl implements FlightService{
     public void create(Flight flight) {
         String sql = "INSERT INTO Flights (from_location, to_location, departure, arrival, booked_seats, total_seats, status, price, duration, airline_id, aircraft_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         flight.setDuration(getDurationBetween(flight.getDeparture(), flight.getArrival()));
-        
         template.update( sql, flight.getFromLocation(), flight.getToLocation(), flight.getDeparture(), flight.getArrival(), 0, flight.getAircraft().getSeats(), "Scheduled", flight.getPrice(), flight.getDuration(), flight.getAirline().getId(), flight.getAircraft().getId());
-        sql = "UPDATE Aircrafts SET status = 'Assigned' WHERE id = ?";
-        template.update(sql, flight.getAircraft().getId());
-        return;
+        
+        // sql = "UPDATE Aircrafts SET status = 'Assigned' WHERE id = ?";
+        // template.update(sql, flight.getAircraft().getId());
     }
     private String getDurationBetween(Date departure, Date arrival){
         Instant dep = departure.toInstant();
@@ -61,22 +61,23 @@ public class FlightServiceImpl implements FlightService{
         List<Flight> flights = template.query(sql,new Object[]{filter.fromLocation, filter.toLocation, filter.departure, filter.departure, filter.minRange, filter.maxRange, filter.seats} , new FlightRowMapper());
         return flights;
     }
+    @Transactional
     @Override
     public void updateStatus(Long id, String status) {
         String sql = "UPDATE Flights SET status = ? WHERE id = ?";
         template.update(sql, status, id);
-        if(status.equals("Landed")||status.equals("Cancelled")){
-            sql = "UPDATE Aircrafts SET status = 'Unassigned' WHERE id = (SELECT aircraft_id FROM flights WHERE id = ?)";
-            template.update(sql, id);
-            sql = "UPDATE Tickets SET status = 'Inavlid' WHERE flight_id = ?";
-            template.update(sql, id);
-            sql = "Select id From Aircrafts WHERE id = (SELECT aircraft_id FROM flights WHERE id = ?)";
-            long aircraft_id =  template.queryForObject(sql, new Object[]{id}, Long.class);
-            sql = "UPDATE Seats SET status = 'Available' WHERE aircraft_id = ?";
-            template.update(sql, aircraft_id);
-            if(status.equals("Cancelled")){
+        if(/*status.equals("Landed")||*/status.equals("Cancelled")){
+            // sql = "UPDATE Aircrafts SET status = 'Unassigned' WHERE id = (SELECT aircraft_id FROM flights WHERE id = ?)";
+            // template.update(sql, id);
+            // sql = "UPDATE Tickets SET status = 'Inavlid' WHERE flight_id = ?";
+            // template.update(sql, id);
+            // sql = "Select id From Aircrafts WHERE id = (SELECT aircraft_id FROM flights WHERE id = ?)";
+            // long aircraft_id =  template.queryForObject(sql, new Object[]{id}, Long.class);
+            // sql = "UPDATE Seats SET status = 'Available' WHERE aircraft_id = ?";
+            // template.update(sql, aircraft_id);
+            // if(status.equals("Cancelled")){
                 generateNotifications(id);
-            }
+            // }
         }
     }
     private void generateNotifications(Long id){

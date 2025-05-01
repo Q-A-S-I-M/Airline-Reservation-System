@@ -15,9 +15,9 @@ public class PaymentServiceImpl implements PaymentService{
     // NotificationService notificationService;
     @Override
     public void process(long id) {
-        String sql = "UPDATE Payments SET status = 'Successful' WHERE booking_id = ?";
-        template.update(sql, id);
-        sql = "UPDATE Bookings SET status = 'Waiting for approval' WHERE id = ?";
+        // String sql = "UPDATE Payments SET status = 'Successful' WHERE booking_id = ?";
+        // template.update(sql, id);
+        String sql = "UPDATE Bookings SET status = 'Waiting for approval' WHERE id = ?";
         template.update(sql, id);
         // sql = "Select * From Bookings WHERE id = ?";
         // Booking booking = template.queryForObject(sql, new Object[]{id}, new BookingRowMapper());

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Check, Clock, X } from "lucide-react";
 import "./FlightTable.css";
-import axios from "axios";
+import api from '../api/axios'
 
 export default function FlightTable() {
 
@@ -10,7 +10,7 @@ export default function FlightTable() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/flights/get-flights");
+      const response = await api.get("http://localhost:8080/flights/get-flights");
       setFlights(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -74,7 +74,7 @@ export default function FlightTable() {
 
   const updateFlight = async (id, status) => {
     try {
-      const response = await axios.put(
+      const response = await api.put(
         `http://localhost:8080/flights/update-flight/${id}`,
         status, // sending "Departed" as raw string
         {

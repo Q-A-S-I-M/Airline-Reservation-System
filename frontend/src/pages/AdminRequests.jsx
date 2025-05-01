@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import axios from "axios"
+import api from '../api/axios'
 import AdminNav from "../components/AdminNav"
 import { Check, X, Clock } from "lucide-react"
 import { formatDistanceToNow } from "date-fns"
@@ -13,7 +13,7 @@ const AdminRequests = () => {
   useEffect(() => {
     const fetchRequests = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/notifications/admin")
+        const response = await api.get("http://localhost:8080/notifications/admin")
         setRequests(response.data)
       } catch (err) {
         console.error("❌ Error fetching requests:", err)

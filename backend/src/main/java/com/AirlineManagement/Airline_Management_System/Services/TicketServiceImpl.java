@@ -15,6 +15,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class TicketServiceImpl implements TicketService{
@@ -55,7 +56,7 @@ public class TicketServiceImpl implements TicketService{
         return tickets;
 }
 
-
+    @Transactional
     @Override
     public void createTicket(Booking booking) {
         approveBooking(booking.getId());
@@ -76,8 +77,8 @@ public class TicketServiceImpl implements TicketService{
             ticket.setStatus("Valid");
             insertTicket(ticket);
         }
-        sql = "UPDATE Payments SET status = 'Confirmed' WHERE booking_id = ?";
-        template.update(sql, booking.getId());
+        // sql = "UPDATE Payments SET status = 'Confirmed' WHERE booking_id = ?";
+        // template.update(sql, booking.getId());
     }
     private void insertTicket(Ticket ticket){
         String sql = "INSERT INTO Tickets (seat_no, passenger_id, flight_id, status) VALUES(?, ?, ?, ?)";

@@ -8,8 +8,7 @@ import com.AirlineManagement.Airline_Management_System.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-@CrossOrigin("*")
+ 
 @RestController
 @RequestMapping("/users")
 public class UserController {

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./FlightSearchForm.css";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/Herosection";
-import axios from "axios";
+import api from '../api/axios'
 
 const FlightSearchForm = () => {
   const navigate = useNavigate();
@@ -40,7 +40,7 @@ const FlightSearchForm = () => {
     try {
       console.log("Form Data (Format1):", formData);
 
-      const response = await axios.post("http://localhost:8080/flights/search-flight", formData);
+      const response = await api.post("http://localhost:8080/flights/search-flight", formData);
 
       console.log("Response from backend:", response.data);
       navigate("/search-results", {

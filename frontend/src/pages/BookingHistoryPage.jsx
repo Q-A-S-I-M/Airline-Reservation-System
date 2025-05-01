@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useUser } from "../context/UserContext";
 import BookingCard from "../components/BookingCard";
-import axios from "axios";
+import api from '../api/axios'
 import "./BookingHistoryPage.css";
 
 const BookingHistoryPage = () => {
@@ -12,7 +12,7 @@ const BookingHistoryPage = () => {
 
   useEffect(() => {
     if (username) {
-      axios.get(`http://localhost:8080/bookings/${username}`)
+      api.get(`http://localhost:8080/bookings/${username}`)
         .then(res => setBookings(res.data))
         .catch(err => console.error(err));
     }

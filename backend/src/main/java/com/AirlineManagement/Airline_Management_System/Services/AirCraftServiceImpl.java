@@ -32,27 +32,21 @@ public class AirCraftServiceImpl implements AirCraftService {
     public AirCraft create(AirCraft airCraft) {
         String sql = "INSERT INTO aircrafts (model, seats, status) VALUES (?, ?, 'Unassigned')";
         KeyHolder keyHolder = new GeneratedKeyHolder();
-
+    
         template.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, airCraft.getModel());
             ps.setInt(2, airCraft.getSeats());
             return ps;
         }, keyHolder);
-
+    
         Number generatedId = keyHolder.getKey();
         if (generatedId != null) {
-            long id = generatedId.longValue();
-            String newSql = "INSERT INTO Seats (seat_no, status, aircraft_id) VALUES (?, 'Available', ?)";
-            for (int i = 1; i <= airCraft.getSeats(); i++) {
-                String seatNo = airCraft.getModel() + "-" + id + "-" + i;
-                template.update(newSql, seatNo, id);
-            }
-
-            airCraft.setId(id);
+            airCraft.setId(generatedId.longValue());
             return airCraft;
         } else {
             return null;
         }
     }
+
 }

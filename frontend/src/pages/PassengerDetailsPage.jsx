@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar.jsx';
 import PassengerCard from '../components/PassengerCard.jsx';
 import './PassengerDetailsPage.css';
-import axios from 'axios';
+import api from '../api/axios'
 import { useNavigate } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 
@@ -77,7 +77,7 @@ const PassengerDetailsPage = () => {
     };
 
     try {
-      const response = await axios.post("http://localhost:8080/bookings/create", payload);
+      const response = await api.post("http://localhost:8080/bookings/create", payload);
       const booking = response.data;
       navigate("/booking-details", { state: { booking } });
     } catch (error) {

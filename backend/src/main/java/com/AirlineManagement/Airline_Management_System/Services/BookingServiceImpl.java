@@ -27,6 +27,7 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BookingServiceImpl implements BookingService{
@@ -44,7 +45,7 @@ public class BookingServiceImpl implements BookingService{
         List<Booking> bookings = template.query(sql, new Object[]{username}, new BookingRowMapper());
         return bookings;
     }
-
+    @Transactional
     @Override
     public Booking create(BookingData data) {
         List<Passenger> passengers = data.getPassengers();
@@ -92,11 +93,11 @@ public class BookingServiceImpl implements BookingService{
         }, keyHolder);
         return ((BigInteger) keyHolder.getKey()).longValue();
     }
-
+    @Transactional
     @Override
     public void rejected(Booking booking) {
         cancelBooking(booking.getId());
-        booking = setBooking(booking.getId());
+        booking = getBooking(booking.getId());
         List<Passenger> passengers = getPassengers(booking.getId());
         Flight flight = getFlight(booking.getFlight().getId());
         booking.setFlight(flight);
@@ -105,16 +106,16 @@ public class BookingServiceImpl implements BookingService{
         for (int i = 0; i < seats.size(); i++) {
             template.update(sql, seats.get(i).getSeatNo());
         }
-        int seat = booking.getFlight().getBookedSeats();
-        booking.getFlight().setBookedSeats(seat-passengers.size());
-        sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
-        template.update(sql, booking.getFlight().getBookedSeats(), booking.getFlight().getId());
-        sql = "Select status From Payments WHERE booking_id = ?";
-        String status = template.queryForObject(sql, String.class, booking.getId());
-        if (status.equals("Confirmed") || status.equals("Successful")) {
-            sql = "UPDATE Payments SET status = 'Refunded' WHERE booking_id = ?";
-            template.update(sql, booking.getId());
-        }
+        // int seat = booking.getFlight().getBookedSeats();
+        // booking.getFlight().setBookedSeats(seat-passengers.size());
+        // sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
+        // template.update(sql, booking.getFlight().getBookedSeats(), booking.getFlight().getId());
+        // sql = "Select status From Payments WHERE booking_id = ?";
+        // String status = template.queryForObject(sql, String.class, booking.getId());
+        // if (status.equals("Confirmed") || status.equals("Successful")) {
+        //     sql = "UPDATE Payments SET status = 'Refunded' WHERE booking_id = ?";
+        //     template.update(sql, booking.getId());
+        // }
         // notificationService.createBookingReject(booking);
     }
     private void cancelBooking(long id){
@@ -131,7 +132,7 @@ public class BookingServiceImpl implements BookingService{
         sql = "SELECT f.id, f.arrival, f.departure, f.to_location, f.from_location, f.price, f.booked_seats, f.total_seats, f.duration, f.status, a.id, a.name, ac.id, ac.model, ac.status, ac.seats FROM flights f JOIN airlines a ON f.airline_id = a.id JOIN aircrafts ac ON f.aircraft_id = ac.id WHERE f.id = ?";
         return template.queryForObject(sql, new Object[]{flight_id}, new FlightRowMapper());
     }
-    private Booking setBooking(long id){
+    private Booking getBooking(long id){
         String sql = "Select * From Bookings WHERE id = ?";
         return template.queryForObject(sql, new Object[]{id}, new BookingRowMapper());
     }
@@ -139,11 +140,11 @@ public class BookingServiceImpl implements BookingService{
         String sql = "Select * From Seats WHERE status = 'Reserved' AND aircraft_id = ? LIMIT ?";
         return template.query(sql, new Object[]{id, size}, new BeanPropertyRowMapper<>(Seat.class));
     }
-
+    @Transactional
     @Override
     public void cancelTickets(Booking booking) {
         cancelBooking(booking.getId());
-        booking = setBooking(booking.getId());
+        booking = getBooking(booking.getId());
         booking.setFlight(getFlight(booking.getId()));
         List<Passenger> passengers = getPassengers(booking.getId());
         String sql = "UPDATE Tickets SET status = 'Invalid' WHERE passenger_id = ?";
@@ -159,10 +160,10 @@ public class BookingServiceImpl implements BookingService{
         for (int i = 0; i < seats.size(); i++) {
             template.update(sql, seats.get(i));
         }
-        int seat = booking.getFlight().getBookedSeats();
-        booking.getFlight().setBookedSeats(seat-passengers.size());
-        sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
-        template.update(sql, booking.getFlight().getBookedSeats(), booking.getFlight().getId());
+        // int seat = booking.getFlight().getBookedSeats();
+        // booking.getFlight().setBookedSeats(seat-passengers.size());
+        // sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
+        // template.update(sql, booking.getFlight().getBookedSeats(), booking.getFlight().getId());
     }
 
     @Override
@@ -190,9 +191,9 @@ public class BookingServiceImpl implements BookingService{
                     template.update(sql, seats.get(j).getSeatNo());
                 }
 
-                int seat = flight.getBookedSeats() - passengers.size();
-                sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
-                template.update(sql, seat, flight.getId());
+                // int seat = flight.getBookedSeats() - passengers.size();
+                // sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
+                // template.update(sql, seat, flight.getId());
                 notificationService.createDeadlineCrossed(bookings.get(i));
             }
         }

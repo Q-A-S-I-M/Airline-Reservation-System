@@ -5,8 +5,9 @@ import { RiLockPasswordFill } from "react-icons/ri";
 import { CgProfile } from "react-icons/cg";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+import api from '../api/axios'
 import { useUser } from "../context/UserContext";
+
 
 const Login = () => {
     const { setUsername } = useUser();
@@ -48,14 +49,14 @@ const Login = () => {
         e.preventDefault();
 
         if (action === "Sign Up") {
-            const { username, firstName, lastName, contact, email, password, dob } = user;
-            if (!username || !firstName || !lastName || !contact || !email || !password || !dob) {
+            const { username, firstName, lastName, email, password, dob } = user;
+            if (!username || !firstName || !lastName || !email || !password || !dob) {
                 alert("All fields are required for Sign Up!");
                 return;
             }
 
             try {
-                const response = await axios.post("http://localhost:8080/users/register", user);
+                const response = await api.post("http://localhost:8080/users/register", user);
                 console.log("SignUp Response:", response.data);
                 alert("Account Created Successfully!");
 
@@ -83,11 +84,11 @@ const Login = () => {
 
             if (role === "admin") {
                 try {
-                    const response = await axios.post("http://localhost:8080/admin/login", user);
+                    const response = await api.post("http://localhost:8080/admin/login", user);
                     console.log("Login Response:", response.data);
 
                     if (response.status === 200) {
-                        alert("User Login Successful!");
+                        alert("Admin Login Successful!");
                         setUsername(user.username); // Set the username in context
                         Navigate('/login/admin');
                     } else {
@@ -100,7 +101,7 @@ const Login = () => {
                 
             } else if (role === "user") {
                 try {
-                    const response = await axios.post("http://localhost:8080/users/login", user);
+                    const response = await api.post("http://localhost:8080/users/login", user);
                     console.log("Login Response:", response.data);
 
                     if (response.status === 200) {

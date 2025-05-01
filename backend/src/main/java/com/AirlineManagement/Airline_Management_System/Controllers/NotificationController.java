@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@CrossOrigin("*")
 @RestController
 @RequestMapping("/notifications")
 public class NotificationController {
@@ -56,6 +55,7 @@ public class NotificationController {
             return ResponseEntity.internalServerError().body("An unexpected error occurred while fetching user notifications.");
         }
     }
+    @Transactional
     @PostMapping("/admin/booking-accept")
     public ResponseEntity<?> bookingAccept(@RequestBody Booking booking) {
         try {
@@ -69,6 +69,7 @@ public class NotificationController {
             return ResponseEntity.internalServerError().body("An unexpected error occurred while processing the booking acceptance.");
         }
     }
+    @Transactional
     @PostMapping("/admin/booking-reject")
     public ResponseEntity<?> bookingReject(@RequestBody Booking booking) {
         try {
@@ -82,6 +83,7 @@ public class NotificationController {
             return ResponseEntity.internalServerError().body("An unexpected error occurred while rejecting the booking.");
         }
     }
+    @Transactional
     @PostMapping("/admin/cancellation-accept")
     public ResponseEntity<?> cancellationAccept(@RequestBody Booking booking) {
         try {
@@ -95,6 +97,7 @@ public class NotificationController {
             return ResponseEntity.internalServerError().body("An unexpected error occurred while processing the cancellation acceptance.");
         }
     }
+    @Transactional
     @PostMapping("/admin/cancellation-reject")
     public ResponseEntity<?> cancellationReject(@RequestBody Booking booking) {
         try {

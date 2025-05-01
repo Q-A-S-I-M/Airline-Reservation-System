@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api/axios'
 import AdminNav from '../components/AdminNav';
 import './AdminReviews.css'; // Keep your CSS file
 
@@ -11,7 +11,7 @@ const AdminReviews = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/feedbacks/get-feedbacks");
+        const response = await api.get("http://localhost:8080/feedbacks/get-feedbacks");
         setFlights(response.data);
       } catch (error) {
         console.error("Error fetching flight data:", error);
@@ -23,7 +23,7 @@ const AdminReviews = () => {
 
   const getReviews = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:8080/feedbacks/get-feedbacks/${id}`);
+      const response = await api.get(`http://localhost:8080/feedbacks/get-feedbacks/${id}`);
       setReviews(response.data);
       setShowModal(true);
     } catch (error) {
