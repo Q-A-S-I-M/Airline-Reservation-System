@@ -9,11 +9,6 @@
 }
 
 .AdminNav-Container .Admin-Name{
-    /* border: 2px solid black; */
-    /* margin-left: 10px; */
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
 
     p{
         color: white;
@@ -45,7 +40,7 @@
 }
 
 .Admin-Tabs a.active {
-    background-color: #2563eb; /* Highlight active link */
+    background-color: #2563eb;
 }
 
 .Admin-LogOut{

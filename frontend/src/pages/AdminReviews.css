@@ -64,25 +64,6 @@
 .review-button:hover {
     background-color: #1565c0;
 }
-
-/* .review-card {
-    flex: 0 0 300px;
-    background-color: #f3f3f3;
-    border: 1px solid #ccc;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    font-size: 17px;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.review-card {
-    background-color: #f4f4f4;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-} */
 .review-card {
     margin-bottom: 16px;
     padding: 12px;

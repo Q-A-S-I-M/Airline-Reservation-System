@@ -38,7 +38,7 @@ function AdminDashboard() {
       } catch (err) {
         console.error('Failed to fetch dashboard data:', err);
         setError('Failed to fetch data, using fallback values.');
-        setData(dummyData); // Fallback to dummy data if API fails
+        setData(dummyData);
       }
     };
 

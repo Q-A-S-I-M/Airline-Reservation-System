@@ -16,20 +16,7 @@
     gap: 15px;
     align-items: center;
     justify-content: center;
-    /* border: 2px solid black; */
 }
-
-/* input{
-    padding: 15px;
-    height: 40px;
-    width: 400px;
-    /* margin-bottom: 20px; 
-    border: 1px solid black;
-    border-radius: 40px;
-    font-size: 20px;
-    background-color: lightgray;
-    color: black;
-} */
 
 .option button{
     font-size: 20px;
@@ -43,7 +30,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border: 2px solid red; */
     gap: 15px;
 }
 
@@ -69,7 +55,6 @@
     background: #fff;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    /* border: 2px solid black; */
 }
 
 .heading h1 {
@@ -104,19 +89,6 @@
   .input-underline input:focus{
     border-bottom: 2px solid #007bff; /* changes line color on focus */
   }
-
-/* .inputs input {
-    width: 100%;
-    /* padding: 12px 15px 12px 45px; 
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.inputs input:focus {
-    border-color: #007bff;
-} */
 
 .icons {
     position: absolute;

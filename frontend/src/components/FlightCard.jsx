@@ -1,6 +1,6 @@
 import React from "react";
 import "./FlightCard.css";
-import { useNavigate, /*useLocation*/ } from 'react-router-dom';
+import { useNavigate, } from 'react-router-dom';
 
 const FlightCard = ({ flight, seats }) => {
     const navigate = useNavigate();

@@ -27,10 +27,6 @@
     transition: transform 0.2s;
   }
   
-  /* .dashboard-card:hover {
-    transform: scale(1.05);
-  } */
-  
   .dashboard-card h2 {
     font-size: 18px;
     color: #333;

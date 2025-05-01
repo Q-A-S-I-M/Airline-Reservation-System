@@ -5,8 +5,6 @@
   border-radius: 16px;
   max-width: 75%;
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-  /* max-width: fit-content; */
 }
 
 .maaz-flight-form-wrapper h2 {
@@ -67,22 +65,8 @@
   margin-top: 1rem;
 }
 
-/* input#min-price::-webkit-outer-spin-button,
-input#min-price::-webkit-inner-spin-button,
-input#max-price::-webkit-outer-spin-button,
-input#max-price::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-} */
-
 .maaz-price-input::-webkit-outer-spin-button,
 .maaz-price-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
-/* FOR FIREFOX
-input#min-price, input#max-price {
-  -moz-appearance: none;
-}
-*/

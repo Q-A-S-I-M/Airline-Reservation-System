@@ -77,8 +77,6 @@ public class TicketServiceImpl implements TicketService{
             ticket.setStatus("Valid");
             insertTicket(ticket);
         }
-        // sql = "UPDATE Payments SET status = 'Confirmed' WHERE booking_id = ?";
-        // template.update(sql, booking.getId());
     }
     private void insertTicket(Ticket ticket){
         String sql = "INSERT INTO Tickets (seat_no, passenger_id, flight_id, status) VALUES(?, ?, ?, ?)";

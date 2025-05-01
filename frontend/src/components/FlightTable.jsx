@@ -21,56 +21,10 @@ export default function FlightTable() {
     fetchData(); // Call fetchData inside useEffect
   }, []);
 
-// useEffect(() => {
-//   console.log("data changed"); // Logs updated flightsData after it changes
-// }, [flights]);
-
 
   const [openDropdown, setOpenDropdown] = useState(null);
-  
-  // const [flights, setFlights] = useState([
-  //   { id: 5, arrival: "2022-07-05 15:30:00", departure: "2022-07-05 12:30:00", destination: "Chiby", source: "Shiburn", airline: "Spark Airways", status: "scheduled" },
-  //   { id: 6, arrival: "2022-07-05 17:55:00", departure: "2022-07-05 15:30:00", destination: "Chiby", source: "Weling", airline: "Spark Airways", status: "delayed" },
-  //   { id: 7, arrival: "2022-07-05 20:50:00", departure: "2022-07-05 18:50:00", destination: "Odonhull", source: "Chiby", airline: "Spark Airways", status: "departed" },
-  //   { id: 9, arrival: "2022-07-05 17:09:00", departure: "2022-07-05 16:05:00", destination: "Chiby", source: "Olisphis", airline: "Peak Airways", status: "cancelled" },
-  //   { id: 11, arrival: "2022-07-05 19:10:00", departure: "2022-07-05 18:05:00", destination: "Oriaridge", source: "Flerough", airline: "Echo Airline", status: "landed" },
-  //   { id: 12, arrival: "2022-07-05 21:10:00", departure: "2022-07-05 19:05:00", destination: "Chicago", source: "Yleigh", airline: "Peak Airways", status: "scheduled" },
-  //   { id: 13, arrival: "2022-07-05 23:40:00", departure: "2022-07-05 20:51:00", destination: "Shiburn", source: "Oyladnard", airline: "Aero Airways", status: "scheduled" },
-  // ]);
 
   const statuses = ["Scheduled", "Departed", "Delayed", "Cancelled", "Landed"];
-
-  // const updateFlight = async (id, status) => {
-  //   try {
-  //     const response = await axios.put(`https://your-backend.com/api/flights/${flightData.id}`, flightData);
-  //     console.log("Updated:", response.data);
-  //   } catch (error) {
-  //     console.error("Error updating user:", error);
-  //   }
-  // };
-
-  // const updateFlightStatus = (id, status) => {
-  //   setFlights(prev =>
-  //     prev.map(flight => (flight.id === id ? { ...flight, status } : flight))
-  //   );
-  //   setOpenDropdown(null);
-
-  //   updateFlight(id, status);
-  // };
-
-
-  // const updateFlight = async (id, status) => {
-  //   try {
-  //     const response = await axios.put(
-  //       `http://localhost:8080/admin/update-flight/${id}`, 
-  //       { status }  // Only sending the status field
-  //     );
-  //     console.log("Updated:", response.data);
-  //   } catch (error) {
-  //     console.error("Error updating flight:", error);
-  //   }
-  // };
-
 
   const updateFlight = async (id, status) => {
     try {

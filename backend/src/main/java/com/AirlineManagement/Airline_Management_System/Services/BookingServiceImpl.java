@@ -106,17 +106,6 @@ public class BookingServiceImpl implements BookingService{
         for (int i = 0; i < seats.size(); i++) {
             template.update(sql, seats.get(i).getSeatNo());
         }
-        // int seat = booking.getFlight().getBookedSeats();
-        // booking.getFlight().setBookedSeats(seat-passengers.size());
-        // sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
-        // template.update(sql, booking.getFlight().getBookedSeats(), booking.getFlight().getId());
-        // sql = "Select status From Payments WHERE booking_id = ?";
-        // String status = template.queryForObject(sql, String.class, booking.getId());
-        // if (status.equals("Confirmed") || status.equals("Successful")) {
-        //     sql = "UPDATE Payments SET status = 'Refunded' WHERE booking_id = ?";
-        //     template.update(sql, booking.getId());
-        // }
-        // notificationService.createBookingReject(booking);
     }
     private void cancelBooking(long id){
         String sql = "UPDATE Bookings SET status = 'Cancelled' WHERE id = ?";
@@ -160,10 +149,6 @@ public class BookingServiceImpl implements BookingService{
         for (int i = 0; i < seats.size(); i++) {
             template.update(sql, seats.get(i));
         }
-        // int seat = booking.getFlight().getBookedSeats();
-        // booking.getFlight().setBookedSeats(seat-passengers.size());
-        // sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
-        // template.update(sql, booking.getFlight().getBookedSeats(), booking.getFlight().getId());
     }
 
     @Override
@@ -190,10 +175,6 @@ public class BookingServiceImpl implements BookingService{
                 for (int j = 0; j < seats.size(); j++) {
                     template.update(sql, seats.get(j).getSeatNo());
                 }
-
-                // int seat = flight.getBookedSeats() - passengers.size();
-                // sql = "UPDATE Flights SET booked_seats = ? WHERE id = ?";
-                // template.update(sql, seat, flight.getId());
                 notificationService.createDeadlineCrossed(bookings.get(i));
             }
         }
