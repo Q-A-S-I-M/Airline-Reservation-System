@@ -1,8 +1,8 @@
 .HomeNav-container{
-    border: 2px solid black;
+    border: none;
     height: 80px;
     width: 100%;
-    background-color: rgb(13, 13, 125);
+    background-color: #005abb;
     display: flex;
     align-items: center;
     justify-content: space-between;

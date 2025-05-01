@@ -251,7 +251,7 @@ export default function FlightDetailsForm() {
 
                 {/* Submit */}
                 <div className="button-wrapper">
-                    <button type="submit" className="submit-button">Proceed ➡️</button>
+                    <button type="submit" className="submit-button">Proceed</button>
                 </div>
             </div>
         </form>

@@ -41,7 +41,7 @@ public class BookingServiceImpl implements BookingService{
     NotificationService notificationService;
     @Override
     public List<Booking> get(String username) {
-        String sql = "Select * From Bookings WHERE username = ?";
+        String sql = "Select * From Bookings WHERE username = ? ORDER BY timestamp DESC";
         List<Booking> bookings = template.query(sql, new Object[]{username}, new BookingRowMapper());
         return bookings;
     }

@@ -5,6 +5,7 @@
   }
   
   .dashboard-title {
+    color: #000203;
     text-align: center;
     margin-bottom: 30px;
   }
@@ -14,22 +15,21 @@
     justify-content: space-around;
     margin-bottom: 40px;
     flex-wrap: wrap;
-    gap: 20px;
   }
   
   .dashboard-card {
     background: white;
     border-radius: 12px;
     padding: 20px;
-    width: 200px;
+    width: 30%;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     transition: transform 0.2s;
   }
   
-  .dashboard-card:hover {
+  /* .dashboard-card:hover {
     transform: scale(1.05);
-  }
+  } */
   
   .dashboard-card h2 {
     font-size: 18px;

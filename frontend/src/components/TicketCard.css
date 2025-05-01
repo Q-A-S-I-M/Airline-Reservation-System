@@ -1,0 +1,52 @@
+.maaz-ticket-card-horizontal {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    width: 900px;
+    min-height: 180px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .maaz-ticket-card-horizontal:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  }
+  
+  .maaz-ticket-card-left, .maaz-booking-card-center, .maaz-booking-card-right {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .maaz-ticket-card-left h2 {
+    color: #0077cc;
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .maaz-ticket-card-left p,
+  .maaz-ticket-card-center p {
+    font-size: 0.95rem;
+    color: #34495e;
+    margin: 0;
+  } 
+
+  .download-btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #005abb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .download-btn:hover {
+    background-color: #2563eb;
+  }

@@ -1,17 +1,17 @@
 .maaz-flight-form-wrapper {
-  background: white;
+  background: rgb(253, 253, 253);
   padding: 3rem 2rem;
   margin: 3rem auto;
   border-radius: 16px;
-  max-width: 800px;
+  max-width: 75%;
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  max-width: fit-content;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+  /* max-width: fit-content; */
 }
 
 .maaz-flight-form-wrapper h2 {
   text-align: center;
-  color: #0077cc;
+  color: #000508;
   margin-bottom: 2rem;
 }
 
@@ -38,6 +38,10 @@
   font-size: 0.95rem;
 }
 
+.maaz-flight-form input:focus{
+  outline: none;
+  border: 1px solid #2563eb;
+}
 .maaz-search-btn {
   grid-column: span 2;
   margin-top: 1.5rem;

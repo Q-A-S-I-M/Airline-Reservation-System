@@ -1,8 +1,8 @@
 .AdminNav-Container{
-    border: 2px solid black;
+    border: none;
     height: 80px;
     width: 100%;
-    background-color: rgb(13, 13, 125);
+    background-color: #005abb;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -17,7 +17,7 @@
 
     p{
         color: white;
-        font-size: 50px;
+        font-size: 25px;
     }
 
 }
@@ -35,9 +35,9 @@
 .Admin-Tabs a{
     color: white;
     text-decoration: none;
-    font-size: 25px;
+    font-size: 20px;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 
 .Admin-Tabs a:hover{
@@ -45,7 +45,7 @@
 }
 
 .Admin-Tabs a.active {
-    background-color: #4f46e5; /* Highlight active link */
+    background-color: #2563eb; /* Highlight active link */
 }
 
 .Admin-LogOut{
@@ -53,14 +53,21 @@
     align-items: center;
     justify-content: center;
     gap: 5px;
-    color: red;
-    font-size: 25px;
+    color: white;
+    font-size: 20px;
     cursor: pointer;
 }
 
 .Admin-LogOut a{
-    font-weight: 600;
-    color: red;
+    font-weight: 400;
+    color: white;
+    text-decoration: none;
+}
+
+.Admin-LogOut a:hover{
+    font-weight: 400;
+    font-size: 21px;
+    color: white;
     text-decoration: none;
 }
 

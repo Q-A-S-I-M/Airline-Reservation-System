@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import api from '../api/axios'
 import './AdminDashboard.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, PieChart, Pie, Cell, Legend, ResponsiveContainer,
 } from 'recharts';
@@ -42,6 +44,9 @@ function AdminDashboard() {
 
     fetchDashboardData();
   }, []);
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   if (!data) return <div>Loading...</div>;
 
@@ -51,22 +56,22 @@ function AdminDashboard() {
       {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
 
       <div className="dashboard-cards-container">
-        <div className="dashboard-card">
+        <div className="dashboard-card " data-aos="flip-left">
           <h2>Passengers</h2>
           <p>{data.passengers}</p>
         </div>
-        <div className="dashboard-card">
+        <div className="dashboard-card" data-aos="flip-left">
           <h2>Flights</h2>
           <p>{data.flights}</p>
         </div>
-        <div className="dashboard-card">
+        <div className="dashboard-card" data-aos="flip-left">
           <h2>Revenue</h2>
           <p>${data.revenue}</p>
         </div>
       </div>
 
       <div className="dashboard-charts-container">
-        <div className="dashboard-chart-box">
+        <div className="dashboard-chart-box" data-aos='zoom-in'>
           <h3>Occupancy Rate</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data.occupany_rate}>
@@ -78,7 +83,7 @@ function AdminDashboard() {
           </ResponsiveContainer>
         </div>
 
-        <div className="dashboard-chart-box">
+        <div className="dashboard-chart-box" data-aos='zoom-in'>
           <h3>Flight Status Summary</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>

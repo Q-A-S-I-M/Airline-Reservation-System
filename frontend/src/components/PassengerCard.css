@@ -40,15 +40,35 @@
   .maaz-passenger-field.dob label, .maaz-passenger-field.email label {
     margin-top: 12px;
   }
+
+  .maaz-passenger-field.email input{
+    height: 37px;
+  }
   
-  .maaz-passenger-field input {
+  /* .maaz-passenger-field input {
     padding: 6px 8px;
     font-size: 13px;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: 5px;
     background-color: white;
     width: 100%;
     box-sizing: border-box;
+    outline: none;
+  } */
+  .maaz-passenger-field input{
+    border: none;
+    border-radius: 0%;
+    border-bottom: 1px solid black; /* the horizontal line */
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    padding: 8px 4px;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  
+  .maaz-passenger-field input:focus{
+    border-bottom: 2px solid #007bff; /* changes line color on focus */
   }
   
   .maaz-passenger-error {

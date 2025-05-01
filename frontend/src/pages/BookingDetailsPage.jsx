@@ -22,7 +22,6 @@ const BookingDetailsPage = () => {
           <p><strong>Flight ID:</strong> {booking.flight.id}</p>
           <p><strong>Aircraft:</strong> {booking.flight.aircraft.model}</p>
           <p><strong>Price per Seat:</strong> ${booking.flight.price}</p>
-          <p><strong>Seats Booked:</strong> {booking.flight.bookedSeats}</p>
         </div>
       </div>
     </div>

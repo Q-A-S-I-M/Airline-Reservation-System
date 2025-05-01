@@ -12,7 +12,7 @@
     text-align: center;
     font-size: 24px;
     margin-bottom: 32px;
-    color: #333;
+    color: #00050b;
   }
   
   .form-grid {
@@ -39,6 +39,23 @@
     font-size: 16px;
     flex: 1;
   }
+
+.row  input {
+    border: none;
+    border-bottom: 1px solid black; /* the horizontal line */
+    outline: none;
+    background: transparent;
+    border-radius: 0%;
+    font-size: 16px;
+    padding: 8px 4px;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  
+.row  input:focus {
+    border-bottom: 2px solid #007bff; /* changes line color on focus */
+  }
+  
   
   .dropdown {
     padding: 8px 10px;
@@ -58,7 +75,7 @@
   
   .submit-button {
     padding: 10px 24px;
-    background-color: #28a745;
+    background-color: #2563eb;
     color: white;
     font-weight: bold;
     font-size: 16px;
@@ -68,6 +85,6 @@
   }
   
   .submit-button:hover {
-    background-color: #218838;
+    background-color: #005abb;
   }
   

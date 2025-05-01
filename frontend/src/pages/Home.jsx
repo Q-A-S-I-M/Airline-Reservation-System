@@ -20,11 +20,7 @@ const Home = () => {
       <div className='HomeBody-container'>
 
         <div className="content">
-          <div className="section1" data-aos="fade-right">
-          {/* <video width="640" height="360" controls>
-  <source src={sampleVideo} type="video/mp4" />
-</video> */}
-          </div>
+          <div className="section1" data-aos="fade-right"></div>
 
           <div className="section2" data-aos="fade-up">
             <h1>Welcome to SkyNest Airline </h1> SkyNest is a modern airline management system designed to streamline
@@ -34,62 +30,32 @@ const Home = () => {
         </div>
 
 
-        <div className="logos">
-
-          <h1>Airlines Logos</h1>
-
-          <div className="logo-container">
-            <div className="logo" id='logo1' data-aos="flip-left"></div>
-            <div className="logo" id='logo2' data-aos="flip-left"></div>
-            <div className="logo" id='logo3' data-aos="flip-left"></div>
-            <div className="logo" id='logo4' data-aos="flip-left"></div>
-          </div>
-
-          <div className="logo-container">
-            <div className="logo" id='logo5' data-aos="flip-right"></div>
-            <div className="logo" id='logo6' data-aos="flip-right"></div>
-            <div className="logo" id='logo7' data-aos="flip-right"></div>
-            <div className="logo" id='logo8' data-aos="flip-right"></div>
-          </div>
-
-        </div>
-
-        {/* <div className="services">
-
-          <h1>Our Services</h1>
-
-
-        </div> */}
-
         <div className="developers">
 
-          <h1>Developers</h1>
+          <h1>Developed By</h1>
 
           <div className="box-container">
 
             <div className='developer-info' data-aos='zoom-in'>
-              <div className="box" id='box1'></div >
+              {/* <div className="box" id='box1'></div > */}
               <div className="info">
-                <h2>LUBRICANT MIRZA</h2>
-                <h2>ROLL NO: 23K-3011</h2>
+                <h2>Jahanzaib Mirza</h2>
               </div>
             </div>
 
             <div className='developer-info' data-aos='zoom-in'>
-              <div className="box" id='box2'>
-              </div>
+              {/* <div className="box" id='box2'>
+              </div> */}
               <div className="info">
-                <h2>MAAZ BEGUM</h2>
-                <h2>ROLL NO: 23K-3036</h2>
+                <h2>Maaz Khan</h2>
               </div>
             </div>
 
             <div className='developer-info' data-aos='zoom-in'>
-              <div className="box" id='box3'>
-              </div>
+              {/* <div className="box" id='box3'>
+              </div> */}
               <div className="info">
-                <h2>QASIM QURESHI</h2>
-                <h2>ROLL NO: 23K-3002</h2>
+                <h2>Qasim Ali</h2>
               </div>
             </div>
 

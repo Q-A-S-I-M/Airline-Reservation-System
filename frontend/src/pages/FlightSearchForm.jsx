@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./FlightSearchForm.css";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/Herosection";
-import api from '../api/axios'
+import api from '../api/axios';
 
 const FlightSearchForm = () => {
   const navigate = useNavigate();
 
-  const destinations = ["Lahore", "Karachi", "Islamabad", "Dubai", "London", "Berlin", "Madrid", "New York", "Tokyo", "Bangkok", "Paris", "Rome", "Toronto", "Sydney", "Singapore"];
+  const [fromLocations, setFromLocations] = useState([]);
+  const [toLocations, setToLocations] = useState([]);
 
   const [formData, setFormData] = useState({
     fromLocation: "",
@@ -20,6 +21,21 @@ const FlightSearchForm = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Fetch locations from backend
+  useEffect(() => {
+    const fetchLocations = async () => {
+      try {
+        const response = await api.get("http://localhost:8080/flights/flight-locations");
+        setFromLocations(response.data.source || []);
+        setToLocations(response.data.destination || []);
+      } catch (error) {
+        console.error("Error fetching locations:", error);
+      }
+    };
+
+    fetchLocations();
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,7 +60,7 @@ const FlightSearchForm = () => {
 
       console.log("Response from backend:", response.data);
       navigate("/search-results", {
-        state: { results: response.data, seats: formData.seats},
+        state: { results: response.data, seats: formData.seats },
       });
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -58,32 +74,32 @@ const FlightSearchForm = () => {
       <div className="maaz-flight-form-wrapper" id="maaz-flight-search-form">
         <h2>Search Flights</h2>
         <form className="maaz-flight-form" onSubmit={handleSubmit}>
-        <label>From:
-          <select
-            required
-            name="fromLocation"
-            value={formData.fromLocation}
-            onChange={handleChange}
-          >
-            <option value="" disabled>Select departure city</option>
-            {destinations.map((city) => (
-              <option key={city} value={city}>{city}</option>
-            ))}
-          </select>
-        </label>
-        <label>To:
-          <select
-            required
-            name="toLocation"
-            value={formData.toLocation}
-            onChange={handleChange}
-          >
-            <option value="" disabled>Select destination city</option>
-            {destinations.map((city) => (
-              <option key={city} value={city}>{city}</option>
-            ))}
-          </select>
-        </label>
+          <label>From:
+            <select
+              required
+              name="fromLocation"
+              value={formData.fromLocation}
+              onChange={handleChange}
+            >
+              <option value="" disabled>Select departure city</option>
+              {fromLocations.map((city) => (
+                <option key={city} value={city}>{city}</option>
+              ))}
+            </select>
+          </label>
+          <label>To:
+            <select
+              required
+              name="toLocation"
+              value={formData.toLocation}
+              onChange={handleChange}
+            >
+              <option value="" disabled>Select destination city</option>
+              {toLocations.map((city) => (
+                <option key={city} value={city}>{city}</option>
+              ))}
+            </select>
+          </label>
           <label>Departure Date:
             <input
               type="date"
@@ -135,27 +151,3 @@ const FlightSearchForm = () => {
 };
 
 export default FlightSearchForm;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

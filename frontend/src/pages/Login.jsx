@@ -165,7 +165,7 @@ const Login = () => {
 
                     {action === "Sign Up" && (
                         <>
-                            <div className="inputs">
+                            <div className="input-underline">
                                 <input
                                     type="text"
                                     placeholder="First Name"
@@ -175,7 +175,7 @@ const Login = () => {
                                 {/* <CgProfile className='icons' /> */}
                             </div>
 
-                            <div className="inputs">
+                            <div className="input-underline">
                                 <input
                                     type="text"
                                     placeholder="Last Name"
@@ -185,7 +185,7 @@ const Login = () => {
                                 {/* <CgProfile className='icons' /> */}
                             </div>
 
-                            <div className="inputs">
+                            <div className="input-underline">
                                 <input
                                     type="email"
                                     placeholder="Email"
@@ -195,7 +195,7 @@ const Login = () => {
                                 {/* <MdEmail className='icons' /> */}
                             </div>
 
-                            <div className="inputs">
+                            <div className="input-underline">
                                 <input
                                     type="date"
                                     value={user.dob}
@@ -206,7 +206,7 @@ const Login = () => {
                         </>
                     )}
 
-                    <div className="inputs">
+                    <div className="input-underline">
                         <input
                             type="text"
                             placeholder="Username"
@@ -216,7 +216,7 @@ const Login = () => {
                         {/* <CgProfile className='icons' /> */}
                     </div>
 
-                    <div className="inputs">
+                    <div className="input-underline">
                         <input
                             type="password"
                             placeholder="Password"

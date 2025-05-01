@@ -170,10 +170,10 @@ export default function FlightTable() {
         <thead>
           <tr>
             <th>#</th>
-            <th>Arrival</th>
             <th>Departure</th>
-            <th>Destination</th>
+            <th>Arrival</th>
             <th>Source</th>
+            <th>Destination</th>
             <th>Airline</th>
             <th>Action</th>
           </tr>
@@ -182,10 +182,10 @@ export default function FlightTable() {
           {flights.filter(f => f.status === status).map((flight) => (
             <tr key={flight.id}>
               <td>{flight.id}</td>
-              <td>{formatDate(flight.arrival)}</td>
               <td>{formatDate(flight.departure)}</td>
-              <td>{flight.toLocation}</td>
+              <td>{formatDate(flight.arrival)}</td>
               <td>{flight.fromLocation}</td>
+              <td>{flight.toLocation}</td>
               <td>{flight.airline.name}</td>
               <td>{renderDropdown(flight)}</td>
             </tr>

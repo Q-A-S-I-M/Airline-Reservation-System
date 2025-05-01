@@ -20,7 +20,7 @@ const AdminNav = () => {
         </div>
 
         <div className="Admin-LogOut">
-        {<NavLink to="/login">Log Out</NavLink>}
+        {<NavLink to="/">Log Out</NavLink>}
         <MdLogout className='logout-logo'/>
         </div>
 

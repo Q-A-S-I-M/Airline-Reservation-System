@@ -20,19 +20,18 @@ public class NotificationServiceImpl implements NotificationService{
     JdbcTemplate template;
     @Override
     public List<Notification> getUserNoti(String username) {
-        String sql = "Select id From Bookings where username = ?";
-        List<Integer> bookingIds = template.queryForList(sql, new Object[]{username}, Integer.class);
-        List<Notification> notifications = new ArrayList<>();
-        sql = "Select * From Notifications WHERE for_admin = 'No' AND status = 'Untreated' AND booking_id = ?";
-        for (int i = 0; i < bookingIds.size(); i++) {
-            notifications.addAll(template.query(sql, new Object[]{bookingIds.get(i)}, new BeanPropertyRowMapper<>(Notification.class)));
-        }
+        String sql = "SELECT n.* FROM Notifications n JOIN Bookings b ON n.booking_id = b.id WHERE b.username = ? AND n.for_admin = 'No' AND n.status = 'Untreated' ORDER BY n.timestamp DESC";
+
+        List<Notification> notifications = template.query(sql, new Object[]{username}, new BeanPropertyRowMapper<>(Notification.class));
+
         sql = "UPDATE Notifications SET status = 'Treated' WHERE id = ?";
-        for (int i = 0; i < notifications.size(); i++) {
-            template.update(sql, notifications.get(i).getId());
+        for (Notification notification : notifications) {
+            template.update(sql, notification.getId());
         }
+
         return notifications;
     }
+
 
     @Override
     public void createBookingApproval(Booking booking) {
