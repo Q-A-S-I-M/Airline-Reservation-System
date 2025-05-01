@@ -39,7 +39,7 @@ const AdminRequests = () => {
 
   const sendRequest = async (url, data) => {
     try {
-      const response = await axios.post(url, data)
+      const response = await api.post(url, data)
       console.log(`✅ POST to ${url}:`, response.data)
     } catch (error) {
       console.error(`❌ Error POST to ${url}:`, error.response?.data || error.message)
