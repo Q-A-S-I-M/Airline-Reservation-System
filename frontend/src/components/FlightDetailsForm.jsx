@@ -37,7 +37,7 @@ export default function FlightDetailsForm() {
     });
 
     const hours = Array.from({ length: 12 }, (_, i) => String(i === 0 ? 12 : i).padStart(2, "0"));
-
+    
     const formatDateTime = (date, time, ampm) => {
         if (!date || !time) return "";
     
@@ -47,9 +47,18 @@ export default function FlightDetailsForm() {
     
         const paddedHour = String(hour).padStart(2, "0");
     
-        // Format: 2025-04-01T01:00:00
-        return `${date}T${paddedHour}:00:00`;
+        // Get timezone offset in minutes and convert to "+HH:MM" or "-HH:MM"
+        const offsetMinutes = new Date().getTimezoneOffset(); // e.g., -300 for UTC+5
+        const sign = offsetMinutes <= 0 ? "+" : "-";
+        const absMinutes = Math.abs(offsetMinutes);
+        const offsetHours = String(Math.floor(absMinutes / 60)).padStart(2, "0");
+        const offsetMins = String(absMinutes % 60).padStart(2, "0");
+        const offset = `${sign}${offsetHours}:${offsetMins}`;
+    
+        // Final format: 2025-04-01T14:00:00+05:00
+        return `${date}T${paddedHour}:00:00${offset}`;
     };
+    
 
     const handleSubmit = async (e) => {
         e.preventDefault();

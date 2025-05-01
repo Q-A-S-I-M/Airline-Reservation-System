@@ -145,8 +145,12 @@ input{
     transition: all 0.3s;
 }
 
-.option button.active,
+/* .option button.active, */
 .option button:hover {
+    background-color: #80b9f6;
+    color: white;
+}
+.option button.active {
     background-color: #007bff;
     color: white;
 }

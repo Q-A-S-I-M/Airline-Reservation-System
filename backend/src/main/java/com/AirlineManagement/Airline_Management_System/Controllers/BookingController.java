@@ -9,38 +9,82 @@ import com.AirlineManagement.Airline_Management_System.Services.PaymentService;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/bookings")
 public class BookingController {
+
     @Autowired
     private BookingService bookingService;
+
     @Autowired
     PaymentService paymentService;
+
     @Autowired
     NotificationService notificationService;
 
     @GetMapping("/{username}")
-    public List<Booking> getBookings(@PathVariable String username) {
-        return bookingService.get(username);
+    public ResponseEntity<?> getBookings(@PathVariable String username) {
+        try {
+            List<Booking> bookings = bookingService.get(username);
+            return ResponseEntity.ok(bookings);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("Failed to retrieve bookings for user.");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("An unexpected error occurred while fetching bookings.");
+        }
     }
 
     @PostMapping("/create")
-    public Booking createBooking(@RequestBody BookingData data) {
-        return bookingService.create(data);
+    public ResponseEntity<?> createBooking(@RequestBody BookingData data) {
+        try {
+            Booking booking = bookingService.create(data);
+            return ResponseEntity.ok(booking);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("Failed to create booking. Please check the provided data.");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("An unexpected error occurred during booking creation.");
+        }
     }
+    @Transactional
     @PostMapping("/payment")
-    public void makePayment(@RequestBody Booking booking){
-        paymentService.process(booking.getId());
-        notificationService.createBookingApproval(booking);
+    public ResponseEntity<?> makePayment(@RequestBody Booking booking) {
+        try {
+            paymentService.process(booking.getId());
+            notificationService.createBookingApproval(booking);
+            return ResponseEntity.ok("Payment processed and booking approval notification sent.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("Payment failed or booking data is invalid.");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("An unexpected error occurred during payment.");
+        }
     }
+
     @PutMapping("/cancel")
-    public void cancelBooking(@RequestBody Booking booking){
-        bookingService.rejected(booking);
+    public ResponseEntity<?> cancelBooking(@RequestBody Booking booking) {
+        try {
+            bookingService.rejected(booking);
+            return ResponseEntity.ok("Booking cancellation processed successfully.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("Failed to cancel the booking.");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("An unexpected error occurred while cancelling the booking.");
+        }
     }
+
     @PostMapping("/cancel-request")
-    public void cancelRequest(@RequestBody Booking booking){
-        notificationService.createCancellationApproval(booking);
+    public ResponseEntity<?> cancelRequest(@RequestBody Booking booking) {
+        try {
+            notificationService.createCancellationApproval(booking);
+            return ResponseEntity.ok("Cancellation request submitted for approval.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body("Failed to send cancellation request.");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("An unexpected error occurred during cancellation request.");
+        }
     }
 }

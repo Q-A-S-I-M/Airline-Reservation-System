@@ -44,18 +44,6 @@ const Login = () => {
     const userRef = useRef(null);
     const adminRef = useRef(null);
 
-    const handleUserClick = () => {
-        setRole("user");
-        userRef.current.style.backgroundColor = "green";
-        adminRef.current.style.backgroundColor = "";
-    };
-
-    const handleAdminClick = () => {
-        setRole("admin");
-        adminRef.current.style.backgroundColor = "green";
-        userRef.current.style.backgroundColor = "";
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -76,7 +64,6 @@ const Login = () => {
                     username: "",
                     firstName: "",
                     lastName: "",
-                    contact: "",
                     email: "",
                     password: "",
                     dob: ""
@@ -95,13 +82,21 @@ const Login = () => {
             }
 
             if (role === "admin") {
-                if (user.username === "rana" && user.password === "123") {
-                    alert("Admin Login Successful!");
-                    Navigate('/login/admin');
-                } else {
-                    alert("Invalid Admin credentials");
-                }
+                try {
+                    const response = await axios.post("http://localhost:8080/admin/login", user);
+                    console.log("Login Response:", response.data);
 
+                    if (response.status === 200) {
+                        alert("User Login Successful!");
+                        setUsername(user.username); // Set the username in context
+                        Navigate('/login/admin');
+                    } else {
+                        alert("Invalid User credentials");
+                    }
+                } catch (error) {
+                    console.error("Login Error:", error);
+                    alert("Failed to sign in: " + (error.response.data));
+                }
                 
             } else if (role === "user") {
                 try {
@@ -128,7 +123,6 @@ const Login = () => {
                 username: "",
                 firstName: "",
                 lastName: "",
-                contact: "",
                 email: "",
                 password: "",
                 dob: ""
@@ -152,9 +146,20 @@ const Login = () => {
                 <form className="loginForm" onSubmit={handleSubmit}>
                     {action === "Sign In" && (
                         <div className="option">
-                            <button ref={userRef} type="button" onClick={handleUserClick}>User</button>
-                            <button ref={adminRef} type="button" onClick={handleAdminClick}>Admin</button>
+                            <button type = "button"
+                              className={role === "user" ? "active" : ""}
+                              onClick={() => setRole("user")}
+                            >
+                              User
+                            </button>
+                            <button type="button"
+                              className={role === "admin" ? "active" : ""}
+                              onClick={() => setRole("admin")}
+                            >
+                              Admin
+                            </button>
                         </div>
+
                     )}
 
                     {action === "Sign Up" && (
@@ -175,16 +180,6 @@ const Login = () => {
                                     placeholder="Last Name"
                                     value={user.lastName}
                                     onChange={(e) => setUser({ ...user, lastName: e.target.value })}
-                                />
-                                {/* <CgProfile className='icons' /> */}
-                            </div>
-
-                            <div className="inputs">
-                                <input
-                                    type="text"
-                                    placeholder="Contact Number"
-                                    value={user.contact}
-                                    onChange={(e) => setUser({ ...user, contact: e.target.value })}
                                 />
                                 {/* <CgProfile className='icons' /> */}
                             </div>
