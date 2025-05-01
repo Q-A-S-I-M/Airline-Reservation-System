@@ -1,4 +1,4 @@
-.maaz-payment-success-container {
+.maaz-cancel-success-container {
     max-width: 600px;
     margin: 80px auto;
     text-align: center;
@@ -10,13 +10,13 @@
     font-family: Poppins, sans-serif;
   }
   
-  .maaz-payment-success-container h1 {
+  .maaz-cancel-success-container h1 {
     color: #1e7e34;
     font-size: 2rem;
     margin-bottom: 1rem;
   }
   
-  .maaz-payment-success-container p {
+  .maaz-cancel-success-container p {
     font-size: 1.2rem;
     color: #333;
   }

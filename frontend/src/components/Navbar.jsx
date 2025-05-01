@@ -22,8 +22,8 @@ const Navbar = () => {
     navigate('/login/user');
   };
 
-  const handleReview = () => {
-    // navigate('/review');
+  const handleFeedback = () => {
+    navigate('/feedback');
   };
 
   const handleMouseEnter = () => {
@@ -42,7 +42,7 @@ const Navbar = () => {
       <div className="maazz-navbar-logo">SkyNest</div>
       <ul className="maazz-navbar-links">
         <li><a onClick={handleBooking} href="#offers">Booking</a></li>
-        <li><a onClick={handleReview} href="#review">Review</a></li>
+        <li><a onClick={handleFeedback} href="#feedback">Feedback</a></li>
       </ul>
       <div
         className="maazz-navbar-profile"
@@ -54,7 +54,7 @@ const Navbar = () => {
         </button>
         <div className={`maazz-dropdown ${showDropdown ? "show" : ""}`}>
           <a onClick={() => navigate('/booking-history')} href="#booking-history">Booking History</a>
-          <a href="#tickets">Tickets</a>
+          <a onClick={() => navigate('/view-tickets')} href="#tickets">Tickets</a>
           <a onClick={() => navigate('/notifications')} href="#notifications">Notifications</a>
           <a onClick={handleLogout} href="#logout">Sign Out</a>
         </div>
