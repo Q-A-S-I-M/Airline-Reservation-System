@@ -14,6 +14,10 @@ import PassengerDetailsPage from './pages/PassengerDetailsPage'
 import BookingDetailsPage from './pages/BookingDetailsPage.jsx';
 import BookingHistoryPage from './pages/BookingHistoryPage.jsx';
 import NotificationsPage from './pages/NotificationsPage.jsx';
+import PaymentSuccessPage from './pages/PaymentSuccessPage.jsx';
+import CancelSuccessPage from './pages/CancelSuccessPage.jsx';
+import { View } from 'lucide-react'
+import ViewTicketsPage from './pages/ViewTicketsPage.jsx'
 
 function App() {
 
@@ -31,6 +35,9 @@ function App() {
         <Route path='/passenger-details' element={<PassengerDetailsPage/>}/>
         <Route path="/booking-details" element={<BookingDetailsPage />} />
         <Route path='/booking-history' element={<BookingHistoryPage />} />
+        <Route path='/payment-success' element={<PaymentSuccessPage />} />
+        <Route path='/cancel-success' element={<CancelSuccessPage />} />
+        <Route path='/view-tickets' element={<ViewTicketsPage />} />
         <Route path='/admin/Requests' element={<AdminRequests/>}/>
         <Route path='/admin/Reviews' element={<AdminReviews/>}/>
         <Route path='/notifications' element={<NotificationsPage />} />

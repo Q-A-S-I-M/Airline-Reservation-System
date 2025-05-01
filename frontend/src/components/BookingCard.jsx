@@ -6,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 
 const BookingCard = ({ booking }) => {
   const { id, timestamp, amount, paymentDeadline, status } = booking;
-  const username = useUser();
+  const { username } = useUser();
   const navigate = useNavigate();
 
   const handlePayment = async () => {
     try {
-      await axios.post("http://localhost:8080/payments", {
+      await axios.post("http://localhost:8080/bookings/payment", {
         id: id,
         user: { username },
       });
@@ -21,8 +21,23 @@ const BookingCard = ({ booking }) => {
     }
   };
 
-  const handleCancel = () => {
-    // Cancellation logic (if applicable)
+  const handleCancel = async () => { // 🆕
+    try {
+      if (status === "Pending") {
+        await axios.put("http://localhost:8080/bookings/cancel", {
+          id: id,
+        });
+      } else if (status === "Approved") {
+        await axios.post("http://localhost:8080/bookings/cancel-request", {
+          id: id,
+          user: { username },
+        });
+      }
+      navigate('/cancel-success');
+    } catch (error) {
+      console.error("Error cancelling booking:", error);
+      alert("Failed to cancel booking.");
+    }
   };
 
   const renderButtons = () => {
@@ -37,12 +52,12 @@ const BookingCard = ({ booking }) => {
       case "Waiting for approval":
         return (
           <>
-            <button onClick={handleCancel} className="maaz-booking-button cancel">Cancel</button>
+            <button className="maaz-booking-button cancel disabled" disabled>Cancel</button>
             <button className="maaz-booking-button pay disabled" disabled>Pay</button>
           </>
         );
       case "Approved":
-        return <button onClick={handleCancel} className="maaz-booking-button cancel">Cancel</button>;
+        return <button onClick={handleCancel} className="maaz-booking-button cancel">Request Cancel</button>;
       default:
         return null;
     }

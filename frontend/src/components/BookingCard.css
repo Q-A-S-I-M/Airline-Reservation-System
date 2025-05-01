@@ -58,4 +58,9 @@
     background-color: #ccc;
     cursor: not-allowed;
   }
+
+  .maaz-booking-button.cancel.disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
   

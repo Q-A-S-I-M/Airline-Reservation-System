@@ -79,6 +79,7 @@ const PassengerDetailsPage = () => {
     try {
       const response = await axios.post("http://localhost:8080/bookings/create", payload);
       const booking = response.data;
+      console.log(response.data);
       navigate("/booking-details", { state: { booking } });
     } catch (error) {
       console.error("Booking creation failed", error);
