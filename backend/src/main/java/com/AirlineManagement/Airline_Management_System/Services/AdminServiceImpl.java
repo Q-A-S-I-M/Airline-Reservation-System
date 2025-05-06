@@ -41,7 +41,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     private int getRevenue() {
-        String sql = "SELECT COALESCE(SUM(amount), 0) FROM Bookings";
+        String sql = "SELECT COALESCE(SUM(amount), 0) FROM Bookings Where status = 'Approved'";
         return template.queryForObject(sql, Integer.class);
     }
 
