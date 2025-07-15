@@ -10,7 +10,7 @@ const NotificationsPage = () => {
 
   useEffect(() => {
     if (!username) return;
-    fetch(`http://localhost:8080/notifications/user/${username}`)
+    fetch(`/notifications/user/${username}`)
       .then((res) => res.json())
       .then((data) => setNotifications(data))
       .catch((err) => console.error("Error fetching notifications:", err));

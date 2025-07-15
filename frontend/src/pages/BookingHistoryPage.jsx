@@ -12,7 +12,7 @@ const BookingHistoryPage = () => {
 
   useEffect(() => {
     if (username) {
-      api.get(`http://localhost:8080/bookings/${username}`)
+      api.get(`/bookings/${username}`)
         .then(res => setBookings(res.data))
         .catch(err => console.error(err));
     }

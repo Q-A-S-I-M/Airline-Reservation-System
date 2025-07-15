@@ -2,7 +2,9 @@ import React, { useState, useRef } from "react";
 import "./Navbar.css";
 import { FaUserCircle } from "react-icons/fa";
 import { useUser } from "../context/UserContext";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { ImAirplane } from "react-icons/im";
+import api from "../api/axios";
 
 const Navbar = () => {
   const { username, setUsername } = useUser();
@@ -12,19 +14,15 @@ const Navbar = () => {
 
   const HIDE_DELAY_MS = 50;
 
-  const handleLogout = () => {
-    setUsername(null);
-    localStorage.removeItem("username");
-    navigate('/');
-  };
-
-  const handleBooking = () => {
-    navigate('/login/user');
-  };
-
-  const handleFeedback = () => {
-    navigate('/feedback');
-  };
+  const handleLogout = async () => {
+    try{
+      const response = await api.post('/auth/logout');
+      console.log(response.data.message);
+      localStorage.clear();
+    }catch(error){
+      console.log("Logout failed: "+error.response?.data|| error.message);
+    }
+  }
 
   const handleMouseEnter = () => {
     clearTimeout(hideTimeoutRef.current);
@@ -39,11 +37,11 @@ const Navbar = () => {
 
   return (
     <nav className="maazz-navbar">
-      <div className="maazz-navbar-logo">SkyNest</div>
+      <div className="maazz-navbar-logo">SkyNest <ImAirplane /></div>
       <ul className="maazz-navbar-links">
-        <li><a onClick={handleBooking} href="#offers">Booking</a></li>
-        <li><a onClick={handleFeedback} href="#feedback">Feedback</a></li>
-        <li><a onClick={() => navigate('/view-tickets')} href="#tickets">Tickets</a></li>
+        <li><NavLink to={'/login/user'}>Booking</NavLink></li>
+        <li><NavLink to={'/feedback'}>Feedback</NavLink></li>
+        <li><NavLink to={'/view-tickets'}>Tickets</NavLink></li>
       </ul>
       <div
         className="maazz-navbar-profile"
@@ -54,9 +52,9 @@ const Navbar = () => {
           <FaUserCircle style={{ marginRight: "6px" }} /> {username || "User"}
         </button>
         <div className={`maazz-dropdown ${showDropdown ? "show" : ""}`}>
-          <a onClick={() => navigate('/booking-history')} href="#booking-history">Booking History</a>
-          <a onClick={() => navigate('/notifications')} href="#notifications">Notifications</a>
-          <a onClick={handleLogout} href="/">Sign Out</a>
+          <NavLink to={'/booking-history'} >Booking History</NavLink>
+          <NavLink to={'/notifications'} >Notifications</NavLink>
+          <NavLink to={'/'} onClick={handleLogout} >Sign Out</NavLink>
         </div>
       </div>
     </nav>

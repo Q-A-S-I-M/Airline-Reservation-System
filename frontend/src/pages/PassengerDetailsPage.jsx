@@ -46,6 +46,13 @@ const PassengerDetailsPage = () => {
 
     if (!passenger.dob) {
       errors.dob = 'Date of birth is required';
+    }else{
+      const date = new Date(passenger.dob);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      if (date >= today) {
+        errors.dob = 'Date of birth must be in the past';
+      }
     }
 
     if (!passenger.email.includes('@')) {
@@ -77,7 +84,7 @@ const PassengerDetailsPage = () => {
     };
 
     try {
-      const response = await api.post("http://localhost:8080/bookings/create", payload);
+      const response = await api.post("/bookings/create", payload);
       const booking = response.data;
       navigate("/booking-details", { state: { booking } });
     } catch (error) {

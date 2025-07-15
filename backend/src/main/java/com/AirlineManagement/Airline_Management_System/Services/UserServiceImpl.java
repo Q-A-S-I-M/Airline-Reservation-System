@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService{
         int count = template.queryForObject(sql, Integer.class, request.username);
         if(count == 0){
             String hashedPassword = passwordEncoder.encode(request.password);
-        sql = "INSERT INTO Users (username, first_name, last_name, email, password, dob) VALUES (?, ?, ?, ?, ?, ?)";
-        template.update(sql, request.username, request.firstName, request.lastName, request.email, hashedPassword, request.dob);
+        sql = "INSERT INTO Users (username, email, password, role) VALUES (?, ?, ?, ?)";
+        template.update(sql, request.username, request.email, hashedPassword, request.role);
         }else{
             throw new RuntimeException("Username already exists!");
         }

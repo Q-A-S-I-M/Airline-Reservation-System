@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useUser } from "../context/UserContext";
 import TicketCard from "../components/TicketCard";
-import axios from "axios";
+import axios from "../api/axios";
 import "./ViewTicketsPage.css";
 
 const ViewTicketsPage = () => {
@@ -11,16 +11,38 @@ const ViewTicketsPage = () => {
   const [statusFilter, setStatusFilter] = useState("All");
 
   useEffect(() => {
-    if (username) {
-      axios.get(`http://localhost:8080/tickets/user/${username}`)
-        .then(res => setTickets(res.data))
-        .catch(err => console.error(err));
-    }
-  }, [username]);
+  if (username) {
+    const url = `/tickets/user/${username}`;
+    console.log("📡 Sending GET request to:", url);
 
-  const filteredTickets = statusFilter === "All"
-    ? tickets
-    : tickets.filter(ticket => ticket.status === statusFilter);
+    axios.get(url)
+      .then(res => {
+        console.log("✅ Tickets response:", res.data);
+        setTickets(res.data);
+      })
+      .catch(err => {
+        console.error("❌ Error fetching tickets:", err);
+      });
+  }
+}, [username]);
+
+
+  let filteredTickets = [];
+
+  try {
+    filteredTickets =
+      statusFilter === "All"
+        ? tickets
+        : tickets.filter((ticket) => ticket.status === statusFilter);
+
+    if (!Array.isArray(filteredTickets)) {
+      console.warn("Filtered tickets is not an array:", filteredTickets);
+      filteredTickets = [];
+    }
+  } catch (err) {
+    console.error("Filtering tickets failed:", err);
+    filteredTickets = [];
+  }
 
   return (
     <div>
@@ -33,7 +55,7 @@ const ViewTicketsPage = () => {
           <select
             id="status-filter"
             value={statusFilter}
-            onChange={e => setStatusFilter(e.target.value)}
+            onChange={(e) => setStatusFilter(e.target.value)}
           >
             <option value="All">All</option>
             <option value="Valid">Valid</option>
@@ -42,9 +64,13 @@ const ViewTicketsPage = () => {
         </div>
 
         <div className="maaz-ticket-cards">
-          {filteredTickets.map(ticket => (
-            <TicketCard key={ticket.ticket} ticket={ticket} />
-          ))}
+          {filteredTickets.length > 0 ? (
+            filteredTickets.map((ticket, index) => (
+              <TicketCard key={ticket?.ticket || index} ticket={ticket} />
+            ))
+          ) : (
+            <p className="no-tickets-msg">No tickets found.</p>
+          )}
         </div>
       </div>
     </div>

@@ -1,20 +1,18 @@
-
-import React, { useState } from "react";
-import AdminNav from '../components/AdminNav';
-import FlightTable from '../components/FlightTable'; // Import FlightTable component
-import './AdminFlights.css'
+import React from "react";
+import AdminNav from "../components/AdminNav";
+import FlightTable from "../components/FlightTable";
+import "./AdminFlights.css";
 
 const AdminFlights = () => {
-
   return (
-    <div>
+    <div className="admin-flights-wrapper">
       <AdminNav />
       <div className="admin-flights-content">
         <h1>Admin Flight Dashboard</h1>
-        <FlightTable /> {/* Add FlightTable component here */}
+        <FlightTable />
       </div>
     </div>
   );
-}
+};
 
 export default AdminFlights;

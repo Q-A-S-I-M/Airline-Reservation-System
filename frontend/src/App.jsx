@@ -17,32 +17,36 @@ import CancelSuccessPage from './pages/CancelSuccessPage.jsx';
 import ViewTicketsPage from './pages/ViewTicketsPage.jsx';
 import FeedbackPage from './pages/FeedbackPage.jsx';
 import FeedbackSuccessPage from './pages/FeedbackSuccessPage.jsx';
-
-
+import ParticlesBackground from './components/Particles.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx'
+import ProtectedRoutes from './components/ProtectedRoutes.jsx'
 
 function App() {
 
   return (
     <>
+      <ParticlesBackground/>
       <Routes>
         <Route path='/' element={<Login/>}/>
-        <Route path='/login/admin' element={<AdminHome/>}/>
-        <Route path='/admin/Flights' element={<AdminFlights/>}/>
-        <Route path='/admin/Add-Flights' element={<AdminAddFlights/>}/>
-        <Route path='/admin/Requests' element={<AdminRequests/>}/>
-        <Route path='/admin/Reviews' element={<AdminReviews/>}/>
-        <Route path='/notifications' element={<NotificationsPage />} />
+        <Route element={<PrivateRoute><ProtectedRoutes/></PrivateRoute>}>
+          <Route path='/login/admin' element={<AdminHome/>}/>
+          <Route path='/admin/Flights' element={<AdminFlights/>}/>
+          <Route path='/admin/Add-Flights' element={<AdminAddFlights/>}/>
+          <Route path='/admin/Requests' element={<AdminRequests/>}/>
+          <Route path='/admin/Reviews' element={<AdminReviews/>}/>
+          <Route path='/notifications' element={<NotificationsPage />} />
 
-        <Route path='/login/user' element={<FlightSearchForm/>}/>
-        <Route path='/search-results' element={<SearchResultsPage/>}/>
-        <Route path='/passenger-details' element={<PassengerDetailsPage/>}/>
-        <Route path="/booking-details" element={<BookingDetailsPage />} />
-        <Route path='/booking-history' element={<BookingHistoryPage />} />
-        <Route path='/payment-success' element={<PaymentSuccessPage />} />
-        <Route path='/cancel-success' element={<CancelSuccessPage />} />
-        <Route path='/view-tickets' element={<ViewTicketsPage />} />
-        <Route path='/feedback' element={<FeedbackPage />} />
-        <Route path='/feedback-success' element={<FeedbackSuccessPage />} />
+          <Route path='/login/user' element={<FlightSearchForm/>}/>
+          <Route path='/search-results' element={<SearchResultsPage/>}/>
+          <Route path='/passenger-details' element={<PassengerDetailsPage/>}/>
+          <Route path="/booking-details" element={<BookingDetailsPage />} />
+          <Route path='/booking-history' element={<BookingHistoryPage />} />
+          <Route path='/payment-success' element={<PaymentSuccessPage />} />
+          <Route path='/cancel-success' element={<CancelSuccessPage />} />
+          <Route path='/view-tickets' element={<ViewTicketsPage />} />
+          <Route path='/feedback' element={<FeedbackPage />} />
+          <Route path='/feedback-success' element={<FeedbackSuccessPage />} />
+        </Route>
       </Routes>
     </>
   )

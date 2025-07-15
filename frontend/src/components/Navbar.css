@@ -3,20 +3,23 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 2rem;
-  background-color: #ffffff;
-  color: #333;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  border-radius: 0 0 12px 12px;
+  padding: 0 20px;
+  height: 80px;
+  width: 100%;
+  background: linear-gradient(90deg, #3c1361, #1f003b);
+  color: #e9d5ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
 .maazz-navbar-logo {
-  font-size: 2rem;
+  font-size: 26px;
   font-weight: 600;
-  color: #0077cc;
+  color: #e9d5ff;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
 }
 
 .maazz-navbar-links {
@@ -28,15 +31,16 @@
 }
 
 .maazz-navbar-links a {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   text-decoration: none;
-  color: #444;
+  color: #e9d5ff;
   font-weight: 500;
   transition: color 0.2s;
 }
 
 .maazz-navbar-links a:hover {
-  color: #0077cc;
+  color: #d8b4fe;
+  text-shadow: 0 0 6px rgba(168, 85, 247, 0.4);
 }
 
 .maazz-navbar-profile {
@@ -44,20 +48,20 @@
 }
 
 .maazz-user-btn {
-  background-color: #0077cc;
+  background-color: #a855f7;
   color: white;
   border: none;
-  padding: 0.6rem 1.2rem;
+  padding: 0.55rem 1.2rem;
   border-radius: 999px;
   cursor: pointer;
   font-weight: 500;
-  font-size: 1.15rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 1.05rem;
+  box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
   transition: background-color 0.2s, transform 0.2s;
 }
 
 .maazz-user-btn:hover {
-  background-color: #005fa3;
+  background-color: #9333ea;
   transform: translateY(-1px);
 }
 
@@ -65,10 +69,10 @@
   position: absolute;
   right: 0;
   top: 110%;
-  background: white;
+  background: #2a0e4d;
   border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  min-width: 140px;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+  min-width: 160px;
   display: flex;
   flex-direction: column;
   z-index: 999;
@@ -81,14 +85,13 @@
 .maazz-dropdown a {
   padding: 0.7rem 1rem;
   text-decoration: none;
-  color: #333;
-  display: block;
+  color: #f3e8ff;
   font-size: 0.95rem;
   transition: background 0.2s;
 }
 
 .maazz-dropdown a:hover {
-  background-color: #f0f0f0;
+  background-color: rgba(168, 85, 247, 0.1);
 }
 
 .maazz-dropdown.show {
@@ -96,4 +99,3 @@
   transform: translateY(0);
   pointer-events: auto;
 }
-

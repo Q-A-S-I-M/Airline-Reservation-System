@@ -1,42 +1,49 @@
 .maaz-notification-card {
-    position: relative;
-    width: 50%;
-    margin: 20px auto;
-    padding: 20px 30px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .maaz-notification-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
-  }
-  
-  .maaz-dismiss-button {
-    position: absolute;
-    top: 12px;
-    right: 16px;
-    border: none;
-    background: transparent;
-    color: gray;
-    font-size: 20px;
-    cursor: pointer;
-  }
-  
-  .maaz-notification-text {
-    font-size: 1rem;
-    color: black;
-    margin: 0;
-  }
-  
-  .maaz-notification-time {
-    align-self: flex-end;
-    font-size: 0.75rem;
-    color: gray;
-  }
-  
+  position: relative;
+  width: 50%;
+  margin: 20px auto;
+  padding: 20px 30px;
+  border-radius: 16px;
+  background: #111121;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #e0e0ff; /* set default text color */
+}
+
+.maaz-notification-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(168, 85, 247, 0.3);
+}
+
+.maaz-notification-text {
+  font-size: 1.05rem;
+  color: #aaa7c3; /* soft purple-pink for readability */
+  margin: 0;
+  line-height: 1.5;
+}
+
+.maaz-notification-time {
+  align-self: flex-end;
+  font-size: 0.75rem;
+  color: #aaa7c3; /* muted but readable */
+}
+
+.maaz-dismiss-button {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  color: #bbb;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.maaz-dismiss-button:hover {
+  color: #ff6b6b;
+}

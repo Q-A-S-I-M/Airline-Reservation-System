@@ -6,6 +6,7 @@
 .maaz-feedback-page {
   margin: 0;
   padding: 0;
+  color: #e4ddff;
 }
 
 .maaz-feedback-container {
@@ -13,8 +14,9 @@
   margin: 80px auto;
   padding: 30px 40px;
   border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  background-color: #111121;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
 }
 
 .maaz-feedback-title {
@@ -22,7 +24,8 @@
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 30px;
-  color: #333;
+  color: #d8b4fe;
+  text-shadow: 0 0 5px rgba(168, 85, 247, 0.3);
 }
 
 .maaz-feedback-form {
@@ -33,14 +36,14 @@
 
 .maaz-feedback-label {
   font-weight: 500;
-  color: #444;
+  color: #c4b5fd;
 }
 
 .maaz-feedback-input {
-  background-color: white;
-  color: black;
+  background-color: #1a1a2f;
+  color: #f3e8ff;
   padding: 12px;
-  border: 2px solid #ccc;
+  border: 1.5px solid #6b21a8;
   border-radius: 8px;
   font-size: 16px;
   width: 100%;
@@ -48,12 +51,15 @@
 }
 
 .maaz-feedback-input:focus {
-  border: 1.5px solid #2563eb;
+  border: 1.5px solid #a855f7;
+  box-shadow: 0 0 5px rgba(168, 85, 247, 0.4);
 }
 
 .maaz-feedback-textarea {
+  background-color: #1a1a2f;
+  color: #f3e8ff;
   padding: 12px;
-  border: 2px solid #ccc;
+  border: 1.5px solid #6b21a8;
   border-radius: 8px;
   font-size: 16px;
   resize: none;
@@ -64,28 +70,31 @@
   width: 100%;
   outline: none;
 }
+
 .maaz-feedback-textarea:focus {
-  border: 1.5px solid #2563eb;
+  border: 1.5px solid #a855f7;
+  box-shadow: 0 0 5px rgba(168, 85, 247, 0.4);
 }
 
 .maaz-feedback-button {
   padding: 14px;
-  background-color: #007bff;
+  background-color: #a855f7;
   color: white;
   font-size: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s;
   width: 100%;
 }
 
 .maaz-feedback-button:hover {
-  background-color: #0056b3;
+  background-color: #9333ea;
+  transform: translateY(-2px);
 }
 
 .maaz-feedback-button:disabled {
-  background-color: #a0a0a0;
+  background-color: #6b7280;
   cursor: not-allowed;
 }
 

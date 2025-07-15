@@ -1,23 +1,23 @@
 .maaz-feedback-success-container {
-    max-width: 600px;
-    margin: 80px auto;
-    text-align: center;
-    padding: 2rem;
-    background-color: #e6f9f0;
-    border: 1px solid #b6e2cc;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    font-family: Poppins, sans-serif;
-  }
-  
-  .maaz-feedback-success-container h1 {
-    color: #1e7e34;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  
-  .maaz-feedback-success-container p {
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
+  max-width: 600px;
+  margin: 80px auto;
+  text-align: center;
+  padding: 2rem;
+  background-color: #111121;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  border-radius: 12px;
+  font-family: Poppins, sans-serif;
+  color: #e0defd;
+}
+
+.maaz-feedback-success-container h1 {
+  color: #a855f7;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.maaz-feedback-success-container p {
+  font-size: 1.2rem;
+  color: #c4b5fd;
+}

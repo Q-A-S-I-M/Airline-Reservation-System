@@ -1,69 +1,76 @@
 .maaz-passenger-card {
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-    padding: 8px;
-    margin: 16px;
-    width: 38%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 190px;
-    justify-content: space-between;
-    font-family: 'Poppins', 'Inter', sans-serif;
-  }
-  
-  .maaz-passenger-number {
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 24px;
-  }
-  
-  .maaz-passenger-fields-row {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  
-  .maaz-passenger-field {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-  
-  .maaz-passenger-field label {
-    font-size: 13px;
-    margin-bottom: 4px;
-    font-weight: 500;
-  }
-  .maaz-passenger-field.dob label, .maaz-passenger-field.email label {
-    margin-top: 12px;
-  }
+  background: #111121;
+  backdrop-filter: blur(12px);
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.15);
+  padding: 16px;
+  margin: 16px;
+  width: 38%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 190px;
+  justify-content: space-between;
+  font-family: 'Poppins', 'Inter', sans-serif;
+}
 
-  .maaz-passenger-field.email input{
-    height: 37px;
-  }
-  
-  .maaz-passenger-field input{
-    border: none;
-    border-radius: 0%;
-    border-bottom: 1px solid black; /* the horizontal line */
-    outline: none;
-    background: transparent;
-    font-size: 16px;
-    padding: 8px 4px;
-    width: 100%;
-    transition: border-color 0.3s;
-  }
-  
-  .maaz-passenger-field input:focus{
-    border-bottom: 2px solid #007bff; /* changes line color on focus */
-  }
-  
-  .maaz-passenger-error {
-    color: red;
-    font-size: 10px;
-    margin-top: 4px;
-  }
-  
+.maaz-passenger-number {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #e9d5ff;
+  text-shadow: 0 0 4px rgba(168, 85, 247, 0.3);
+}
+
+.maaz-passenger-fields-row {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.maaz-passenger-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.maaz-passenger-field label {
+  font-size: 13px;
+  margin-bottom: 4px;
+  font-weight: 500;
+  color: #c9baff;
+}
+
+.maaz-passenger-field.dob label,
+.maaz-passenger-field.email label {
+  margin-top: 12px;
+}
+
+.maaz-passenger-field.email input {
+  height: 37px;
+}
+
+.maaz-passenger-field input {
+  border: none;
+  border-radius: 0%;
+  border-bottom: 1px solid #5b5b7d;
+  outline: none;
+  background: transparent;
+  color: #e0e0ff;
+  font-size: 16px;
+  padding: 8px 4px;
+  width: 100%;
+  transition: border-color 0.3s, box-shadow 0.2s;
+}
+
+.maaz-passenger-field input:focus {
+  border-bottom: 2px solid #a855f7;
+  box-shadow: 0 1px 4px rgba(168, 85, 247, 0.3);
+}
+
+.maaz-passenger-error {
+  color: #ff6b6b;
+  font-size: 10px;
+  margin-top: 4px;
+}

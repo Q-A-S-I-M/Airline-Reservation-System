@@ -1,90 +1,154 @@
+/* Container card */
 .card {
-    width: 100%;
-    max-width: 700px;
-    margin: 40px auto;
-    padding: 32px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    background-color: white;
-    border-radius: 8px;
-  }
-  
-  .form-title {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 32px;
-    color: #00050b;
-  }
-  
-  .form-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-  }
-  
-  .row {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    justify-content: space-between;
-  }
-  
-  .label {
-    width: 100px;
-    color: #555;
-    font-weight: 500;
-  }
-  
-  .input {
-    padding: 8px 10px;
-    font-size: 16px;
-    flex: 1;
-  }
+  width: 100%;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 32px;
+  border-radius: 16px;
+  backdrop-filter: blur(12px);
+  background-color: #111121;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  color: #e2e8f0;
+  font-family: 'Poppins', sans-serif;
+}
 
-.row  input {
-    border: none;
-    border-bottom: 1px solid black; /* the horizontal line */
-    outline: none;
-    background: transparent;
-    border-radius: 0%;
-    font-size: 16px;
-    padding: 8px 4px;
-    width: 100%;
-    transition: border-color 0.3s;
-  }
-  
-.row  input:focus {
-    border-bottom: 2px solid #007bff; /* changes line color on focus */
-  }
-  
-  
-  .dropdown {
-    padding: 8px 10px;
-    font-size: 16px;
-    flex: 1;
-  }
-  
-  .time-picker {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .button-wrapper {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .submit-button {
-    padding: 10px 24px;
-    background-color: #2563eb;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  
-  .submit-button:hover {
-    background-color: #005abb;
-  }
-  
+/* Title */
+.form-title {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 32px;
+  color: #c084fc;
+  letter-spacing: 1px;
+}
+
+/* Grid layout */
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Row layout */
+.row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Label */
+.label {
+  color: #a3a3a3;
+  font-weight: 500;
+  min-width: 90px;
+}
+
+/* Input & Dropdown fields */
+.input,
+.dropdown {
+  padding: 10px 12px;
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #6b21a8;
+  color: #f0f0f0;
+  outline: none;
+  flex: 1;
+  transition: border-color 0.3s ease;
+}
+/* For WebKit-based browsers (Chrome, Safari, Edge) */
+input[type="date"] {
+  background-color: #1a1a2e;
+  color: #e0e0ff;
+  border: 1px solid #3f3f57;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: Poppins, sans-serif;
+}
+
+/* Calendar icon styling */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Turns the icon light for dark background */
+  cursor: pointer;
+}
+
+
+/* Focus state */
+.input:focus,
+.dropdown:focus {
+  outline: none;
+  border: 1px solid #a855f7;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+}
+
+/* Select dropdown theme fix */
+.dropdown {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  background-color: rgba(55, 48, 163, 0.1);
+  border-radius: 8px;
+  border: 1px solid #6b21a8;
+  color: #c084fc;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 2rem;
+}
+
+/* Ensure dropdown list is dark-themed */
+.dropdown option {
+  background-color: #1a1a2e;
+  color: #e0e0ff;
+}
+
+/* Time picker layout */
+.time-picker {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+}
+
+/* Button wrapper */
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+/* Submit button */
+.submit-button {
+  padding: 12px 30px;
+  background-color: #9333ea;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+}
+
+.submit-button:hover {
+  background-color: #a855f7;
+  box-shadow: 0 0 18px rgba(168, 85, 247, 0.4);
+}
+
+/* Placeholder text */
+::placeholder {
+  color: #9ca3af;
+}
+
+/* Hide vertical scrollbars but allow scroll */
+.dropdown {
+  overflow-y: scroll; /* Keeps functionality */
+  scrollbar-width: none; /* Firefox */
+}
+
+.dropdown::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+

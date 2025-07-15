@@ -1,46 +1,56 @@
 .maaz-hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3rem 2rem;
-    background-color: #f5f8fa;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  
-  .maaz-hero-image {
-    max-width: 500px;
-    width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  
-  .maaz-hero-text {
-    font-family: Poppings, sans-serif;
-    max-width: 400px;
-  }
-  
-  .maaz-hero-text h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #0077cc;
-    margin-bottom: 1rem;
-  }
-  
-  .maaz-book-now-btn {
-    font-family: Poppings, sans-serif;
-    background-color: #0077cc;
-    color: white;
-    padding: 0.7rem 1.4rem;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .maaz-book-now-btn:hover {
-    background-color: #005fa3;
-    transform: translateY(-2px);
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.maaz-hero-image {
+  max-width: 500px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+}
+
+.maaz-hero-text {
+  font-family: Poppins, sans-serif;
+  max-width: 400px;
+  color: #e9d5ff;
+}
+
+.maaz-hero-text h1 {
+  font-size: 2.25rem;
+  font-weight: 600;
+  color: #d8b4fe;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+}
+
+.maaz-hero-text p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #c4b5fd;
+  margin-bottom: 1.5rem;
+}
+
+.maaz-book-now-btn {
+  font-family: Poppins, sans-serif;
+  background-color: #a855f7;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.25);
+}
+
+.maaz-book-now-btn:hover {
+  background-color: #9333ea;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+}

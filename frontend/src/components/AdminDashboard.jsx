@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import api from '../api/axios'
+import api from '../api/axios';
 import './AdminDashboard.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -24,7 +24,7 @@ const dummyData = {
   ]
 };
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#a855f7', '#7c3aed', '#9333ea', '#e879f9', '#facc15'];
 
 function AdminDashboard() {
   const [data, setData] = useState(null);
@@ -33,7 +33,7 @@ function AdminDashboard() {
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
-        const response = await api.get('http://localhost:8080/admin/dashboard');
+        const response = await api.get('/admin/dashboard');
         setData(response.data);
       } catch (err) {
         console.error('Failed to fetch dashboard data:', err);
@@ -44,19 +44,20 @@ function AdminDashboard() {
 
     fetchDashboardData();
   }, []);
+
   useEffect(() => {
     AOS.init({ duration: 1000 });
   }, []);
 
-  if (!data) return <div>Loading...</div>;
+  if (!data) return <div className="dashboard-container">Loading...</div>;
 
   return (
     <div className="dashboard-container">
       <h1 className="dashboard-title">Admin Dashboard</h1>
-      {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+      {error && <p className="error-msg">{error}</p>}
 
       <div className="dashboard-cards-container">
-        <div className="dashboard-card " data-aos="flip-left">
+        <div className="dashboard-card" data-aos="flip-left">
           <h2>Passengers</h2>
           <p>{data.passengers}</p>
         </div>
@@ -71,19 +72,19 @@ function AdminDashboard() {
       </div>
 
       <div className="dashboard-charts-container">
-        <div className="dashboard-chart-box" data-aos='zoom-in'>
+        <div className="dashboard-chart-box" data-aos="zoom-in">
           <h3>Occupancy Rate</h3>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={data.occupany_rate}>
-              <XAxis dataKey="airline" />
-              <YAxis />
+              <XAxis dataKey="airline" stroke="#fff" />
+              <YAxis stroke="#fff" />
               <Tooltip />
-              <Bar dataKey="rate" fill="#8884d8" />
+              <Bar dataKey="rate" fill="#c084fc" />
             </BarChart>
           </ResponsiveContainer>
         </div>
 
-        <div className="dashboard-chart-box" data-aos='zoom-in'>
+        <div className="dashboard-chart-box" data-aos="zoom-in">
           <h3>Flight Status Summary</h3>
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>

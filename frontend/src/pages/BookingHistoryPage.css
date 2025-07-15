@@ -1,21 +1,35 @@
 .maaz-booking-history-container {
-    font-family: Poppins, sans-serif;
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
-  }
-  
-  .maaz-filter-section {
-    font-family: Poppins, sans-serif;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  select {
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
+  font-family: 'Poppins', sans-serif;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  color: #e5e5ff;
+}
+
+/* Filter dropdown section */
+.maaz-filter-section {
+  display: flex;
+  align-items: center;
+  margin-top: 2vh;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  color: #c4b5fd;
+}
+
+/* Styled select dropdown */
+.maaz-filter-section select {
+  background-color: #1a1a2f;
+  color: #f3e8ff;
+  border: 1px solid #6b21a8;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.maaz-filter-section select:focus {
+  outline: none;
+  border-color: #a855f7;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.3);
+}

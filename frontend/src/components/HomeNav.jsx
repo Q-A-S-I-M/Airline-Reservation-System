@@ -6,13 +6,11 @@ import { NavLink } from 'react-router-dom';
 const HomeNav = () => {
   return (
     <div className="HomeNav-container">
-      <div className="name_logo">
-        <h2>SkyNest</h2>
-        <ImAirplane />
+      <div className="name-logo">
+        <h2>SkyNest <ImAirplane /></h2>
       </div>
     </div>
   );
 };
 
 export default HomeNav;
-

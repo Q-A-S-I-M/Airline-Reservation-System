@@ -1,55 +1,48 @@
 import React, { useState, useEffect } from "react";
 import { Check, Clock, X } from "lucide-react";
 import "./FlightTable.css";
-import api from '../api/axios'
+import api from "../api/axios";
 
 export default function FlightTable() {
-
   const [flights, setFlights] = useState([]);
+  const [openDropdown, setOpenDropdown] = useState(null);
 
+  const statuses = ["Scheduled", "Departed", "Delayed", "Cancelled", "Landed"];
 
   const fetchData = async () => {
     try {
-      const response = await api.get("http://localhost:8080/flights/get-flights");
+      const response = await api.get("/flights/get-flights");
       setFlights(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
-  
+
   useEffect(() => {
-    fetchData(); // Call fetchData inside useEffect
+    fetchData();
   }, []);
-
-
-  const [openDropdown, setOpenDropdown] = useState(null);
-
-  const statuses = ["Scheduled", "Departed", "Delayed", "Cancelled", "Landed"];
 
   const updateFlight = async (id, status) => {
     try {
-      const response = await api.put(
-        `http://localhost:8080/flights/update-flight/${id}`,
-        status, // sending "Departed" as raw string
+      await api.put(
+        `/flights/update-flight/${id}`,
+        status,
         {
           headers: {
-            'Content-Type': 'text/plain',
+            "Content-Type": "text/plain",
           },
         }
       );
-      console.log("Updated:", response.data);
     } catch (error) {
       console.error("Error updating flight:", error);
     }
   };
-  
-  
+
   const updateFlightStatus = (id, status) => {
-    setFlights(prev =>
-      prev.map(flight => (flight.id === id ? { ...flight, status } : flight))
+    setFlights((prev) =>
+      prev.map((f) => (f.id === id ? { ...f, status } : f))
     );
     setOpenDropdown(null);
-  
     updateFlight(id, status);
   };
 
@@ -79,7 +72,7 @@ export default function FlightTable() {
     };
     return (
       <span className={`status-badge ${classes[status]}`}>
-        {icons[status]} {status.charAt(0).toUpperCase() + status.slice(1)}
+        {icons[status]} {status}
       </span>
     );
   };
@@ -118,8 +111,8 @@ export default function FlightTable() {
   };
 
   const renderTable = (status) => (
-    <>
-      <h2>{status.charAt(0).toUpperCase() + status.slice(1)} Flights</h2>
+    <div className="table-box" key={status}>
+      <h2>{status} Flights</h2>
       <table className="flight-table">
         <thead>
           <tr>
@@ -129,11 +122,11 @@ export default function FlightTable() {
             <th>Source</th>
             <th>Destination</th>
             <th>Airline</th>
-            <th>Action</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
-          {flights.filter(f => f.status === status).map((flight) => (
+          {flights.filter((f) => f.status === status).map((flight) => (
             <tr key={flight.id}>
               <td>{flight.id}</td>
               <td>{formatDate(flight.departure)}</td>
@@ -146,12 +139,12 @@ export default function FlightTable() {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 
   return (
     <div className="flight-tables-container">
-      {statuses.map(status => renderTable(status))}
+      {statuses.map((status) => renderTable(status))}
     </div>
   );
 }

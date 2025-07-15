@@ -1,52 +1,59 @@
 .maaz-ticket-card-horizontal {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 24px;
-    width: 900px;
-    min-height: 180px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .maaz-ticket-card-horizontal:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  }
-  
-  .maaz-ticket-card-left, .maaz-booking-card-center, .maaz-booking-card-right {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .maaz-ticket-card-left h2 {
-    color: #0077cc;
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  
-  .maaz-ticket-card-left p,
-  .maaz-ticket-card-center p {
-    font-size: 0.95rem;
-    color: #34495e;
-    margin: 0;
-  } 
+  background: #111121;
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 24px;
+  width: 900px;
+  min-height: 180px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  color: #e4ddff;
+}
 
-  .download-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #005abb;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  
-  .download-btn:hover {
-    background-color: #2563eb;
-  }
+.maaz-ticket-card-horizontal:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+.maaz-ticket-card-left, 
+.maaz-booking-card-center, 
+.maaz-booking-card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.maaz-ticket-card-left h2 {
+  color: #a855f7;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.maaz-ticket-card-left p,
+.maaz-ticket-card-center p {
+  font-size: 0.95rem;
+  color: #d1c4e9;
+  margin: 0;
+}
+
+.download-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #6b21a8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background-color: #9333ea;
+  transform: translateY(-2px);
+}

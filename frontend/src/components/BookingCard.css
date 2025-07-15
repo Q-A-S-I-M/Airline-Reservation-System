@@ -1,61 +1,73 @@
 .maaz-booking-card-horizontal {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 24px;
-    width: 900px;
-    min-height: 180px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .maaz-booking-card-horizontal:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  }
-  
-  .maaz-booking-card-left, .maaz-booking-card-center, .maaz-booking-card-right {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .maaz-booking-card-left h2 {
-    color: #0077cc;
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  
-  .maaz-booking-card-left p,
-  .maaz-booking-card-center p {
-    font-size: 0.95rem;
-    color: #34495e;
-    margin: 0;
-  }
-  
-  .maaz-booking-button {
-    margin-top: 12px;
-    background-color: #2ecc71;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .maaz-booking-button.cancel {
-    background-color: #e74c3c;
-  }
-  
-  .maaz-booking-button.pay.disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-  
+  background: #111121;
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 2vh;
+  width: 900px;
+  min-height: 180px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  color: #e0e0ff;
+}
+
+.maaz-booking-card-horizontal:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 28px rgba(168, 85, 247, 0.3);
+}
+
+.maaz-booking-card-left, .maaz-booking-card-center, .maaz-booking-card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.maaz-booking-card-left h2 {
+  color: #a855f7; /* soft neon purple */
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.maaz-booking-card-left p,
+.maaz-booking-card-center p {
+  font-size: 0.95rem;
+  color: #d1caff;
+  margin: 0;
+}
+
+.maaz-booking-button {
+  margin-top: 12px;
+  background-color: #22c55e; /* emerald green */
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.maaz-booking-button:hover {
+  background-color: #16a34a;
+}
+
+.maaz-booking-button.cancel {
+  background-color: #ef4444;
+}
+
+.maaz-booking-button.cancel:hover {
+  background-color: #dc2626;
+}
+
+.maaz-booking-button.pay.disabled {
+  background-color: #55556b;
+  color: #999;
+  cursor: not-allowed;
+}
+

@@ -1,21 +1,37 @@
 .maaz-ticket-history-container {
-    font-family: Poppins, sans-serif;
-    padding: 2rem;
-    max-width: 800px;
-    margin: auto;
-  }
-  
-  .maaz-ticket-filter-section {
-    font-family: Poppins, sans-serif;
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  select {
-    padding: 6px 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
+  font-family: Poppins, sans-serif;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  border-radius: 12px;
+  color: #e0defd;
+}
+
+.maaz-ticket-filter-section {
+  font-family: Poppins, sans-serif;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.maaz-ticket-filter-section label {
+  color: #c4b5fd;
+  font-weight: 500;
+}
+
+.maaz-ticket-filter-section select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  background-color: #1f1f33;
+  color: #f0eaff;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.maaz-ticket-filter-section select:focus {
+  outline: none;
+  border-color: #a855f7;
+}

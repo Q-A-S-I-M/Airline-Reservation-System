@@ -1,55 +1,80 @@
 .dashboard-container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f4f6f8;
-  }
-  
-  .dashboard-title {
-    color: #000203;
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .dashboard-cards-container {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-  }
-  
-  .dashboard-card {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    width: 30%;
-    text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s;
-  }
-  
-  .dashboard-card h2 {
-    font-size: 18px;
-    color: #333;
-  }
-  
-  .dashboard-card p {
-    font-size: 24px;
-    font-weight: bold;
-    color: #007BFF;
-  }
-  
-  .dashboard-charts-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 40px;
-  }
-  
-  .dashboard-chart-box {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    width: 500px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  }
-  
+  padding: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  color: #f5f5f5;
+}
+
+.dashboard-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 34px;
+  font-weight: 600;
+  color: #e9d5ff;
+  text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+}
+
+.error-msg {
+  color: #f87171;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+.dashboard-card {
+  background: #111121;
+  border-radius: 14px;
+  padding: 25px;
+  width: 280px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-card h2 {
+  font-size: 20px;
+  color: #d8b4fe;
+  margin-bottom: 10px;
+}
+
+.dashboard-card p {
+  font-size: 26px;
+  font-weight: bold;
+  color: #facc15;
+}
+
+.dashboard-charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.dashboard-chart-box {
+  background: #111121;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  border-radius: 14px;
+  padding: 20px;
+  width: 500px;
+  max-width: 100%;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
+}
+
+.dashboard-chart-box h3 {
+  color: #e9d5ff;
+  text-align: center;
+  margin-bottom: 20px;
+}

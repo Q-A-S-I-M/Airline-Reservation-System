@@ -1,66 +1,73 @@
 .maaz-flight-card-horizontal {
-    background: #ffffff;
-    border-radius: 16px;
-    padding: 24px;
-    width: 900px;
-    min-height: 180px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .maaz-flight-card-horizontal:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
-  }
-  
-  .maaz-flight-card-left, .maaz-flight-card-center, .maaz-flight-card-right {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .maaz-flight-card-left h2 {
-    color: #0077cc;
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  
-  .maaz-flight-id {
-    font-size: 0.85rem;
-    color: #7f8c8d;
-  }
-  
-  .maaz-flight-card-center p, .maaz-flight-card-left p, .maaz-flight-card-right p {
-    font-size: 0.95rem;
-    color: #34495e;
-    margin: 0;
-  }
-  
-  .maaz-price {
-    color: #27ae60;
-    font-weight: 600;
-    font-size: 1.1rem;
-  }
-  
-  .maaz-book-button {
-    margin-top: 12px;
-    background-color: #0077cc;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .maaz-book-button:hover {
-    background-color: #005fa3;
-  }
-  
+  background: #111121;
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 24px;
+  width: 900px;
+  min-height: 180px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.maaz-flight-card-horizontal:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 28px rgba(168, 85, 247, 0.35);
+}
+
+.maaz-flight-card-left,
+.maaz-flight-card-center,
+.maaz-flight-card-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.maaz-flight-card-left h2 {
+  color: #e9d5ff;
+  margin: 0;
+  font-size: 1.5rem;
+  text-shadow: 0 0 6px rgba(168, 85, 247, 0.4);
+}
+
+.maaz-flight-id {
+  font-size: 0.85rem;
+  color: #a1a1aa;
+}
+
+.maaz-flight-card-center p,
+.maaz-flight-card-left p,
+.maaz-flight-card-right p {
+  font-size: 0.95rem;
+  color: #d1c4e9;
+  margin: 0;
+}
+
+.maaz-price {
+  color: #34d399;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.maaz-book-button {
+  margin-top: 12px;
+  background-color: #a855f7;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.25);
+}
+
+.maaz-book-button:hover {
+  background-color: #9333ea;
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
+}

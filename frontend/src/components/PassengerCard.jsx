@@ -36,6 +36,7 @@ const PassengerCard = ({ index, passengerData, handleChange, errors }) => {
           <input
             type="date"
             name="dob"
+            max={new Date().toISOString().split("T")[0]}
             value={passengerData.dob}
             onChange={(e) => handleChange(index, e)}
           />

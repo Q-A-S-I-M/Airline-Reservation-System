@@ -65,9 +65,9 @@ const AdminRequests = () => {
     const { id, type, booking } = request
     const url =
       type === "Red"
-        ? "http://localhost:8080/notifications/admin/cancellation-reject"
+        ? "/notifications/admin/cancellation-reject"
         : type === "Blue"
-        ? "http://localhost:8080/notifications/admin/booking-reject"
+        ? "/notifications/admin/booking-reject"
         : ""
 
     if (url && booking?.id) {

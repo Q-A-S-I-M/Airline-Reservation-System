@@ -1,15 +1,15 @@
 import React from "react";
-import FlightDetailsForm from '../components/FlightDetailsForm'// adjust the path as needed
+import AdminNav from "../components/AdminNav";
+import FlightDetailsForm from "../components/FlightDetailsForm";
 import "./AdminAddFlights.css";
-import AdminNav from '../components/AdminNav';
 
-export default function AdminAddFlights() {
+const AddFlight = () => {
   return (
-    <>
-    <AdminNav/>
-    <main className="home-container">
+    <div className="add-flight-wrapper">
+      <AdminNav />
       <FlightDetailsForm />
-    </main>
-    </>
+    </div>
   );
-}
+};
+
+export default AddFlight;

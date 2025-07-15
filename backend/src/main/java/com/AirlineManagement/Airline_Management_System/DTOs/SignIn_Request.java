@@ -4,9 +4,7 @@ import java.sql.Date;
 
 public class SignIn_Request {
     public String username;
-    public String firstName;
-    public String lastName;
     public String email;
     public String password;
-    public Date dob;
+    public String role;
 }

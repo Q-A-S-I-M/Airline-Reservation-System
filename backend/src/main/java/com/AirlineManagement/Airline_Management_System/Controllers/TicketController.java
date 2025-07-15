@@ -22,14 +22,20 @@ public class TicketController {
     @GetMapping("/user/{username}")
     public ResponseEntity<?> getTickets(@PathVariable String username) {
         try {
+            System.out.println("Reached tickets");
             List<Ticket> tickets = ticketService.getTickets(username);
+            System.out.println("Tickets loaded");
             if (tickets.isEmpty()) {
+                System.out.println("No tickets found");
                 return ResponseEntity.badRequest().body("No tickets found for user: " + username);
             }
+            System.out.println("Tickets found succesfully");
             return ResponseEntity.ok(tickets);
         } catch (RuntimeException e) {
+            System.out.println("Failed to retrieve tickets for user: " + username);
             return ResponseEntity.badRequest().body("Failed to retrieve tickets for user: " + username);
         } catch (Exception e) {
+            System.out.println("An unexpected error occurred while fetching tickets.");
             return ResponseEntity.internalServerError().body("An unexpected error occurred while fetching tickets.");
         }
     }

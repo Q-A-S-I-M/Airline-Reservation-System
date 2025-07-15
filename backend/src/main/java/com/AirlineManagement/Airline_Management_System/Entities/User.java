@@ -8,16 +8,12 @@ import java.util.*;
 public class User {
     @Id
     private String username;
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
-    @Column(name = "last_name", nullable = false)
-    private String lastName;
     @Column(name = "email", unique = true, nullable = false)
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
-    @Column(name = "dob", nullable = false)
-    private Date dob;
+    @Column(name = "role", nullable = false)
+    private String role;
 
     public String getUsername() {
         return username;
@@ -41,27 +37,11 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getRole() {
+        return role;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

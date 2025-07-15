@@ -1,50 +1,18 @@
-.HomeNav-container{
-    border: none;
-    height: 80px;
-    width: 100%;
-    background-color: #005abb;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.HomeNav-container {
+  height: 80px;
+  width: 100%;
+  background: linear-gradient(90deg, #3c1361, #1f003b);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
 }
 
-.HomeNav-container .name_logo{
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    font-size: 20px;
-    margin-left: 20px;
-    padding: 10px;
-}
-
-.HomeNav-container .anchor{
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 40px;
-    padding: 10px;
-    margin-right: 20px;
-    font-size: 25px;
-    transition: background-color 0.3s ease;
-    /* border: 2px solid red; */
-}
-
-.anchor a{
-    color: white;
-    text-decoration: none;
-    /* border: 2px solid red; */
-    padding: 10px;
-    border-radius: 15px;
-}
-
-.anchor a:hover{
-    background-color: #2563eb; 
-}
-
-.anchor a.active {
-    background-color: #4f46e5; /* Highlight active link */
+.name-logo h2 {
+    font-size: 26px;
+    color: #e9d5ff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
 }
 

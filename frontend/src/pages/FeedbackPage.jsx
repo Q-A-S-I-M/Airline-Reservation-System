@@ -25,7 +25,7 @@ const Feedback = () => {
         comments,
       });
       
-      await api.post("http://localhost:8080/feedbacks/submit", {
+      await api.post("/feedbacks/submit", {
         flight: { id: parseInt(flightId) },
         user: { username },
         comments,

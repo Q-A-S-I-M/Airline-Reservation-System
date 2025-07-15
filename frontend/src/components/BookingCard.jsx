@@ -70,11 +70,11 @@ const BookingCard = ({ booking }) => {
   const handleCancel = async () => {
     try {
       if (status === "Pending") {
-        await api.put("http://localhost:8080/bookings/cancel", {
+        await api.put("/bookings/cancel", {
           id: id,
         });
       } else if (status === "Approved") {
-        await api.post("http://localhost:8080/bookings/cancel-request", {
+        await api.post("/bookings/cancel-request", {
           id: id,
           user: { username },
         });
@@ -130,10 +130,11 @@ const BookingCard = ({ booking }) => {
       {showPaymentForm && (
         <div className="payment-modal-overlay">
           <div className="payment-modal">
-            <h2>Payment Form</h2>
+            <h2>Make Payment</h2>
             <form onSubmit={submitPayment} className="payment-form">
               <label>
                 Name on Card
+              </label>
                 <input
                   type="text"
                   name="name"
@@ -141,10 +142,11 @@ const BookingCard = ({ booking }) => {
                   onChange={(e) => setPaymentData({ ...paymentData, name: e.target.value })}
                   required
                 />
-              </label>
+              
 
               <label>
                 Card Number
+              </label>
                 <input
                   type="text"
                   name="cardNumber"
@@ -154,10 +156,10 @@ const BookingCard = ({ booking }) => {
                   maxLength="16"
                   inputMode="numeric"
                 />
-              </label>
 
               <label>
                 CVV
+              </label>
                 <input
                   type="text"
                   name="cvv"
@@ -167,17 +169,16 @@ const BookingCard = ({ booking }) => {
                   maxLength="4"
                   inputMode="numeric"
                 />
-              </label>
 
               <label>
                 Amount (PKR)
+              </label>
                 <input
                   type="number"
                   name="amount"
                   value={paymentData.amount}
                   readOnly
                 />
-              </label>
 
               <div className="payment-form-buttons">
                 <button type="submit">Pay Now</button>

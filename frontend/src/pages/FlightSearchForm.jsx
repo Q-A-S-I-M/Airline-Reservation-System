@@ -26,7 +26,7 @@ const FlightSearchForm = () => {
   useEffect(() => {
     const fetchLocations = async () => {
       try {
-        const response = await api.get("http://localhost:8080/flights/flight-locations");
+        const response = await api.get("/flights/flight-locations");
         setFromLocations(response.data.source || []);
         setToLocations(response.data.destination || []);
       } catch (error) {
@@ -56,7 +56,7 @@ const FlightSearchForm = () => {
     try {
       console.log("Form Data (Format1):", formData);
 
-      const response = await api.post("http://localhost:8080/flights/search-flight", formData);
+      const response = await api.post("/flights/search-flight", formData);
 
       console.log("Response from backend:", response.data);
       navigate("/search-results", {
