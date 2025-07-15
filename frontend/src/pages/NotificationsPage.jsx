@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import NotificationCard from "../components/NotificationCard";
 import { useUser } from "../context/UserContext";
 import "./NotificationsPage.css";
+import api from "../api/axios";
 
 const NotificationsPage = () => {
   const { username } = useUser();
@@ -10,11 +11,16 @@ const NotificationsPage = () => {
 
   useEffect(() => {
     if (!username) return;
-    fetch(`/notifications/user/${username}`)
-      .then((res) => res.json())
-      .then((data) => setNotifications(data))
-      .catch((err) => console.error("Error fetching notifications:", err));
+    
+    api.get(`/notifications/user/${username}`, { withCredentials: true })
+      .then((res) => {
+        setNotifications(res.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching notifications:", err);
+      });
   }, [username]);
+
 
   const handleDismiss = (id) => {
     setNotifications(notifications.filter((n) => n.id !== id));
