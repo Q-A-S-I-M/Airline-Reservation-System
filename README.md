@@ -1,98 +1,137 @@
-# ✈️ Airline-Reservation-System (SkyNest)
+✈️ Airline-Reservation-System (SkyNest)
 
-**SkyNest** is a full-featured Airline Reservation System designed for both passengers and administrators. It allows users to book flights, manage their tickets, and receive notifications. Admins can manage flights, aircrafts, and monitor real-time statistics through dashboard.
+SkyNest is a full-featured Airline Reservation System designed for both passengers and administrators.
+It allows users to book flights, manage their tickets, and receive notifications.
+Admins can manage flights, aircraft, and monitor real-time statistics through a secure dashboard.
 
----
+🧩 Modules
 
-## 🧩 Modules
+👤 User Module
 
-### 👤 User Module
-- Flight booking and history
-- View and download tickets
-- Real-time notifications on request approvals
-- Submit feedback on flights
-- Chatbot assistance integrated via third-party script
+Flight booking and history
 
-### 🛠️ Admin Module
-- AI-powered review analyzer using Flask + TextBlob
-- View meaningful reviews (only very good or very bad sentiment)
-- Create flights and assign aircraft
-- Approve or reject booking requests
-- Monitor aircraft status
-- Detailed statistics on dashboard (see below)
+View and download tickets
 
-### 🔄 Other Features
-- Auto seat assignment and management
-- Smart notification system
-- Trigger-based updates in database
-- Sentiment analysis API integration via Flask
-- Secure and efficient backend operations
+Real-time notifications on request approvals
 
----
+Submit feedback on flights
 
-## ⚙️ Tech Stack
+🛠️ Admin Module
 
-### 🔙 Backend
-- Spring Boot
-- JDBC Template
-- Spring Data JPA
-- MySQL Workbench
-- Flask
-- TextBlob
+AI-powered review analyzer using Flask + TextBlob
 
-### 🎨 Frontend
-- React
-- Recharts
-- CSS
+View meaningful reviews (only very good or very bad sentiment)
 
----
+Create flights and assign aircraft
 
-## 📊 Admin Dashboard Stats
+Approve or reject booking requests
 
-- 👥 Total Passengers
-- 🛫 Total Flights
-- 💰 Total Revenue
-- 📈 Occupancy Rate per Airline (Bar Chart)
-- ✅ Flight Status Summary (Pie Chart)
+Monitor aircraft status
 
----
+Detailed statistics on dashboard (see below)
 
-## 🚀 How to Run the Project
+🔒 Security Features (New)
 
-1. Ensure the following are installed:
-   - Python (with Flask and TextBlob)
-   - Node.js and npm
-   - MySQL
-   - Java and Maven
+✅ Spring Boot Security integrated
 
-2. **Backend Setup**
-   - Open `application.properties` in the backend folder.
-   - Configure your **database URL, username, and password** according to your local MySQL setup.
+✅ JWT Authentication with refresh tokens
 
-3. **Schema & Triggers**
-   - Run the backend application **once** to allow Spring Boot to generate the schema.
-   - Then execute the `triggers.sql` file to add database triggers.
+✅ Tokens handled through HttpOnly cookies for enhanced security
 
-4. **Start the Project**
-   - Use the `project.bat` file in the `Airline-Reservation-System` directory to launch all services.
+✅ Session timeout set to 1 hour (auto logout on inactivity)
 
----
+✅ Role-based login (ADMIN and USER)
 
-## 🔐 Authentication
+✅ Frontend protected routes — no API can be accessed without logging in
 
-The system includes login and registration functionality, though the implementation type (JWT/session-based) is not specified.
+⚙️ Tech Stack
 
----
+🔙 Backend
 
-## 🧪 Demo
+Spring Boot
 
-📹 **Project Demo Drive Link**  
-[Click to Watch](https://drive.google.com/drive/u/1/folders/15goo0FVQtQImLoFby4wLPcgTFdkjYqCi)
+Spring Security + JWT (with refresh token)
 
----
+JDBC Template
 
-## 📬 Feedback & Contributions
+Spring Data JPA
 
-Feel free to suggest improvements or report issues via pull requests or issues if this project is hosted on GitHub.
+MySQL Workbench
 
----
+Flask
+
+TextBlob
+
+🎨 Frontend
+
+React
+
+Recharts
+
+CSS
+
+📊 Admin Dashboard Stats
+
+👥 Total Passengers
+
+🛫 Total Flights
+
+💰 Total Revenue
+
+📈 Occupancy Rate per Airline (Bar Chart)
+
+✅ Flight Status Summary (Pie Chart)
+
+🚀 How to Run the Project
+
+Install prerequisites:
+
+Java & Maven
+
+MySQL
+
+Node.js & npm
+
+Python (for Flask + TextBlob)
+
+Backend Setup:
+
+Update application.properties with your database credentials.
+
+Run the backend once to generate schema.
+
+Execute triggers.sql for database triggers.
+
+Frontend Setup:
+
+cd into the frontend folder.
+
+Run npm install then npm run dev.
+
+Start everything:
+
+Use the provided project.bat script in the root directory to start backend, frontend, and Flask services.
+
+🔐 Authentication & Tokens
+
+All endpoints are secured with Spring Security.
+
+JWT tokens are issued and stored in HttpOnly cookies to prevent XSS token theft.
+
+Refresh token flow allows seamless session renewal.
+
+Idle sessions expire after 1 hour.
+
+Role-based access controls features for ADMIN and USER.
+
+Frontend routes are protected — API calls without valid tokens are blocked.
+
+🧪 Demo
+
+📹 Project Demo Drive Link
+
+[Click to Watch](https://drive.google.com/file/d/1gBd1_iZL0mRJA7qT9Ri2CnDtvK7Gsjdu/view?usp=drive_link)
+
+📬 Feedback & Contributions
+
+Feel free to open issues or submit pull requests for improvements!
