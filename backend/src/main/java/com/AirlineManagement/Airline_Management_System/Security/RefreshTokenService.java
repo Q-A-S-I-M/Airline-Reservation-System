@@ -30,8 +30,6 @@ public class RefreshTokenService {
         }
 
         User user = optionalUser.get();
-
-        // Remove old token for same user-agent
         deleteByUserIdAndUserAgentAndIp(user.getUsername(), userAgent, ipAddress);
 
         RefreshToken refreshToken = new RefreshToken();

@@ -17,20 +17,6 @@ public class UserServiceImpl implements UserService{
     private JdbcTemplate template;
     @Autowired
     private PasswordEncoder passwordEncoder;
-    @Override
-    public User login(Login_Request request) {
-        String sql = "SELECT * FROM Users WHERE username = ?";
-        try{
-            User user = template.queryForObject(sql, new Object[]{request.username}, new BeanPropertyRowMapper<>(User.class));
-            if(passwordEncoder.matches(request.password, user.getPassword())){
-                return user;
-            }else{
-                throw new RuntimeException("Invalid Password!");
-            }
-        }catch(EmptyResultDataAccessException e){
-            throw new RuntimeException("User not registered!");
-        }
-    }
     public void register(SignIn_Request request){
         String sql = "SELECT COUNT(*) FROM Users WHERE username = ?";
         int count = template.queryForObject(sql, Integer.class, request.username);

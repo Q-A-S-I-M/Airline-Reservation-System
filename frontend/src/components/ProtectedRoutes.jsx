@@ -1,4 +1,3 @@
-// src/components/ProtectedRoutes.jsx
 import { Outlet } from "react-router-dom";
 
 const ProtectedRoutes = () => {
